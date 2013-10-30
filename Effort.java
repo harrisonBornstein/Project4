@@ -1,7 +1,9 @@
 
-public class Effort {
+public abstract class Effort {
 	
 	private String organization;
+	
+	
 	
 	public String getOrganization()
 	{

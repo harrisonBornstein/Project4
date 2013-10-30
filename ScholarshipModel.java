@@ -13,6 +13,11 @@ public class ScholarshipModel {
 	private List<Journal> journals;
 	private ArrayList<ActionListener> actionListenerList;
 	
+	public ScholarshipModel()
+	{
+		
+	}
+	
 	
 public void addPaper(Paper paper)
 {

@@ -7,6 +7,11 @@ public class Journal {
 	private Location location;
 	private List<Volume> volumes;
 	
+	public Journal()
+	{
+		
+	}
+	
 	public String getOrganization()
 	{
 		return organization;

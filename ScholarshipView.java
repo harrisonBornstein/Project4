@@ -7,6 +7,11 @@ public class ScholarshipView extends JFrame {
 	private JPanel contentPane;
 	private ScholarshipModel model;
 	
+	public ScholarshipView()
+	{
+		
+	}
+	
 	public void actionPerformed()
 	{
 		

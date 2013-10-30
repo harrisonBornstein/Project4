@@ -5,6 +5,11 @@ public class Volume {
 
 	private List<Issue> issues;
 	
+	public Volume()
+	{
+		
+	}
+	
 	public List<Issue> getIssues()
 	{
 		return issues;

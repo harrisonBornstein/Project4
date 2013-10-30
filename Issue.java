@@ -9,6 +9,11 @@ public class Issue {
 	private List<Scholar> reviewers;
 	private List<JournalArticle> articles;
 	
+	public Issue()
+	{
+		
+	}
+	
 	public String getMonth()
 	{
 		return month;

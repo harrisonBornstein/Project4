@@ -11,6 +11,11 @@ public class Scholar {
 	private List<Paper> papers;
 	private List<Effort> efforts;
 	
+	public Scholar()
+	{
+		
+	}
+	
 	public String getFullName()
 	{
 		return fullName;

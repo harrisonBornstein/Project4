@@ -6,6 +6,11 @@ public class Conference {
 	private String organization;
 	private List<Meeting> meetings;
 	
+	public Conference()
+	{
+		
+	}
+	
 	public void setMeetings(List<Meeting> meetings)
 	{
 		
