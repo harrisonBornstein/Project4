@@ -8,35 +8,73 @@ import java.util.List;
 public class ScholarshipModel {
 
 	private HashMap<String, Paper> publications;
-	private HashMap<String, Scholar> scholars;
+	HashMap<String, Scholar> scholars;
 	private List<Conference> conferences;
 	private List<Journal> journals;
 	private ArrayList<ActionListener> actionListenerList;
 	
 	public ScholarshipModel()
 	{
+		this.publications = new HashMap<String, Paper>();
+		this.scholars = new HashMap<String, Scholar>();
+		this.conferences = new ArrayList<Conference>();
+		this.journals = new ArrayList<Journal>();
+	}
+		
+		
+	public void addPaper(Paper newPaper)
+	{
 		
 	}
 	
+	public void addScholar(Scholar newScholar)
+	{
+		
+	}
 	
-public void addPaper(Paper paper)
-{
+	public void addConference(Conference newCon)
+	{
+		
+	}
 	
-}
-
-public void addActionListener(ActionListener listener)
-{
+	public void addJournal(Journal newJournal)
+	{
+		
+	}
 	
-}
-
-private void processEvent(ActionEvent e)
-{
+	public void removePaper(Paper outPaper)
+	{
+		
+	}
 	
-}
-
-public void removeActionListener(ActionListener listener)
-{
+	public void removeScholar(Scholar outScholar)
+	{
+		
+	}
 	
-}
+	public void removeConference(Conference outCon)
+	{
+		
+	}
+	
+	public void removeJournal(Journal outJournal)
+	{
+		
+	}
+	
+	public void addActionListener(ActionListener listener)
+	{
+		
+	}
+	
+	private void processEvent(ActionEvent e)
+	{
+		
+	}
+	
+	public void removeActionListener(ActionListener listener)
+	{
+		
+	}
 
 }
