@@ -6,12 +6,19 @@ public class JournalArticle {
 	
 	public JournalArticle()
 	{
-		
+		this.journal = null;
+		this.type = null;
+	}
+	
+	public JournalArticle(Journal journal, String type)
+	{
+		this.journal = journal;
+		this.type = type;
 	}
 	
 	public void setJournal(Journal journal)
 	{
-		
+		this.journal = journal;
 	}
 	
 	public Journal getJournal()
@@ -26,7 +33,7 @@ public class JournalArticle {
 	
 	public void setType(String type)
 	{
-		
+		this.type = type;
 	}
 	
 	

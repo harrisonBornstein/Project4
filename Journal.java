@@ -9,7 +9,16 @@ public class Journal extends Effort{
 	
 	public Journal()
 	{
-		
+		this.organization = null;
+		this.location = null;
+		this.volumes = null;
+	}
+	
+	public Journal(String organization, Location location, List<Volume> volumes)
+	{
+		this.organization = organization;
+		this.location = location;
+		this.volumes = volumes;
 	}
 	
 	public String getOrganization()
@@ -19,7 +28,7 @@ public class Journal extends Effort{
 	
 	public void setOrganization(String organization)
 	{
-		
+		this.organization = organization;
 	}
 	
 	public Location getLocation()
@@ -29,12 +38,12 @@ public class Journal extends Effort{
 	
 	public void setLocation(Location location)
 	{
-		
+		this.location = location;
 	}
 	
 	public void setVolumes(List<Volume> volumes)
 	{
-		
+		this.volumes = volumes;
 	}
 	
 	public List<Volume> getVolumes()
@@ -44,7 +53,7 @@ public class Journal extends Effort{
 	
 	public void addToVolmes(Volume volume)
 	{
-		
+		this.volumes.add(volume);
 	}
 	
 }

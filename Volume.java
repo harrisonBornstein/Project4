@@ -7,7 +7,12 @@ public class Volume {
 	
 	public Volume()
 	{
-		
+		issues = null;
+	}
+	
+	public Volume(List<Issue> issues)
+	{
+		this.issues = issues;
 	}
 	
 	public List<Issue> getIssues()
@@ -15,14 +20,14 @@ public class Volume {
 		return issues;
 	}
 	
-	public void setIssues()
+	public void setIssues(List<Issue> issues)
 	{
-		
+		this.issues = issues;
 	}
 	
 	public void addToIssues(Issue issue)
 	{
-		
+		this.issues.add(issue);
 	}
 
 

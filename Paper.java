@@ -64,7 +64,7 @@ public abstract class Paper
 	 */
 	public void setAuthors(List<Scholar> newAuthors)
 	{
-		
+		this.authors = newAuthors;
 	}
 	
 	/**
@@ -73,7 +73,7 @@ public abstract class Paper
 	 */
 	public void setPaperTitle(String newPaperTitle)
 	{
-		
+		this.paperTitle = newPaperTitle;
 	}
 	
 	/**
@@ -82,7 +82,7 @@ public abstract class Paper
 	 */
 	public void setSerialTitle(String newSerialTitle)
 	{
-		
+		this.serialTitle = newSerialTitle;
 	}
 	
 	/**

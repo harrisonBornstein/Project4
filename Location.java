@@ -7,7 +7,16 @@ public class Location {
 	
 	public Location()
 	{
-		
+		this.city = null;
+		this.state =null;
+		this.country = null;
+	}
+	
+	public Location(String country, String state, String city)
+	{
+		this.city = city;
+		this.state =state;
+		this.country = country;
 	}
 	
 	public String getCity()
@@ -17,12 +26,12 @@ public class Location {
 	
 	public void setCity(String city)
 	{
-		
+		this.city = city;
 	}
 	
 	public void setState(String state)
 	{
-		
+		this.state = state;
 	}
 	
 	public String getState()
@@ -32,7 +41,7 @@ public class Location {
 	
 	public void setCountry(String country)
 	{
-		
+		this.country = country;
 	}
 	
 	public String getCountry()
