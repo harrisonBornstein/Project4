@@ -12,12 +12,27 @@ public class Meeting {
 	
 	public Meeting()
 	{
-		
+		this.month = null;
+		this.year = null;
+		this.location =null;
+		this.chairs = null;
+		this.members = null;
+		this.conPapers = null;
+	}
+	
+	public Meeting(String year, String month, Location location, List<Scholar> chairs, List<Scholar> members, List<ConPaper> conPapers)
+	{
+		this.month = month;
+		this.year = year;
+		this.location =location;
+		this.chairs = chairs;
+		this.members = members;
+		this.conPapers = conPapers;
 	}
 	
 	public void setMonth(String month)
 	{
-		
+		this.month = month;
 	}
 	
 	public String getMonth()
@@ -32,7 +47,7 @@ public class Meeting {
 	
 	public void setYear(String year)
 	{
-		
+		this.year = year;
 	}
 	
 	public Location getLocation()
@@ -42,7 +57,7 @@ public class Meeting {
 	
 	public void setLocation(Location location)
 	{
-		
+		this.location = location;
 	}
 	
 	public List<Scholar> getChairs()
@@ -50,9 +65,9 @@ public class Meeting {
 		return chairs;
 	}
 	
-	public void setChairs(List<Scholar> chair)
+	public void setChairs(List<Scholar> chairs)
 	{
-		
+		this.chairs = chairs;
 	}
 	
 	public List<Scholar> getMembers()
@@ -60,9 +75,9 @@ public class Meeting {
 		return chairs;
 	}
 	
-	public void setMembers(List<Scholar> member)
+	public void setMembers(List<Scholar> members)
 	{
-		
+		this.members = members;
 	}
 	public List<ConPaper> getConPapers()
 	{
@@ -71,22 +86,22 @@ public class Meeting {
 	
 	public void setConPaper(List<ConPaper> papers)
 	{
-		
+		this.conPapers = papers;
 	}
 	
-	public void addToChairs(String chair)
+	public void addToChairs(Scholar chair)
 	{
-		
+		this.chairs.add(chair);
 	}
 	
-	public void addToMembers(String member)
+	public void addToMembers(Scholar member)
 	{
-		
+		this.members.add(member);
 	}
 	
 	public void addToConPapers(ConPaper paper)
 	{
-		
+		this.conPapers.add(paper);
 	}
 	
 	
