@@ -8,7 +8,7 @@ import java.util.List;
 public class ScholarshipModel {
 
 	private HashMap<String, Paper> publications;
-	HashMap<String, Scholar> scholars;
+	private HashMap<String, Scholar> scholars;
 	private List<Conference> conferences;
 	private List<Journal> journals;
 	private ArrayList<ActionListener> actionListenerList;
@@ -24,22 +24,22 @@ public class ScholarshipModel {
 		
 	public void addPaper(Paper newPaper)
 	{
-		
+		publications.put(newPaper.getPaperTitle(), newPaper);
 	}
 	
 	public void addScholar(Scholar newScholar)
 	{
-		
+		scholars.put(newScholar.getFullName(), newScholar);
 	}
 	
 	public void addConference(Conference newCon)
 	{
-		
+		conferences.add(newCon);
 	}
 	
 	public void addJournal(Journal newJournal)
 	{
-		
+		journals.add(newJournal);
 	}
 	
 	public void removePaper(Paper outPaper)
@@ -64,17 +64,30 @@ public class ScholarshipModel {
 	
 	public void addActionListener(ActionListener listener)
 	{
-		
+		actionListenerList.add(listener);
 	}
 	
 	private void processEvent(ActionEvent e)
 	{
-		
+		ArrayList<ActionListener> list;
+		synchronized (this) 
+		{
+			if (actionListenerList == null)
+			{
+				return;
+			}
+			list = (ArrayList<ActionListener>) actionListenerList.clone();
+		}
+		for (int i = 0; i < list.size(); i++) 
+		{
+			ActionListener listener = list.get(i);
+			listener.actionPerformed(e);
+		}
 	}
 	
 	public void removeActionListener(ActionListener listener)
 	{
-		
+		actionListenerList.remove(listener);
 	}
 
 }
