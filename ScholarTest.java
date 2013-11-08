@@ -6,8 +6,11 @@ import org.junit.Test;
 public class ScholarTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void test() 
+	{
+		Scholar kevin = new Scholar();
+		kevin.setFullName("Kevin J. Reimnitz");
+		assert.assertEquals("Kevin J. Reimnitz", kevin.getFullName());
 	}
 
 }

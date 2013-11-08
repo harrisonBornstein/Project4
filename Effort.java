@@ -10,9 +10,9 @@ public abstract class Effort {
 		return organization;
 	}
 	
-	public void setOrganization()
+	public void setOrganization(String org)
 	{
-		
+		this.organization = org;
 	}
 
 }

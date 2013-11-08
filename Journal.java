@@ -1,7 +1,7 @@
 import java.util.List;
 
 
-public class Journal {
+public class Journal extends Effort{
 	
 	private String organization;
 	private Location location;
