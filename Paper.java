@@ -9,7 +9,7 @@ public abstract class Paper
 	private List<Scholar> authors;
 	private String paperTitle;
 	private String serialTitle;
-	private String pages;
+	private String pagers;
 	private String url;
 	private String date;
 	
