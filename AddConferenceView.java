@@ -39,11 +39,6 @@ public class AddConferenceView extends JDialog {
 		JLabel lblAffiliation = new JLabel("Location:");
 		lblAffiliation.setBounds(6, 71, 102, 16);
 		contentPanel.add(lblAffiliation);
-		{
-			JLabel lblResearchAreas = new JLabel("Issue:");
-			lblResearchAreas.setBounds(395, 27, 102, 16);
-			contentPanel.add(lblResearchAreas);
-		}
 		
 		textField = new JTextField();
 		textField.setBounds(120, 21, 227, 28);
@@ -56,7 +51,7 @@ public class AddConferenceView extends JDialog {
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(491, 49, 227, 28);
+		textField_2.setBounds(416, 21, 227, 28);
 		contentPanel.add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -83,19 +78,19 @@ public class AddConferenceView extends JDialog {
 		textField_4.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Year:");
-		lblNewLabel.setBounds(446, 55, 61, 16);
+		lblNewLabel.setBounds(377, 27, 61, 16);
 		contentPanel.add(lblNewLabel);
 		
 		JLabel lblMonth = new JLabel("Month:");
-		lblMonth.setBounds(446, 88, 61, 16);
+		lblMonth.setBounds(365, 65, 61, 16);
 		contentPanel.add(lblMonth);
 		
 		textField_5 = new JTextField();
-		textField_5.setBounds(491, 82, 227, 28);
+		textField_5.setBounds(416, 59, 227, 28);
 		contentPanel.add(textField_5);
 		textField_5.setColumns(10);
 		
-		JLabel lblEditors = new JLabel("Editors:");
+		JLabel lblEditors = new JLabel("Chairs:");
 		lblEditors.setBounds(6, 236, 61, 16);
 		contentPanel.add(lblEditors);
 		

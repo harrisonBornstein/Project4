@@ -128,7 +128,7 @@ public class AddJournalView extends JDialog {
 		contentPanel.add(label);
 		
 		JLabel label_1 = new JLabel("Reviewers Added:");
-		label_1.setBounds(346, 501, 92, 16);
+		label_1.setBounds(346, 501, 131, 16);
 		contentPanel.add(label_1);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
