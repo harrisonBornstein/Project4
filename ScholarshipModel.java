@@ -19,6 +19,7 @@ public class ScholarshipModel {
 		this.scholars = new ArrayList<Scholar>();
 		this.conferences = new ArrayList<Conference>();
 		this.journals = new ArrayList<Journal>();
+		this.actionListenerList = null;
 	}
 		
 		
@@ -229,6 +230,10 @@ public class ScholarshipModel {
 	
 	public void addActionListener(ActionListener listener)
 	{
+		if (actionListenerList == null) 
+		{
+			actionListenerList = new ArrayList<ActionListener>();
+		}
 		actionListenerList.add(listener);
 	}
 	
@@ -252,7 +257,10 @@ public class ScholarshipModel {
 	
 	public void removeActionListener(ActionListener listener)
 	{
-		actionListenerList.remove(listener);
+		if (actionListenerList != null && actionListenerList.contains(listener))
+		{
+			actionListenerList.remove(listener);
+		}
 	}
 
 }
