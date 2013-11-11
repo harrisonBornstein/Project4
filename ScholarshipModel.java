@@ -7,16 +7,16 @@ import java.util.List;
 
 public class ScholarshipModel {
 
-	private List<Paper> publications;
-	private List<Scholar> scholars;
+	private HashMap<String, Paper> publications;
+	private HashMap<String, Scholar> scholars;
 	private List<Conference> conferences;
 	private List<Journal> journals;
 	private ArrayList<ActionListener> actionListenerList;
 	
 	public ScholarshipModel()
 	{
-		this.publications = new ArrayList<Paper>();
-		this.scholars = new ArrayList<Scholar>();
+		this.publications = new HashMap<String, Paper>();
+		this.scholars = new HashMap<String, Scholar>();
 		this.conferences = new ArrayList<Conference>();
 		this.journals = new ArrayList<Journal>();
 	}
@@ -24,12 +24,12 @@ public class ScholarshipModel {
 		
 	public void addPaper(Paper newPaper)
 	{
-		publications.add(newPaper);
+		publications.put(newPaper.getPaperTitle(), newPaper);
 	}
 	
 	public void addScholar(Scholar newScholar)
 	{
-		scholars.add(newScholar);
+		scholars.put(newScholar.getFullName(), newScholar);
 	}
 	
 	public void addConference(Conference newCon)
@@ -44,73 +44,6 @@ public class ScholarshipModel {
 	
 	public void removePaper(Paper outPaper)
 	{
-		publications.remove(outPaper);
-		
-		// remove Paper from scholars
-		for (Scholar scholar: scholars)
-		{
-			if (scholar.getPapers().contains(outPaper))
-			{
-				scholar.getPapers().remove(outPaper);
-				if (scholar.getPapers().size() == 0)
-				{
-					removeScholar(scholar);
-				}
-			}
-		}
-		
-		//remove Paper from conferences
-		for (Conference conference: conferences)
-		{
-			for (Meeting meeting: conference.getMeetings())
-			{
-				if (meeting.getConPapers().contains(outPaper))
-				{
-					meeting.getConPapers().remove(outPaper);
-					if (meeting.getConPapers().size() == 0)
-					{
-						//if meeting meeting has no more papers, remove it
-						conference.getMeetings().remove(meeting);
-					}
-				}
-			}
-			if (conference.getMeetings().size() == 0)
-			{
-				//if conference has no more meetings, remove it
-				removeConference(conference);
-			}
-		}
-		
-		//remove Paper from journals
-		for (Journal journal: journals)
-		{
-			for (Volume volume: journal.getVolumes())
-			{
-				for (Issue issue: volume.getIssues())
-				{
-					if (issue.getArticles().contains(outPaper))
-					{
-						issue.getArticles().remove(outPaper);
-						if (issue.getArticles().size() == 0)
-						{
-							//if issue is now empty, remove it
-							volume.getIssues().remove(issue);
-						}
-					}
-				}
-				if (volume.getIssues().size() == 0)
-				{
-					//if volume is now empty, remove it
-					journal.getVolumes().remove(volume);
-				}
-			}
-			if (journal.getVolumes().size() == 0)
-			{
-				//if journal is now empty, remove it
-				journals.remove(journal);
-			}
-		}
-		
 		
 	}
 	
