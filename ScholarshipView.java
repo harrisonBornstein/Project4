@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 
 public class ScholarshipView extends JFrame {
@@ -92,6 +93,12 @@ public class ScholarshipView extends JFrame {
 		
 		JMenu mnTest = new JMenu("File");
 		menuBar.add(mnTest);
+		
+		JMenuItem mntmImportBinaryScholarship = new JMenuItem("Import Binary Scholarship");
+		mnTest.add(mntmImportBinaryScholarship);
+		
+		JMenuItem mntmExportBinaryScholarship = new JMenuItem("Export Binary Scholarship");
+		mnTest.add(mntmExportBinaryScholarship);
 	}
 	
 	public void actionPerformed()
