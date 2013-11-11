@@ -3,16 +3,16 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
+import javax.swing.JLabel;
 
 
-public class AddJournalView extends JDialog {
+public class AddConferenceView extends JDialog {
+
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
@@ -22,12 +22,10 @@ public class AddJournalView extends JDialog {
 	private JTextField textField_4;
 	private JTextField textField_5;
 
-	
-
 	/**
 	 * Create the dialog.
 	 */
-	public AddJournalView() {
+	public AddConferenceView() {
 		setBounds(100, 100, 719, 848);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -108,11 +106,11 @@ public class AddJournalView extends JDialog {
 		JList list = new JList();
 		scrollPane.setViewportView(list);
 		
-		JButton btnAdd = new JButton("Add Editors");
+		JButton btnAdd = new JButton("Add Chairs");
 		btnAdd.setBounds(61, 469, 117, 29);
 		contentPanel.add(btnAdd);
 		
-		JLabel lblEditorsAdded = new JLabel("Editors Added:");
+		JLabel lblEditorsAdded = new JLabel("Chairs Added:");
 		lblEditorsAdded.setBounds(346, 236, 92, 16);
 		contentPanel.add(lblEditorsAdded);
 		
@@ -123,12 +121,12 @@ public class AddJournalView extends JDialog {
 		JList list_2 = new JList();
 		scrollPane_1.setViewportView(list_2);
 		
-		JLabel label = new JLabel("Reviewers:");
+		JLabel label = new JLabel("Members:");
 		label.setBounds(6, 501, 73, 16);
 		contentPanel.add(label);
 		
-		JLabel label_1 = new JLabel("Reviewers Added:");
-		label_1.setBounds(346, 501, 92, 16);
+		JLabel label_1 = new JLabel("Members Added:");
+		label_1.setBounds(346, 501, 123, 16);
 		contentPanel.add(label_1);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -145,7 +143,7 @@ public class AddJournalView extends JDialog {
 		JList list_3 = new JList();
 		scrollPane_3.setViewportView(list_3);
 		
-		JButton btnAddReviewers = new JButton("Add Reviewers");
+		JButton btnAddReviewers = new JButton("Add Members");
 		btnAddReviewers.setBounds(61, 737, 117, 29);
 		contentPanel.add(btnAddReviewers);
 		{
