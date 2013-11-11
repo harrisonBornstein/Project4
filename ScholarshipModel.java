@@ -26,21 +26,25 @@ public class ScholarshipModel {
 	public void addPaper(Paper newPaper)
 	{
 		publications.add(newPaper);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Paper Added"));
 	}
 	
 	public void addScholar(Scholar newScholar)
 	{
 		scholars.add(newScholar);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Scholar Added"));
 	}
 	
 	public void addConference(Conference newCon)
 	{
 		conferences.add(newCon);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Conference Added"));
 	}
 	
 	public void addJournal(Journal newJournal)
 	{
 		journals.add(newJournal);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Journal Added"));
 	}
 	
 	public void removePaper(Paper outPaper)
@@ -112,7 +116,7 @@ public class ScholarshipModel {
 			}
 		}
 		
-		
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Paper Removed"));
 	}
 	
 	public void removeScholar(Scholar outScholar)
@@ -200,7 +204,7 @@ public class ScholarshipModel {
 				removeConference(conference);
 			}
 		}
-		
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Scholar Removed"));
 	}
 	
 	public void removeConference(Conference outCon)
@@ -213,6 +217,7 @@ public class ScholarshipModel {
 				scholar.getEfforts().remove(outCon);
 			}
 		}
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Conference Removed"));
 	}
 	
 	public void removeJournal(Journal outJournal)
@@ -226,6 +231,7 @@ public class ScholarshipModel {
 				scholar.getEfforts().remove(outJournal);
 			}
 		}
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Journal Removed"));
 	}
 	
 	public void addActionListener(ActionListener listener)

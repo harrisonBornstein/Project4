@@ -4,8 +4,6 @@ import java.util.List;
 
 public abstract class Paper 
 {
-
-	
 	private List<Scholar> authors;
 	private String paperTitle;
 	private String serialTitle;

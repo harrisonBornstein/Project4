@@ -1,8 +1,17 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class JournalArticle {
 
 	private Journal journal;
 	private String type;
+	private List<Scholar> authors;
+	private String paperTitle;
+	private String serialTitle;
+	private String pages;
+	private String url;
+	private String date;
 	
 	public JournalArticle()
 	{
@@ -10,10 +19,14 @@ public class JournalArticle {
 		this.type = null;
 	}
 	
-	public JournalArticle(Journal journal, String type)
+	public JournalArticle(ArrayList<Scholar> authors, String paperTitle, String pages, String url, Journal journal, String type)
 	{
+		this.paperTitle = paperTitle;
+		this.pages = pages;
+		this.authors = authors;
 		this.journal = journal;
 		this.type = type;
+		this.url = url;
 	}
 	
 	public void setJournal(Journal journal)

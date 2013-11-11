@@ -99,12 +99,12 @@ public class ScholarshipController {
 	
 	public void setModel(ScholarshipModel model)
 	{
-		
+		this.model = model;
 	}
 	
 	public void setView(ScholarshipView view)
 	{
-		
+		this.view = view;
 	}
 	
 	
