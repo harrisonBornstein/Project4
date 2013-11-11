@@ -7,16 +7,16 @@ import java.util.List;
 
 public class ScholarshipModel {
 
-	private List<Paper> publications;
-	private List<Scholar> scholars;
+	private HashMap<String, Paper> publications;
+	private HashMap<String, Scholar> scholars;
 	private List<Conference> conferences;
 	private List<Journal> journals;
 	private ArrayList<ActionListener> actionListenerList;
 	
 	public ScholarshipModel()
 	{
-		this.publications = new ArrayList<Paper>();
-		this.scholars = new ArrayList<Scholar>();
+		this.publications = new HashMap<String, Paper>();
+		this.scholars = new HashMap<String, Scholar>();
 		this.conferences = new ArrayList<Conference>();
 		this.journals = new ArrayList<Journal>();
 	}
@@ -24,12 +24,12 @@ public class ScholarshipModel {
 		
 	public void addPaper(Paper newPaper)
 	{
-		publications.add(newPaper);
+		publications.put(newPaper.getPaperTitle(), newPaper);
 	}
 	
 	public void addScholar(Scholar newScholar)
 	{
-		scholars.add(newScholar);
+		scholars.put(newScholar.getFullName(), newScholar);
 	}
 	
 	public void addConference(Conference newCon)
@@ -44,6 +44,7 @@ public class ScholarshipModel {
 	
 	public void removePaper(Paper outPaper)
 	{
+<<<<<<< HEAD
 		publications.remove(outPaper);
 		
 		// remove Paper from scholars
@@ -111,6 +112,8 @@ public class ScholarshipModel {
 			}
 		}
 		
+=======
+>>>>>>> b4d1d0fa3f43b1abf45b4720dba1b253adc29e82
 		
 	}
 	
