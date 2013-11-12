@@ -1,3 +1,6 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -9,7 +12,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 
-public class ScholarshipView extends JFrame {
+public class ScholarshipView extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private ScholarshipModel model;
@@ -156,18 +159,27 @@ public ScholarshipView(){
 	{
 		return button_5;
 	}
-	public void actionPerformed()
-	{
-		
-	}
+	
 	
 	public void setModel(ScholarshipModel newModel)
 	{
-		
+		this.model = newModel;
+		if (this.model != null) 
+		{
+			model.addActionListener(this);
+		}
 	}
 	
 	public JList getScholarList()
 	{
 		return list_1;
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent actionEvent) 
+	{
+		// TODO Auto-generated method stub
+		
 	}
 }
