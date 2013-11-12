@@ -97,6 +97,135 @@ public class ScholarshipController {
 		
 	}
 	
+	private class AddScholarDialogListener implements ActionListener{
+
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			
+		}
+		
+	}
+	
+	private class AddJournalArticleJournalListener implements ActionListener{
+
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			
+		}
+		
+	}
+	
+private class AddJournalArticleScholarListener implements ActionListener{
+
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			
+		}
+		
+	}
+
+private class AddJournalArticleListener implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+}
+
+private class AddConferencePaperScholarListener implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+}
+private class AddConferencePaperConferenceListener implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+}
+
+private class AddConferencePaperListener implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+}
+
+private class AddJournalListener implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+}
+
+private class AddJournalReviewersListener implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+}
+
+private class AddJournalEditorsListener implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+}
+
+private class AddConferenceListener implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+}
+
+private class AddConferenceChairsListener implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+}
+
+private class AddConferenceMembersListener implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+}
+	
 	public void setModel(ScholarshipModel model)
 	{
 		this.model = model;
