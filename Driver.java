@@ -10,12 +10,10 @@ public class Driver {
 	 */
 	public static void main(String[] args) 
 	{
-		model = new ScholarshipModel();
+
 		view.setModel(model);
 		controller.setModel(model);
-		
-		
-		
+		controller.setView(view);
 		
 	}
 		

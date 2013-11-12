@@ -6,8 +6,8 @@ public class Scholar {
 	private String fullName;
 	private String secondaryName;
 	private String primaryName;
-	private List<String> institutions;
-	private List<String> researchAreas;
+	private String institutions;
+	private String researchAreas;
 	private List<Paper> papers;
 	private List<Effort> efforts;
 	
@@ -22,7 +22,18 @@ public class Scholar {
 		this.efforts = null;
 	}
 	
-	public Scholar(String fullName, String secondarName, String primaryName, List<String> institutions, List<String> researchAreas, List<Paper> papers, List<Effort> efforts)
+	public Scholar(String fullName, String secondaryName, String primaryName, String institutions, String researchAreas, List<Paper> papers, List<Effort> efforts)
+	{
+		this.fullName = fullName;
+		this.secondaryName = secondaryName;
+		this.primaryName = primaryName;
+		this.institutions = institutions;
+		this.researchAreas = researchAreas;
+		this.papers = papers;
+		this.efforts = efforts;
+	}
+	
+	public Scholar(String fullName, String secondaryName, String primaryName, String institutions, String researchAreas)
 	{
 		this.fullName = fullName;
 		this.secondaryName = secondaryName;
@@ -48,12 +59,12 @@ public class Scholar {
 		return primaryName;
 	}
 	
-	public List<String> getInstitutions()
+	public String getInstitutions()
 	{
 		return institutions;
 	}
 	
-	public List<String> getResearchAreas()
+	public String getResearchAreas()
 	{
 		return researchAreas;
 	}
@@ -83,12 +94,12 @@ public class Scholar {
 		this.primaryName = primaryName;
 	}
 	
-	public void setInstitutions(List<String> institutions)
+	public void setInstitutions(String institutions)
 	{
 		this.institutions = institutions;
 	}
 	
-	public void setResearchAreas(List<String> researchAreas)
+	public void setResearchAreas(String researchAreas)
 	{
 		this.researchAreas = researchAreas;
 	}
@@ -108,15 +119,15 @@ public class Scholar {
 		this.efforts.add(effort);
 	}
 	
-	public void addToInstitutions(String institution)
-	{
-		this.institutions.add(institution);
-	}
-	
-	public void addToResearchAreas(String researchArea)
-	{
-		this.researchAreas.add(researchArea);
-	}
+//	public void addToInstitutions(String institution)
+//	{
+//		this.institutions.add(institution);
+//	}
+//	
+//	public void addToResearchAreas(String researchArea)
+//	{
+//		this.researchAreas.add(researchArea);
+//	}
 	
 	public void addToPapers(Paper paper)
 	{

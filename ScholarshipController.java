@@ -25,7 +25,7 @@ public class ScholarshipController {
 
 		public void actionPerformed(ActionEvent e) {
 			
-			
+			System.out.println("test");
 			scholarView.setVisible(true);
 			
 			

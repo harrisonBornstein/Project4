@@ -250,7 +250,7 @@ public class ScholarshipModel {
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Journal Removed"));
 	}
 	
-	public void addActionListener(ActionListener listener)
+	public synchronized void addActionListener(ActionListener listener)
 	{
 		if (actionListenerList == null) 
 		{

@@ -169,10 +169,11 @@ public ScholarshipView(){
 	
 	public void setModel(ScholarshipModel newModel)
 	{
-		this.model = model;
+		this.model = newModel;
 		
 		if (model != null) {
-			//Needs Code
+			model.addActionListener(this);
+			setVisible(true);
 		}
 	}
 	
