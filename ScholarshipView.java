@@ -1,8 +1,11 @@
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -159,27 +162,26 @@ public ScholarshipView(){
 	{
 		return button_5;
 	}
-	
+	public void actionPerformed()
+	{
+		
+	}
 	
 	public void setModel(ScholarshipModel newModel)
 	{
-		this.model = newModel;
-		if (this.model != null) 
-		{
-			model.addActionListener(this);
+		this.model = model;
+		
+		if (model != null) {
+			//Needs Code
 		}
 	}
 	
-	public JList getScholarList()
-	{
-		return list_1;
+	public void actionPerformed(ActionEvent e) {
+		//Needs Code
 	}
-
-
-	@Override
-	public void actionPerformed(ActionEvent actionEvent) 
+	
+	public JList<String> getScholarList()
 	{
-		// TODO Auto-generated method stub
-		
+		return scholarList;
 	}
 }

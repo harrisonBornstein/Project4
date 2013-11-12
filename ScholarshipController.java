@@ -1,5 +1,8 @@
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -10,18 +13,21 @@ public class ScholarshipController {
 	
 	private ScholarshipModel model;
 	private ScholarshipView view;
+	private AddScholarView scholarView = new AddScholarView();
+	private AddJournalView journalView = new AddJournalView();
+	private AddConferenceView conferenceView = new AddConferenceView();
+
+	
+	
 	
 	
 	private class AddScholarListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
 			
-			AddScholarView scholarView = new AddScholarView();
+			
 			scholarView.setVisible(true);
-			String primaryName = scholarView.textField.getText();
-			String secondaryName = scholarView.textField_1.getText();
-			String affiliation = scholarView.textField_2.getText();
-			String researchAreas = scholarView.textField_3.getText();
+			
 			
 		}
 		
@@ -32,6 +38,10 @@ public class ScholarshipController {
 		
 		public void actionPerformed(ActionEvent e) {
 			
+			Scholar newScholar = new Scholar();
+			int index = view.scholarList.getSelectedIndex();
+			newScholar = model.getScholars().get(index);
+			model.removeScholar(newScholar);
 			
 		}
 		
@@ -42,6 +52,15 @@ public class ScholarshipController {
 		
 		public void actionPerformed(ActionEvent e) {
 			
+			List<Scholar> scholars = new ArrayList<Scholar>();
+			scholars = model.getScholars();
+			
+			for(Scholar scholar: scholars)
+			{
+				model.removeScholar(scholar);
+			}
+			
+			
 			
 		}
 		
@@ -49,6 +68,15 @@ public class ScholarshipController {
 	private class AddSerialListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
+			
+			String optionPane = "Journal or Conference";
+			String[] options = {"Cancel", "Journal", "Conference"};
+			int response = JOptionPane.showOptionDialog(null, optionPane, "Please Choose A Serial", JOptionPane.PLAIN_MESSAGE, 1, null, options, options[0]);
+			if(response == 1)
+				journalView.setVisible(true);
+			else if(response == 2)
+				conferenceView.setVisible(true);
+				
 			
 		}
 		
@@ -106,7 +134,13 @@ public class ScholarshipController {
 
 		
 		public void actionPerformed(ActionEvent e) {
-			
+			String primaryName = scholarView.textField.getText();
+			String secondaryName = scholarView.textField_1.getText();
+			String affiliation = scholarView.textField_2.getText();
+			String researchAreas = scholarView.textField_3.getText();
+			String fullName = secondaryName + " " + primaryName;
+			model.addScholar(new Scholar(fullName, secondaryName,primaryName, affiliation,researchAreas));
+			scholarView.setVisible(false);
 			
 		}
 		

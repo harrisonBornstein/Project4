@@ -22,7 +22,23 @@ public class ScholarshipModel {
 		this.actionListenerList = null;
 	}
 		
-		
+	public Scholar findScholar(Scholar findScholar)
+	{
+		for(int i =0; this.scholars.size() > i;++i)
+		{
+			if(findScholar.getFullName() == this.scholars.get(i).getFullName())
+			{
+				return scholars.get(i);
+			}
+			
+		}
+		return null;
+	}
+	
+	public List<Scholar> getScholars()
+	{
+		return scholars;
+	}
 	public void addPaper(Paper newPaper)
 	{
 		publications.add(newPaper);
