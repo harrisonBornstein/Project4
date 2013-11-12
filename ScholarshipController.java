@@ -4,19 +4,24 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 
+
+
 public class ScholarshipController {
 	
 	private ScholarshipModel model;
 	private ScholarshipView view;
 	
-	public ScholarshipController()
-	{
-		
-	}
 	
 	private class AddScholarListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
+			
+			AddScholarView scholarView = new AddScholarView();
+			scholarView.setVisible(true);
+			String primaryName = scholarView.textField.getText();
+			String secondaryName = scholarView.textField_1.getText();
+			String affiliation = scholarView.textField_2.getText();
+			String researchAreas = scholarView.textField_3.getText();
 			
 		}
 		
@@ -226,13 +231,22 @@ private class AddConferenceMembersListener implements ActionListener{
 	
 }
 	
-	public void setModel(ScholarshipModel model)
+public void setModel(ScholarshipModel model)
 	{
 		this.model = model;
 	}
 	
-	public void setView(ScholarshipView view)
+public void setView(ScholarshipView view)
 	{
+		this.view.getAddScholarButton().addActionListener(new AddScholarListener());
+		this.view.getDeleteScholarsButton().addActionListener(new DeleteScholarListener());
+		this.view.getDeleteAllScholarsButton().addActionListener(new DeleteAllScholarsListener());
+		this.view.getAddSerialButton().addActionListener(new AddSerialListener());
+		this.view.getDeleteSerialsButton().addActionListener(new DeleteSerialListener());
+		this.view.getDeleteAllSerialsButton().addActionListener(new DeleteAllSerialsListener());
+		this.view.getAddPaperButton().addActionListener(new AddPaperListener());
+		this.view.getDeletePapersButton().addActionListener(new DeletePaperListener());
+		this.view.getDelteAllPapersButton().addActionListener(new DeleteAllPapersListener());
 		this.view = view;
 	}
 	

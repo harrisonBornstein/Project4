@@ -23,29 +23,9 @@ public class ScholarshipModel {
 	}
 		
 		
-	public void addPaper(JournalArticle journal)
-	{
-		publications.add(journal);
-		for (Scholar author: journal.getAuthors())
-		{
-			author.addToPapers(journal);
-		}
-		journal.getJournal().getVolumes().get(0).getIssues().get(0).getArticles().add(journal);
-		
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Paper Added"));
-	}
-	
 	public void addPaper(Paper newPaper)
 	{
 		publications.add(newPaper);
-		for (Scholar author: newPaper.getAuthors())
-		{
-			author.addToPapers(newPaper);
-		}
-		if (newPaper.getType().equals("Journal"))
-		{
-			
-		}
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Paper Added"));
 	}
 	

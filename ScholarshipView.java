@@ -13,9 +13,20 @@ public class ScholarshipView extends JFrame {
 
 	private JPanel contentPane;
 	private ScholarshipModel model;
+	JButton jbtAddScholar = new JButton("Add Scholar");
+	JButton btnDeleteScholars = new JButton("Delete Scholar(s)");
+	JButton btnDeleteAllScholars = new JButton("Delete All Scholars");
+	JButton button = new JButton("Add Serial");
+	JButton button_1 = new JButton("Delete Serial(s)");
+	JButton button_2 = new JButton("Delete All Serials");
+	JButton button_3 = new JButton("Add Paper");
+	JButton button_4 = new JButton("Delete Paper(s)");
+	JButton button_5 = new JButton("Delete All Papers");
+	JList scholarList = new JList();
+	JList serialList = new JList();
 	
-	public ScholarshipView()
-	{
+public ScholarshipView(){
+	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 588);
 		contentPane = new JPanel();
@@ -31,39 +42,39 @@ public class ScholarshipView extends JFrame {
 		tabbedPane.addTab("Scholars", null, panel, null);
 		panel.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Add Scholar");
-		btnNewButton.setBounds(6, 344, 117, 29);
-		panel.add(btnNewButton);
 		
-		JList list = new JList();
-		list.setBounds(22, 20, 374, 310);
-		panel.add(list);
+		jbtAddScholar.setBounds(6, 344, 117, 29);
+		panel.add(jbtAddScholar);
 		
-		JButton btnDeleteScholars = new JButton("Delete Scholar(s)");
+		
+		scholarList.setBounds(22, 20, 374, 310);
+		panel.add(scholarList);
+		
+		
 		btnDeleteScholars.setBounds(123, 344, 136, 29);
 		panel.add(btnDeleteScholars);
 		
-		JButton btnDeleteAllScholars = new JButton("Delete All Scholars");
+		
 		btnDeleteAllScholars.setBounds(258, 344, 155, 29);
 		panel.add(btnDeleteAllScholars);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Serials", null, panel_1, null);
 		
-		JList list_1 = new JList();
-		list_1.setBounds(22, 20, 374, 310);
-		panel_1.setLayout(null);
-		panel_1.add(list_1);
 		
-		JButton button = new JButton("Add Serial");
+		serialList.setBounds(22, 20, 374, 310);
+		panel_1.setLayout(null);
+		panel_1.add(serialList);
+		
+		
 		button.setBounds(6, 344, 117, 29);
 		panel_1.add(button);
 		
-		JButton button_1 = new JButton("Delete Serial(s)");
+		
 		button_1.setBounds(123, 344, 136, 29);
 		panel_1.add(button_1);
 		
-		JButton button_2 = new JButton("Delete All Serials");
+		
 		button_2.setBounds(258, 344, 155, 29);
 		panel_1.add(button_2);
 		
@@ -75,15 +86,15 @@ public class ScholarshipView extends JFrame {
 		list_2.setBounds(22, 20, 374, 310);
 		panel_2.add(list_2);
 		
-		JButton button_3 = new JButton("Add Paper");
+		
 		button_3.setBounds(6, 344, 117, 29);
 		panel_2.add(button_3);
 		
-		JButton button_4 = new JButton("Delete Paper(s)");
+		
 		button_4.setBounds(123, 344, 136, 29);
 		panel_2.add(button_4);
 		
-		JButton button_5 = new JButton("Delete All Papers");
+		
 		button_5.setBounds(258, 344, 155, 29);
 		panel_2.add(button_5);
 		
@@ -99,8 +110,52 @@ public class ScholarshipView extends JFrame {
 		
 		JMenuItem mntmExportBinaryScholarship = new JMenuItem("Export Binary Scholarship");
 		mnTest.add(mntmExportBinaryScholarship);
+}
+	
+	
+	public JButton getAddScholarButton()
+	{
+		return jbtAddScholar;
 	}
 	
+	public JButton getDeleteScholarsButton()
+	{
+		return btnDeleteScholars;
+	}
+	
+	public JButton getDeleteAllScholarsButton()
+	{
+		return btnDeleteAllScholars;
+	}
+	
+	public JButton getAddSerialButton()
+	{
+		return button;
+	}
+	
+	public JButton getDeleteSerialsButton()
+	{
+		return button_1;
+	}
+	
+	public JButton getDeleteAllSerialsButton()
+	{
+		return button_2;
+	}
+	
+	public JButton getAddPaperButton()
+	{
+		return button_3;
+	}
+	
+	public JButton getDeletePapersButton(){
+		return button_4;
+	}
+	
+	public JButton getDelteAllPapersButton()
+	{
+		return button_5;
+	}
 	public void actionPerformed()
 	{
 		
@@ -109,5 +164,10 @@ public class ScholarshipView extends JFrame {
 	public void setModel(ScholarshipModel newModel)
 	{
 		
+	}
+	
+	public JList getScholarList()
+	{
+		return list_1;
 	}
 }

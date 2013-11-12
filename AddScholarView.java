@@ -12,10 +12,10 @@ import javax.swing.JTextField;
 public class AddScholarView extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	public JTextField textField;
+	public JTextField textField_1;
+	public JTextField textField_2;
+	public JTextField textField_3;
 
 	
 
@@ -33,7 +33,7 @@ public class AddScholarView extends JDialog {
 		lblScholarName.setBounds(6, 27, 102, 16);
 		contentPanel.add(lblScholarName);
 		
-		JLabel lblAffiliation = new JLabel("Affiliation:");
+		JLabel lblAffiliation = new JLabel("Institutions:");
 		lblAffiliation.setBounds(6, 164, 102, 16);
 		contentPanel.add(lblAffiliation);
 		{
@@ -86,4 +86,6 @@ public class AddScholarView extends JDialog {
 			}
 		}
 	}
+	
+	
 }

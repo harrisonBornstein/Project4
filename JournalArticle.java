@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class JournalArticle extends Paper {
+public class JournalArticle {
 
 	private Journal journal;
 	private String type;
