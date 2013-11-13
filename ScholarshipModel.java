@@ -9,7 +9,7 @@ public class ScholarshipModel {
 
 	private List<Paper> publications;
 	private List<Scholar> scholars;
-	private ArrayList<Conference> conferences;
+	private List<Conference> conferences;
 	private List<Journal> journals;
 	private ArrayList<ActionListener> actionListenerList;
 	
@@ -62,13 +62,9 @@ public class ScholarshipModel {
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Scholar Added"));
 	}
 	
-	public void addConference(Conference newConference)
+	public void addConference(Conference newCon)
 	{
-		if(newConference.getOrganization() == null)
-		{
-			System.out.println("addConference organization is null");
-		}
-		conferences.add(newConference);
+		conferences.add(newCon);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Conference Added"));
 	}
 	
@@ -83,6 +79,8 @@ public class ScholarshipModel {
 		publications.remove(outPaper);
 		
 		// remove Paper from scholars
+		ArrayList<Scholar> outScholars = new ArrayList<Scholar>(); //make list to hold outScholars
+		
 		for (Scholar scholar: scholars)
 		{
 			if (scholar.getPapers().contains(outPaper))
@@ -90,12 +88,20 @@ public class ScholarshipModel {
 				scholar.getPapers().remove(outPaper);
 				if (scholar.getPapers().size() == 0)
 				{
-					removeScholar(scholar);
+					outScholars.add(scholar);
 				}
 			}
 		}
 		
+		//remove Empty Scholars
+		for (Scholar scholar: outScholars)
+		{
+			scholars.remove(scholar);
+		}
+		
 		//remove Paper from conferences
+		ArrayList<Conference> outCon = new ArrayList<Conference>(); //conferences to remove
+		
 		for (Conference conference: conferences)
 		{
 			for (Meeting meeting: conference.getMeetings())
@@ -105,19 +111,21 @@ public class ScholarshipModel {
 					meeting.getConPapers().remove(outPaper);
 					if (meeting.getConPapers().size() == 0)
 					{
-						//if meeting meeting has no more papers, remove it
-						conference.getMeetings().remove(meeting);
+						//if meeting meeting has no more papers, add the conference to the list
+						outCon.add(conference);
 					}
 				}
 			}
-			if (conference.getMeetings().size() == 0)
-			{
-				//if conference has no more meetings, remove it
-				removeConference(conference);
-			}
+		}
+		
+		//remove empty Cons
+		for (Conference conference: outCon)
+		{
+			conferences.remove(conference);
 		}
 		
 		//remove Paper from journals
+		ArrayList<Journal> outJournals = new ArrayList<Journal>();
 		for (Journal journal: journals)
 		{
 			for (Volume volume: journal.getVolumes())
@@ -129,22 +137,18 @@ public class ScholarshipModel {
 						issue.getArticles().remove(outPaper);
 						if (issue.getArticles().size() == 0)
 						{
-							//if issue is now empty, remove it
-							volume.getIssues().remove(issue);
+							//if issue is now empty, add journal to outJournals
+							outJournals.add(journal);
 						}
 					}
 				}
-				if (volume.getIssues().size() == 0)
-				{
-					//if volume is now empty, remove it
-					journal.getVolumes().remove(volume);
-				}
 			}
-			if (journal.getVolumes().size() == 0)
-			{
-				//if journal is now empty, remove it
-				removeJournal(journal);
-			}
+		}
+		
+		//remove empty Journals
+		for (Journal journal: outJournals)
+		{
+			conferences.remove(journal);
 		}
 		
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Paper Removed"));
@@ -155,21 +159,29 @@ public class ScholarshipModel {
 		scholars.remove(outScholar);
 		
 		//remove the scholar from papers
+		ArrayList<Paper> outPapers = new ArrayList<Paper>(); //Papers to remove
 		for (Paper paper: publications)
 		{
 			if (paper.getAuthors().contains(outScholar))
 			{
 				paper.getAuthors().remove(outScholar);
 			}
-			//if paper has no more authors remove it
+			//if paper has no more authors add to be removed
 			if (paper.getAuthors().size() == 0)
 			{
-				removePaper(paper);
+				outPapers.add(paper);
 			}
 			
 		}
 		
+		//remove empty Papers
+		for (Paper paper: outPapers)
+		{
+			publications.remove(paper);
+		}
+		
 		//remove the scholar from journals
+		ArrayList<Journal> outJournals = new ArrayList<Journal>(); //list of Journals to remove
 		for (Journal journal: journals)
 		{
 			for (Volume volume: journal.getVolumes())
@@ -191,25 +203,21 @@ public class ScholarshipModel {
 					//if there are no more editors or no more reviewers
 					if (issue.getEditors().size() == 0 || issue.getReviewers().size() == 0)
 					{
-						//issue is now empty, remove it
-						volume.getIssues().remove(issue);
-					}
-					
+						//issue is now empty, add the Journal to remove list
+						outJournals.add(journal);
+					}	
 				}
-				if (volume.getIssues().size() == 0)
-				{
-					//if volume is now empty, remove it
-					journal.getVolumes().remove(volume);
-				}
-			}
-			if (journal.getVolumes().size() == 0)
-			{
-				//if journal is now empty, remove it
-				removeJournal(journal);
 			}
 		}
 		
+		//remove empty Journals
+		for (Journal journal: outJournals)
+		{
+			journals.remove(journal);
+		}
+		
 		//remove the scholar from conferences
+		ArrayList<Conference> outCons = new ArrayList<Conference>(); //list of Cons to remove
 		for (Conference conference: conferences)
 		{
 			for (Meeting meeting: conference.getMeetings())
@@ -224,23 +232,25 @@ public class ScholarshipModel {
 				}
 				if (meeting.getMembers().size() == 0 || meeting.getChairs().size() == 0)
 				{
-					//if meeting meeting has no more chairs or members, remove it
-					conference.getMeetings().remove(meeting);
-				}
-				
-			}
-			if (conference.getMeetings().size() == 0)
-			{
-				//if conference has no more meetings, remove it
-				removeConference(conference);
+					//if meeting meeting has no more chairs or members, add the conference to be removed
+					outCons.add(conference);
+				}	
 			}
 		}
+		
+		//remove empty Cons
+		for (Conference conference: outCons)
+		{
+			conferences.remove(conference);
+		}
+		
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Scholar Removed"));
 	}
 	
 	public void removeConference(Effort outCon)
 	{
 		conferences.remove(outCon);
+		
 		for (Scholar scholar : scholars)
 		{
 			if (scholar.getEfforts().contains(outCon))
