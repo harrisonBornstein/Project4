@@ -34,34 +34,28 @@ public class ScholarshipController {
 		
 	}
 	
-	private class DeleteScholarListener implements ActionListener{
-
-		
-		public void actionPerformed(ActionEvent e) {
-			
+	private class DeleteScholarListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
 			Scholar newScholar = new Scholar();
 			int index = view.scholarList.getSelectedIndex();
 			newScholar = model.getScholars().get(index);
 			model.removeScholar(newScholar);
-			
-			
 		}
-		
 	}
 	
 	private class DeleteAllScholarsListener implements ActionListener{
 
 		
-		public void actionPerformed(ActionEvent e) {
-			
-			
-			for(Scholar scholar: model.getScholars())
+		public void actionPerformed(ActionEvent e) 
+		{
+			List<Scholar> scholarList = new ArrayList<Scholar>();
+			scholarList = model.getScholars();
+			for (Scholar scholar: scholarList)
 			{
 				model.removeScholar(scholar);
 			}
-			
-			
-			
 		}
 		
 	}
@@ -108,21 +102,22 @@ public class ScholarshipController {
 		
 	}
 	
-	private class DeleteAllSerialsListener implements ActionListener{
-
-		
+	private class DeleteAllSerialsListener implements ActionListener
+	{	
 		public void actionPerformed(ActionEvent e) 
 		{
-			for (Journal journal: model.getJournals())
+			List<Journal> journals = new ArrayList<Journal>();
+			journals = model.getJournals();
+			List<Conference> conferences = new ArrayList<Conference>();
+			for (Journal journal: journals)
 			{
 				model.removeJournal(journal);
 			}
-			for (Conference conference: model.getConferences())
+			for (Conference conference: conferences)
 			{
 				model.removeConference(conference);
 			}	
 		}
-		
 	}
 	
 	private class AddPaperListener implements ActionListener {
