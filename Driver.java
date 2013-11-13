@@ -3,17 +3,19 @@ public class Driver {
 
 	 static ScholarshipModel model;
 	 static ScholarshipController controller = new ScholarshipController();
-	 static ScholarshipView view = new ScholarshipView();
+	 static ScholarshipView ScholarshipView = new ScholarshipView();
+
 	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) 
 	{
-
-		view.setModel(model);
+		model = new ScholarshipModel();
+		ScholarshipView.setModel(model);
 		controller.setModel(model);
-		controller.setView(view);
+		controller.setView(ScholarshipView);
+		
 		
 	}
 		

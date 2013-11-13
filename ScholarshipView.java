@@ -1,8 +1,11 @@
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,23 +16,33 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
 
 
 public class ScholarshipView extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private ScholarshipModel model;
-	JButton jbtAddScholar = new JButton("Add Scholar");
-	JButton btnDeleteScholars = new JButton("Delete Scholar(s)");
-	JButton btnDeleteAllScholars = new JButton("Delete All Scholars");
-	JButton button = new JButton("Add Serial");
-	JButton button_1 = new JButton("Delete Serial(s)");
-	JButton button_2 = new JButton("Delete All Serials");
-	JButton button_3 = new JButton("Add Paper");
-	JButton button_4 = new JButton("Delete Paper(s)");
-	JButton button_5 = new JButton("Delete All Papers");
-	JList scholarList = new JList();
-	JList serialList = new JList();
+	private JButton jbtAddScholar = new JButton("Add Scholar");
+	private JButton btnDeleteScholars = new JButton("Delete Scholar(s)");
+	private JButton btnDeleteAllScholars = new JButton("Delete All Scholars");
+	private JButton button = new JButton("Add Serial");
+	private JButton button_1 = new JButton("Delete Serial(s)");
+	private JButton button_2 = new JButton("Delete All Serials");
+	private JButton button_3 = new JButton("Add Paper");
+	private JButton button_4 = new JButton("Delete Paper(s)");
+	private JButton button_5 = new JButton("Delete All Papers");
+	
+	
+	private DefaultListModel<String> scholarListModel = new DefaultListModel<String>();
+	private DefaultListModel<String> serialListModel = new DefaultListModel<String>();
+	private List<Effort> viewEfforts = new ArrayList<Effort>();
+	
+	JList scholarList = new JList(scholarListModel);
+	JList serialList = new JList(serialListModel);
+	
+	private final JScrollPane scrollPane = new JScrollPane();
+	private final JScrollPane scrollPane_1 = new JScrollPane();
 	
 public ScholarshipView(){
 	
@@ -53,24 +66,20 @@ public ScholarshipView(){
 		panel.add(jbtAddScholar);
 		
 		
-		scholarList.setBounds(22, 20, 374, 310);
-		panel.add(scholarList);
-		
-		
 		btnDeleteScholars.setBounds(123, 344, 136, 29);
 		panel.add(btnDeleteScholars);
 		
 		
 		btnDeleteAllScholars.setBounds(258, 344, 155, 29);
 		panel.add(btnDeleteAllScholars);
+		scrollPane.setBounds(0, 0, 413, 332);
+		
+		panel.add(scrollPane);
+		scrollPane.setViewportView(scholarList);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Serials", null, panel_1, null);
-		
-		
-		serialList.setBounds(22, 20, 374, 310);
 		panel_1.setLayout(null);
-		panel_1.add(serialList);
 		
 		
 		button.setBounds(6, 344, 117, 29);
@@ -83,6 +92,10 @@ public ScholarshipView(){
 		
 		button_2.setBounds(258, 344, 155, 29);
 		panel_1.add(button_2);
+		scrollPane_1.setBounds(0, 0, 413, 332);
+		
+		panel_1.add(scrollPane_1);
+		scrollPane_1.setViewportView(serialList);
 		
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Papers", null, panel_2, null);
@@ -118,6 +131,34 @@ public ScholarshipView(){
 		mnTest.add(mntmExportBinaryScholarship);
 }
 	
+	private void populateScholarJList()
+	{
+		scholarListModel.clear();
+		if (model.getScholars() != null)
+			for (int i = 0; i < model.getScholars().size(); i++) {
+				scholarListModel.addElement((model.getScholars().get(i).getFullName()));
+			}
+	}
+	
+	private void populateSerialJList()
+	{
+		serialListModel.clear();
+		viewEfforts.clear();
+		if (model.getScholars() != null)
+			for (int i = 0; i < model.getConferences().size() +  model.getJournals().size(); i++) {
+				if(!model.getConferences().isEmpty())
+				{
+					serialListModel.addElement((model.getConferences().get(i).getOrganization()));
+					viewEfforts.add(model.getConferences().get(i));
+				}
+				if(!model.getJournals().isEmpty())
+				{
+					serialListModel.addElement((model.getJournals().get(i).getOrganization()));
+					viewEfforts.add(model.getJournals().get(i));
+				}
+				
+			}
+	}
 	
 	public JButton getAddScholarButton()
 	{
@@ -178,11 +219,25 @@ public ScholarshipView(){
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		//Needs Code
+		if (e.getActionCommand().equals("Scholar Added") || e.getActionCommand().equals("Scholar Removed")) {
+			populateScholarJList();
+			
+		}
+		else if(e.getActionCommand().equals("Journal Added") || e.getActionCommand().equals("Journal Removed")
+				|| e.getActionCommand().equals("Conference Added") || e.getActionCommand().equals("Conference Removed"))
+		{
+			populateSerialJList();
+		}
+		
 	}
 	
 	public JList<String> getScholarList()
 	{
 		return scholarList;
+	}
+	
+	public List<Effort> getEfforts()
+	{
+		return viewEfforts;
 	}
 }

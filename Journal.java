@@ -6,6 +6,7 @@ public class Journal extends Effort{
 	private String organization;
 	private Location location;
 	private List<Volume> volumes;
+	private String type;
 	
 	public Journal()
 	{
@@ -19,7 +20,9 @@ public class Journal extends Effort{
 		this.organization = organization;
 		this.location = location;
 		this.volumes = volumes;
+		this.type = "Journal";
 	}
+	
 	
 	public String getOrganization()
 	{

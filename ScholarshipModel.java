@@ -13,6 +13,7 @@ public class ScholarshipModel {
 	private List<Journal> journals;
 	private ArrayList<ActionListener> actionListenerList;
 	
+	
 	public ScholarshipModel()
 	{
 		this.publications = new ArrayList<Paper>();
@@ -38,6 +39,16 @@ public class ScholarshipModel {
 	public List<Scholar> getScholars()
 	{
 		return scholars;
+	}
+	
+	public List<Conference> getConferences()
+	{
+		return conferences;
+	}
+	
+	public List<Journal> getJournals()
+	{
+		return journals;
 	}
 	public void addPaper(Paper newPaper)
 	{
@@ -223,7 +234,7 @@ public class ScholarshipModel {
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Scholar Removed"));
 	}
 	
-	public void removeConference(Conference outCon)
+	public void removeConference(Effort outCon)
 	{
 		conferences.remove(outCon);
 		for (Scholar scholar : scholars)
@@ -236,15 +247,15 @@ public class ScholarshipModel {
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Conference Removed"));
 	}
 	
-	public void removeJournal(Journal outJournal)
+	public void removeJournal(Effort effort)
 	{
-		journals.remove(outJournal);
+		journals.remove(effort);
 		
 		for(Scholar scholar : scholars)
 		{
-			if (scholar.getEfforts().contains(outJournal))
+			if (scholar.getEfforts().contains(effort))
 			{
-				scholar.getEfforts().remove(outJournal);
+				scholar.getEfforts().remove(effort);
 			}
 		}
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Journal Removed"));

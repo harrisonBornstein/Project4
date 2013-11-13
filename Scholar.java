@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,8 +41,8 @@ public class Scholar {
 		this.primaryName = primaryName;
 		this.institutions = institutions;
 		this.researchAreas = researchAreas;
-		this.papers = papers;
-		this.efforts = efforts;
+		this.papers = new ArrayList<Paper>();
+		this.efforts = new ArrayList<Effort>();
 	}
 	
 	public String getFullName()

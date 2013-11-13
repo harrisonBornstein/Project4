@@ -1,26 +1,58 @@
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JList;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JScrollBar;
 
 
-public class AddConferenceView extends JDialog {
-
+public class AddConferenceView extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	protected JTextField textField;
+	protected JTextField textField_1;
+	protected JTextField textField_2;
+	protected JTextField textField_3;
+	protected JTextField textField_4;
+	protected JTextField textField_5;
+	private JButton btnAddEditors = new JButton("Add Chairs");
+	private JButton okButton = new JButton("OK");
+	private JButton btnAddReviewers = new JButton("Add Members");
+	private DefaultListModel<String> reviewerListModel = new DefaultListModel<String>();
+	private DefaultListModel<String> reviewerListModelAdded = new DefaultListModel<String>();
+	
+	private ArrayList<Scholar> reviewerListScholars = new ArrayList<Scholar>();
+	private ArrayList<Scholar> reviewerSelectedList = new ArrayList<Scholar>();
+	private ArrayList<Scholar> editorListScholars = new ArrayList<Scholar>();
+	private ArrayList<Scholar> editorSelectedList = new ArrayList<Scholar>();
+	
+	private DefaultListModel<String> editorListModel = new DefaultListModel<String>();
+	private DefaultListModel<String> editorListModelAdded = new DefaultListModel<String>();
+	
+	private ScholarshipModel model;
+	private JScrollPane scrollPane = new JScrollPane();
+	JList reviewerList = new JList(reviewerListModel);
+	JList editorList = new JList(editorListModel);
+	JScrollPane scrollPane_2 = new JScrollPane();
+	JScrollPane scrollPane_1 = new JScrollPane();
+	JScrollPane scrollPane_3 = new JScrollPane();
+	
+	
+	
+
+
+	
 
 	/**
 	 * Create the dialog.
@@ -51,7 +83,7 @@ public class AddConferenceView extends JDialog {
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(416, 21, 227, 28);
+		textField_2.setBounds(446, 21, 227, 28);
 		contentPanel.add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -60,11 +92,11 @@ public class AddConferenceView extends JDialog {
 		contentPanel.add(lblCountry);
 		
 		JLabel lblCity = new JLabel("City:");
-		lblCity.setBounds(42, 153, 61, 16);
+		lblCity.setBounds(42, 190, 61, 16);
 		contentPanel.add(lblCity);
 		
 		JLabel lblState = new JLabel("State:");
-		lblState.setBounds(42, 190, 61, 16);
+		lblState.setBounds(42, 153, 61, 16);
 		contentPanel.add(lblState);
 		
 		textField_3 = new JTextField();
@@ -78,15 +110,15 @@ public class AddConferenceView extends JDialog {
 		textField_4.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Year:");
-		lblNewLabel.setBounds(377, 27, 61, 16);
+		lblNewLabel.setBounds(392, 27, 61, 16);
 		contentPanel.add(lblNewLabel);
 		
 		JLabel lblMonth = new JLabel("Month:");
-		lblMonth.setBounds(365, 65, 61, 16);
+		lblMonth.setBounds(381, 71, 61, 16);
 		contentPanel.add(lblMonth);
 		
 		textField_5 = new JTextField();
-		textField_5.setBounds(416, 59, 227, 28);
+		textField_5.setBounds(446, 65, 227, 28);
 		contentPanel.add(textField_5);
 		textField_5.setColumns(10);
 		
@@ -94,51 +126,49 @@ public class AddConferenceView extends JDialog {
 		lblEditors.setBounds(6, 236, 61, 16);
 		contentPanel.add(lblEditors);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		
 		scrollPane.setBounds(57, 264, 273, 198);
 		contentPanel.add(scrollPane);
 		
-		JList list = new JList();
-		scrollPane.setViewportView(list);
 		
-		JButton btnAdd = new JButton("Add Chairs");
-		btnAdd.setBounds(61, 469, 117, 29);
-		contentPanel.add(btnAdd);
+		scrollPane.setViewportView(editorList);
+		
+		
+		btnAddEditors.setBounds(61, 469, 117, 29);
+		contentPanel.add(btnAddEditors);
 		
 		JLabel lblEditorsAdded = new JLabel("Chairs Added:");
 		lblEditorsAdded.setBounds(346, 236, 92, 16);
 		contentPanel.add(lblEditorsAdded);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
+		
 		scrollPane_1.setBounds(421, 264, 273, 198);
 		contentPanel.add(scrollPane_1);
 		
-		JList list_2 = new JList();
-		scrollPane_1.setViewportView(list_2);
+		
 		
 		JLabel label = new JLabel("Members:");
 		label.setBounds(6, 501, 73, 16);
 		contentPanel.add(label);
 		
 		JLabel label_1 = new JLabel("Members Added:");
-		label_1.setBounds(346, 501, 123, 16);
+		label_1.setBounds(346, 501, 131, 16);
 		contentPanel.add(label_1);
 		
-		JScrollPane scrollPane_2 = new JScrollPane();
+		
 		scrollPane_2.setBounds(57, 527, 273, 198);
 		contentPanel.add(scrollPane_2);
 		
-		JList list_1 = new JList();
-		scrollPane_2.setViewportView(list_1);
 		
-		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_2.setViewportView(reviewerList);
+		
+		
 		scrollPane_3.setBounds(421, 529, 273, 198);
 		contentPanel.add(scrollPane_3);
 		
-		JList list_3 = new JList();
-		scrollPane_3.setViewportView(list_3);
+	
 		
-		JButton btnAddReviewers = new JButton("Add Members");
+		
 		btnAddReviewers.setBounds(61, 737, 117, 29);
 		contentPanel.add(btnAddReviewers);
 		{
@@ -146,7 +176,7 @@ public class AddConferenceView extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -158,4 +188,94 @@ public class AddConferenceView extends JDialog {
 			}
 		}
 	}
+	
+	public JButton getAddEditorsButton()
+	{
+		return btnAddEditors;
+	}
+	
+	public JButton getAddReviewersButton()
+	{
+		return btnAddReviewers;
+	}
+	
+	public JButton getOKButton()
+	{
+		return okButton;
+	}
+	public void populateReviewerJList()
+	{
+		reviewerListModel.clear();
+		editorListModel.clear();
+		reviewerListScholars.clear();
+		editorListScholars.clear();
+		if (model.getScholars() != null)
+		{
+			
+			for (int i = 0; i < model.getScholars().size(); i++)
+			{
+				editorListScholars.add(model.getScholars().get(i));
+				reviewerListScholars.add(model.getScholars().get(i));
+				reviewerListModel.addElement((model.getScholars().get(i).getFullName()));
+				editorListModel.addElement((model.getScholars().get(i).getFullName()));
+			}
+		}	
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		
+			
+		}	
+	
+	public void setModel(ScholarshipModel newModel)
+	{
+		this.model = newModel;
+		
+		if (model != null) {
+			model.addActionListener(this);
+			setVisible(true);
+		}
+	}
+	
+	public void AddEditors()
+	{
+		editorSelectedList.add(editorListScholars.get(editorList.getSelectedIndex()));
+		editorListModelAdded.addElement(editorList.getSelectedValue().toString());
+		//reviewerListModel.remove(reviewerList.getSelectedIndex());
+		JList list = new JList(editorListModelAdded);
+		scrollPane_1.setViewportView(list);
+		
+		
+	}
+	
+	public void AddReviewers()
+	{
+		reviewerSelectedList.add(reviewerListScholars.get(reviewerList.getSelectedIndex()));
+		reviewerListModelAdded.addElement(reviewerList.getSelectedValue().toString());
+		//reviewerListModel.remove(reviewerList.getSelectedIndex());
+		JList list_2 = new JList(reviewerListModelAdded);
+		scrollPane_3.setViewportView(list_2);
+	
+	}
+	public List<Scholar> getReviewers()
+	{
+		return reviewerSelectedList;
+	}
+	
+	public List<Scholar> getEditors()
+	{
+		return editorSelectedList;
+	}
+	
+	public void clearView()
+	{
+		reviewerSelectedList.clear();
+		editorSelectedList.clear();
+		reviewerListModelAdded.clear();
+		editorListModelAdded.clear();
+		
+	}
+	
+	
 }
+

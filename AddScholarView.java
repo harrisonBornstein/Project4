@@ -16,7 +16,7 @@ public class AddScholarView extends JDialog {
 	public JTextField textField_1;
 	public JTextField textField_2;
 	public JTextField textField_3;
-
+	private JButton okButton = new JButton("OK");
 	
 
 	/**
@@ -74,7 +74,7 @@ public class AddScholarView extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -85,6 +85,10 @@ public class AddScholarView extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+	public JButton getOkButton()
+	{
+		return okButton;
 	}
 	
 	
