@@ -1,9 +1,13 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.DefaultListModel;
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -12,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 
-public class AddPapersView extends JFrame {
+public class AddPapersView extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -21,23 +25,53 @@ public class AddPapersView extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private ScholarshipModel model;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddPapersView frame = new AddPapersView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	JButton btnAddJournal = new JButton("Add Journal");
+	JButton btnAddAuthors_1 = new JButton("Add Authors");
+	JButton btnAddButton = new JButton("Add Paper");
+	
+	JButton btnAddConference = new JButton("Add Conference");
+	JButton btnAddAuthors = new JButton("Add Authors");
+	JButton btnAddPaper = new JButton("Add Paper");
+	
+	DefaultListModel<String> journalAuthorListModel = new DefaultListModel<String>();
+	DefaultListModel<String> conferenceAuthorListModel = new DefaultListModel<String>();
+	
+	ArrayList<Scholar> journalListScholar = new ArrayList<Scholar>();
+	ArrayList<Scholar> conferenceListScholar = new ArrayList<Scholar>();
+	JList journalList = new JList(journalAuthorListModel);
+	JList conferenceList = new JList(conferenceAuthorListModel);
+	
+	public JButton getAddJournalButton()
+	{
+		return btnAddJournal;
 	}
-
+	
+	public JButton getAddJournalArticleAuthorsButton()
+	{
+		return btnAddAuthors_1;
+	}
+	
+	public JButton getAddJournalArticleButton()
+	{
+		return btnAddButton;
+	}
+	
+	public JButton getAddConferenceButton()
+	{
+		return btnAddConference;
+	}
+	
+	public JButton getAddConPaperAuthorsButton()
+	{
+		return btnAddAuthors;
+	}
+	
+	public JButton getAddConPaperButton()
+	{
+		return btnAddPaper;
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -80,6 +114,7 @@ public class AddPapersView extends JFrame {
 		scrollPane_4.setBounds(29, 168, 246, 188);
 		panel.add(scrollPane_4);
 		
+		
 		JLabel label_5 = new JLabel("Journal Added:");
 		label_5.setBounds(280, 145, 135, 15);
 		panel.add(label_5);
@@ -91,6 +126,7 @@ public class AddPapersView extends JFrame {
 		JScrollPane scrollPane_6 = new JScrollPane();
 		scrollPane_6.setBounds(29, 433, 246, 188);
 		panel.add(scrollPane_6);
+		scrollPane_6.setViewportView(journalList);
 		
 		JLabel label_6 = new JLabel("Authors Added:");
 		label_6.setBounds(280, 405, 110, 16);
@@ -115,15 +151,15 @@ public class AddPapersView extends JFrame {
 		textField_5.setBounds(83, 62, 134, 28);
 		panel.add(textField_5);
 		
-		JButton btnAddJournal = new JButton("Add Journal");
+		
 		btnAddJournal.setBounds(25, 368, 117, 29);
 		panel.add(btnAddJournal);
 		
-		JButton btnAddAuthors_1 = new JButton("Add Authors");
+		
 		btnAddAuthors_1.setBounds(25, 633, 117, 29);
 		panel.add(btnAddAuthors_1);
 		
-		JButton btnAddButton = new JButton("Add Paper");
+		
 		btnAddButton.setBounds(428, 696, 117, 29);
 		panel.add(btnAddButton);
 		
@@ -172,9 +208,7 @@ public class AddPapersView extends JFrame {
 		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setBounds(29, 427, 246, 188);
 		panel_1.add(scrollPane_2);
-		
-		JList list_2 = new JList();
-		scrollPane_2.setViewportView(list_2);
+		scrollPane_2.setViewportView(conferenceList);
 		
 		JLabel lblAuthorsAdded = new JLabel("Authors Added:");
 		lblAuthorsAdded.setBounds(280, 399, 110, 16);
@@ -202,17 +236,57 @@ public class AddPapersView extends JFrame {
 		panel_1.add(textField_2);
 		textField_2.setColumns(10);
 		
-		JButton btnAddConference = new JButton("Add Conference");
+		
 		btnAddConference.setBounds(29, 358, 155, 29);
 		panel_1.add(btnAddConference);
 		
-		JButton btnAddAuthors = new JButton("Add Authors");
+		
 		btnAddAuthors.setBounds(22, 627, 162, 29);
 		panel_1.add(btnAddAuthors);
 		
-		JButton btnAddPaper = new JButton("Add Paper");
+		
 		btnAddPaper.setBounds(390, 696, 155, 29);
 		panel_1.add(btnAddPaper);
+	}
+	public void setModel(ScholarshipModel newModel)
+	{
+		this.model = newModel;
+		
+		if (model != null)
+		{
+			model.addActionListener(this);
+			setVisible(true);
+		}
+	}
+
+	public void populateAuthorsJList()
+	{
+		journalAuthorListModel.clear();
+		journalListScholar.clear();
+		conferenceListScholar.clear();
+		conferenceAuthorListModel.clear();
+		
+
+		if (model.getScholars() != null)
+		{
+			
+			for (int i = 0; i < model.getScholars().size(); i++)
+			{
+				journalListScholar.add(model.getScholars().get(i));
+				conferenceListScholar.add(model.getScholars().get(i));
+				journalAuthorListModel.addElement((model.getScholars().get(i).getFullName()));	
+				conferenceAuthorListModel.addElement((model.getScholars().get(i).getFullName()));	
+			}
+		}	
+	}
+	
+	public void populateSerialsJlist()
+	{
+		
+	}
+	public void actionPerformed(ActionEvent e) {
+		
+		
 	}
 
 }

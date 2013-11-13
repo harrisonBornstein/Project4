@@ -9,7 +9,7 @@ public class ScholarshipModel {
 
 	private List<Paper> publications;
 	private List<Scholar> scholars;
-	private List<Conference> conferences;
+	private ArrayList<Conference> conferences;
 	private List<Journal> journals;
 	private ArrayList<ActionListener> actionListenerList;
 	
@@ -62,9 +62,13 @@ public class ScholarshipModel {
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Scholar Added"));
 	}
 	
-	public void addConference(Conference newCon)
+	public void addConference(Conference newConference)
 	{
-		conferences.add(newCon);
+		if(newConference.getOrganization() == null)
+		{
+			System.out.println("addConference organization is null");
+		}
+		conferences.add(newConference);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Conference Added"));
 	}
 	

@@ -51,7 +51,10 @@ public class ScholarshipController {
 		public void actionPerformed(ActionEvent e) 
 		{
 			List<Scholar> scholarList = new ArrayList<Scholar>();
-			scholarList = model.getScholars();
+			for (Scholar scholar: model.getScholars())
+			{
+				scholarList.add(scholar);
+			}
 			for (Scholar scholar: scholarList)
 			{
 				model.removeScholar(scholar);
@@ -107,8 +110,15 @@ public class ScholarshipController {
 		public void actionPerformed(ActionEvent e) 
 		{
 			List<Journal> journals = new ArrayList<Journal>();
-			journals = model.getJournals();
+			for (Journal journal: model.getJournals())
+			{
+				journals.add(journal);
+			}
 			List<Conference> conferences = new ArrayList<Conference>();
+			for (Conference conference: model.getConferences())
+			{
+				conferences.add(conference);
+			}
 			for (Journal journal: journals)
 			{
 				model.removeJournal(journal);
@@ -253,7 +263,7 @@ private class AddJournalListener implements ActionListener{
 		Journal newJournal = new Journal(organization, newLocation,volumes);
 		model.addJournal(newJournal);
 		
-		System.out.println("Organization is " + newJournal.getOrganization());
+		
 		journalView.setVisible(false);
 		journalView.textField.setText("");
 		journalView.textField_1.setText("");
@@ -308,9 +318,9 @@ private class AddConferenceListener implements ActionListener{
 		ArrayList<Meeting> meetings = new ArrayList<Meeting>();
 		meetings.add(newMeeting);
 		Conference newCon = new Conference(organization, meetings);
-		System.out.println("newCon is " + newCon.getOrganization() + newCon.getType());
+		
 		model.addConference(newCon);
-		System.out.println("Organization is " + model.getConferences().get(0).getOrganization());
+		
 		conferenceView.setVisible(false);
 		conferenceView.textField.setText("");
 		conferenceView.textField_1.setText("");

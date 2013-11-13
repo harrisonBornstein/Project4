@@ -144,20 +144,29 @@ public ScholarshipView(){
 	{
 		serialListModel.clear();
 		viewEfforts.clear();
-		if (model.getScholars() != null)
-			for (int i = 0; i < model.getConferences().size() +  model.getJournals().size(); i++) {
-				if(!model.getConferences().isEmpty())
-				{
-					serialListModel.addElement((model.getConferences().get(i).getOrganization()));
-					viewEfforts.add(model.getConferences().get(i));
-				}
-				if(!model.getJournals().isEmpty())
-				{
-					serialListModel.addElement((model.getJournals().get(i).getOrganization()));
+		if (!model.getConferences().isEmpty())
+		{
+			for (int i = 0; i < model.getConferences().size(); i++)
+			{
+		
+					viewEfforts.add(model.getConferences().get(i));			
+			}
+		}
+		if(!model.getJournals().isEmpty())
+		{
+			for(int i =0; i< model.getJournals().size();++i)
+			{
 					viewEfforts.add(model.getJournals().get(i));
-				}
 				
 			}
+		}
+		if(!viewEfforts.isEmpty())
+		{
+			for(int i=0; i< viewEfforts.size();++i)
+			{
+				serialListModel.addElement(viewEfforts.get(i).getOrganization());
+			}
+		}
 	}
 	
 	public JButton getAddScholarButton()
@@ -203,10 +212,7 @@ public ScholarshipView(){
 	{
 		return button_5;
 	}
-	public void actionPerformed()
-	{
-		
-	}
+	
 	
 	public void setModel(ScholarshipModel newModel)
 	{
@@ -223,10 +229,14 @@ public ScholarshipView(){
 			populateScholarJList();
 			
 		}
-		else if(e.getActionCommand().equals("Journal Added") || e.getActionCommand().equals("Journal Removed")
-				|| e.getActionCommand().equals("Conference Added") || e.getActionCommand().equals("Conference Removed"))
+		else if(e.getActionCommand().equals("Journal Added") || e.getActionCommand().equals("Journal Removed"))
 		{
 			populateSerialJList();
+		}
+		else if(e.getActionCommand().equals("Conference Added") || e.getActionCommand().equals("Conference Removed"))
+		{
+			populateSerialJList();
+			
 		}
 		
 	}
