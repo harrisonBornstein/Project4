@@ -130,7 +130,8 @@ public class ScholarshipController {
 		public void actionPerformed(ActionEvent e) {
 			
 			
-			papersView.setVisible(true);
+			papersView.setModel(model);
+			papersView.populateAuthorsJList();
 		}
 		
 	}
@@ -256,6 +257,8 @@ private class AddJournalListener implements ActionListener{
 		volumes.add(newVolume);
 		Journal newJournal = new Journal(organization, newLocation,volumes);
 		model.addJournal(newJournal);
+		
+		System.out.println("Organization is " + newJournal.getOrganization());
 		journalView.setVisible(false);
 		journalView.textField.setText("");
 		journalView.textField_1.setText("");
@@ -309,9 +312,10 @@ private class AddConferenceListener implements ActionListener{
 		Meeting newMeeting = new Meeting(year,month,newLocation,chairs,members,conPapers);
 		ArrayList<Meeting> meetings = new ArrayList<Meeting>();
 		meetings.add(newMeeting);
-	
-		Conference newConference = new Conference(organization, meetings);
-		model.addConference(newConference);
+		Conference newCon = new Conference(organization, meetings);
+		System.out.println("newCon is " + newCon.getOrganization() + newCon.getType());
+		model.addConference(newCon);
+		System.out.println("Organization is " + model.getConferences().get(0).getOrganization());
 		conferenceView.setVisible(false);
 		conferenceView.textField.setText("");
 		conferenceView.textField_1.setText("");
@@ -363,13 +367,24 @@ public void setView(ScholarshipView view)
 		this.view.getAddPaperButton().addActionListener(new AddPaperListener());
 		this.view.getDeletePapersButton().addActionListener(new DeletePaperListener());
 		this.view.getDelteAllPapersButton().addActionListener(new DeleteAllPapersListener());
+		
 		scholarView.getOkButton().addActionListener(new AddScholarDialogListener());
+		
 		journalView.getOKButton().addActionListener(new AddJournalListener());
 		journalView.getAddEditorsButton().addActionListener(new AddJournalEditorsListener());
 		journalView.getAddReviewersButton().addActionListener(new AddJournalReviewersListener());
+		
 		conferenceView.getOKButton().addActionListener(new AddConferenceListener());
 		conferenceView.getAddEditorsButton().addActionListener(new AddConferenceChairsListener());
 		conferenceView.getAddReviewersButton().addActionListener(new AddConferenceMembersListener());
+		
+		papersView.getAddJournalButton().addActionListener(new AddJournalArticleJournalListener());
+		papersView.getAddJournalArticleAuthorsButton().addActionListener(new AddJournalArticleScholarListener());
+		papersView.getAddJournalButton().addActionListener(new AddJournalArticleListener());
+		
+		papersView.getAddConferenceButton().addActionListener(new AddConferencePaperConferenceListener());
+		papersView.getAddConPaperAuthorsButton().addActionListener(new AddConferencePaperScholarListener());
+		papersView.getAddConPaperButton().addActionListener(new AddConferencePaperListener());
 		
 		
 		
