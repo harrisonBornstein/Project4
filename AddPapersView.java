@@ -124,7 +124,7 @@ public class AddPapersView extends JFrame implements ActionListener {
 	 */
 	public AddPapersView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 580, 624);
+		setBounds(100, 100, 618, 625);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -224,7 +224,7 @@ public class AddPapersView extends JFrame implements ActionListener {
 		panel_1.add(lblPages);
 		
 		JLabel lblAuthors = new JLabel("Authors:");
-		lblAuthors.setBounds(6, 399, 61, 16);
+		lblAuthors.setBounds(6, 313, 61, 16);
 		panel_1.add(lblAuthors);
 		
 		JLabel lblConferences = new JLabel("Conference:");
@@ -236,7 +236,7 @@ public class AddPapersView extends JFrame implements ActionListener {
 		panel_1.add(lblUrl);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(29, 162, 246, 188);
+		scrollPane.setBounds(29, 162, 246, 100);
 		panel_1.add(scrollPane);
 		scrollPane.setViewportView(conferenceSerialList);
 		
@@ -245,20 +245,20 @@ public class AddPapersView extends JFrame implements ActionListener {
 		panel_1.add(lblConferenceAdded);
 		
 	
-		scrollPane_1.setBounds(290, 162, 255, 188);
+		scrollPane_1.setBounds(290, 162, 255, 100);
 		panel_1.add(scrollPane_1);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(29, 427, 246, 188);
+		scrollPane_2.setBounds(29, 340, 246, 100);
 		panel_1.add(scrollPane_2);
 		scrollPane_2.setViewportView(conferenceList);
 		
 		JLabel lblAuthorsAdded = new JLabel("Authors Added:");
-		lblAuthorsAdded.setBounds(280, 399, 110, 16);
+		lblAuthorsAdded.setBounds(280, 313, 110, 16);
 		panel_1.add(lblAuthorsAdded);
 		
 		
-		scrollPane_3.setBounds(299, 427, 246, 188);
+		scrollPane_3.setBounds(290, 340, 246, 100);
 		panel_1.add(scrollPane_3);
 		
 		textField = new JTextField();
@@ -277,15 +277,15 @@ public class AddPapersView extends JFrame implements ActionListener {
 		textField_2.setColumns(10);
 		
 		
-		btnAddConference.setBounds(29, 358, 155, 29);
+		btnAddConference.setBounds(29, 273, 155, 29);
 		panel_1.add(btnAddConference);
 		
 		
-		btnAddAuthors.setBounds(22, 627, 162, 29);
+		btnAddAuthors.setBounds(22, 451, 162, 29);
 		panel_1.add(btnAddAuthors);
 		
 		
-		btnAddPaper.setBounds(390, 696, 155, 29);
+		btnAddPaper.setBounds(366, 507, 155, 29);
 		panel_1.add(btnAddPaper);
 	}
 	/**
@@ -481,8 +481,8 @@ public class AddPapersView extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
-	public void actionPerformed(ActionEvent e) {
-		
+	public void actionPerformed(ActionEvent e) 
+	{
 		
 	}
 

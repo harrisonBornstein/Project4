@@ -22,7 +22,8 @@ public class AddScholarView extends JDialog {
 	/**
 	 * Creates the dialog.
 	 */
-	public AddScholarView() {
+	public AddScholarView() 
+	{
 		setBounds(100, 100, 406, 334);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

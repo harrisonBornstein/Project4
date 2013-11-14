@@ -13,11 +13,12 @@ public class ScholarshipController {
 	
 	private ScholarshipModel model;
 	private ScholarshipView view;
-	private AddScholarView scholarView = new AddScholarView();
-	private AddJournalView journalView = new AddJournalView();
-	private AddConferenceView conferenceView = new AddConferenceView();
-	private AddPapersView papersView = new AddPapersView();
-	private GraphListView graphListView = new GraphListView();
+	private AddScholarView scholarView;
+	private AddJournalView journalView;
+	private AddConferenceView conferenceView;
+	private AddPapersView papersView;
+	private GraphListView graphListView;
+	private GraphView graphView;
 	private String graph;
 
 	
@@ -28,7 +29,10 @@ public class ScholarshipController {
 	 *
 	 */
 	private class TypeOfPublicationListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
+		public void actionPerformed(ActionEvent e)
+		{
+			graphListView = new GraphListView();
+			graphListView.addGraphListOKButton().addActionListener(new GraphListOkListener());
 			graphListView.setModel(model);
 			graphListView.populateGraphList();
 			graph = "Type of Publication";
@@ -41,7 +45,10 @@ public class ScholarshipController {
 	 *
 	 */
 	private class PublicationsPerYearListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
+		public void actionPerformed(ActionEvent e)
+		{
+			graphListView = new GraphListView();
+			graphListView.addGraphListOKButton().addActionListener(new GraphListOkListener());
 			graphListView.setModel(model);
 			graphListView.populateGraphList();
 			graph = "Publications per Year";
@@ -55,7 +62,10 @@ public class ScholarshipController {
 	 *
 	 */
 	private class ConferencePapersPerYearListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
+		public void actionPerformed(ActionEvent e)
+		{
+			graphListView = new GraphListView();
+			graphListView.addGraphListOKButton().addActionListener(new GraphListOkListener());
 			graphListView.setModel(model);
 			graphListView.populateGraphList();
 			graph = "Conference Papers per Year";
@@ -69,7 +79,10 @@ public class ScholarshipController {
 	 *
 	 */
 	private class JournalArticlesPerYearListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
+		public void actionPerformed(ActionEvent e)
+		{
+			graphListView = new GraphListView();
+			graphListView.addGraphListOKButton().addActionListener(new GraphListOkListener());
 			graphListView.setModel(model);
 			graphListView.populateGraphList();
 			graph = "Journal Articles per Year";
@@ -81,8 +94,12 @@ public class ScholarshipController {
 	 * @author harrib
 	 *
 	 */
-	private class CoAuthorsListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
+	private class CoAuthorsListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			graphListView = new GraphListView();
+			graphListView.addGraphListOKButton().addActionListener(new GraphListOkListener());
 			graphListView.setModel(model);
 			graphListView.populateGraphList();
 			graph = "CoAuthors";
@@ -96,11 +113,14 @@ public class ScholarshipController {
 	private class GraphListOkListener implements ActionListener{
 
 		
-		public void actionPerformed(ActionEvent e) {
-			
+		public void actionPerformed(ActionEvent e) 
+		{
 			Scholar newScholar = graphListView.getScholar();
-			GraphView graphView = new GraphView(newScholar, graph);
-			graphListView.setVisible(false);
+			int index = model.getScholars().indexOf(newScholar);
+			graphView = new GraphView(index, graph);
+			graphView.setModel(model);
+			model.removeActionListener(graphListView);
+			graphListView.dispose();
 		}
 		
 	}
@@ -111,10 +131,11 @@ public class ScholarshipController {
 	 */
 	private class AddScholarListener implements ActionListener {
 
-		public void actionPerformed(ActionEvent e) {
-		
+		public void actionPerformed(ActionEvent e) 
+		{
+			scholarView = new AddScholarView();
+			scholarView.getOkButton().addActionListener(new AddScholarDialogListener());
 			scholarView.setVisible(true);
-
 		}
 		
 	}
@@ -169,13 +190,24 @@ public class ScholarshipController {
 			int response = JOptionPane.showOptionDialog(null, optionPane, "Please Choose A Serial", JOptionPane.PLAIN_MESSAGE, 1, null, options, options[0]);
 			if(response == 1)
 			{
+				journalView = new AddJournalView();
 				journalView.setModel(model);
 				journalView.populateReviewerJList();
+				
+				journalView.getOKButton().addActionListener(new AddJournalListener());
+				journalView.getAddEditorsButton().addActionListener(new AddJournalEditorsListener());
+				journalView.getAddReviewersButton().addActionListener(new AddJournalReviewersListener());
 			}	
 			else if(response == 2)
 			{
+				conferenceView = new AddConferenceView();
+				
 				conferenceView.setModel(model);
 				conferenceView.populateReviewerJList();
+				
+				conferenceView.getOKButton().addActionListener(new AddConferenceListener());
+				conferenceView.getAddEditorsButton().addActionListener(new AddConferenceChairsListener());
+				conferenceView.getAddReviewersButton().addActionListener(new AddConferenceMembersListener());
 			}
 			
 				
@@ -244,10 +276,19 @@ public class ScholarshipController {
 	 */
 	private class AddPaperListener implements ActionListener {
 
-		public void actionPerformed(ActionEvent e) {
-			
-			
+		public void actionPerformed(ActionEvent e) 
+		{	
+			papersView = new AddPapersView();
 			papersView.setModel(model);
+			
+			papersView.getAddJournalButton().addActionListener(new AddJournalArticleJournalListener());
+			papersView.getAddJournalArticleAuthorsButton().addActionListener(new AddJournalArticleScholarListener());
+			papersView.getAddJournalArticleButton().addActionListener(new AddJournalArticleListener());
+			
+			papersView.getAddConferenceButton().addActionListener(new AddConferencePaperConferenceListener());
+			papersView.getAddConPaperAuthorsButton().addActionListener(new AddConferencePaperScholarListener());
+			papersView.getAddConPaperButton().addActionListener(new AddConferencePaperListener());
+			
 			papersView.populateAuthorsJList();
 			papersView.populateSerialsJlist();
 		}
@@ -312,19 +353,15 @@ public class ScholarshipController {
 	private class AddScholarDialogListener implements ActionListener{
 
 		
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) 
+		{
 			String primaryName = scholarView.textField.getText();
 			String secondaryName = scholarView.textField_3.getText();
 			String affiliation = scholarView.textField_1.getText();
 			String researchAreas = scholarView.textField_2.getText();
 			String fullName = secondaryName + ", " + primaryName;
 			model.addScholar(new Scholar(fullName, secondaryName,primaryName, affiliation,researchAreas));
-			scholarView.setVisible(false);
-			scholarView.textField.setText("");
-			scholarView.textField_1.setText("");
-			scholarView.textField_2.setText("");
-			scholarView.textField_3.setText("");
-			
+			scholarView.dispose();
 		}
 		
 	}
@@ -347,272 +384,256 @@ public class ScholarshipController {
 	 * @author harrib
 	 *
 	 */
-private class AddJournalArticleScholarListener implements ActionListener{
-
-		
-		public void actionPerformed(ActionEvent e) {
+	private class AddJournalArticleScholarListener implements ActionListener{
+	
 			
-			papersView.addJournalAuthors();
+			public void actionPerformed(ActionEvent e) {
+				
+				papersView.addJournalAuthors();
+			}
+			
 		}
-		
-	}
 	/**
 	 * Listener for add journal article button
 	 * @author harrib
 	 *
 	 */
-private class AddJournalArticleListener implements ActionListener{
-
+	private class AddJournalArticleListener implements ActionListener{
 	
-	public void actionPerformed(ActionEvent e) 
-	{
 		
-		String paperTitle = papersView.textField_3.getText();
-		String pages = papersView.textField_4.getText();
-		String url = papersView.textField_5.getText();
-		List<Scholar> authors = papersView.getJournalAuthors();
-		Journal journal = papersView.getJournals().get(0);
-		JournalArticle paper = new JournalArticle(authors,paperTitle,pages,url,journal);
-		model.addPaper(paper);
-		for (Scholar author: authors)
+		public void actionPerformed(ActionEvent e) 
 		{
-			author.addToPapers(paper);
-		}
-		journal.getVolumes().get(0).getIssues().get(0).addToArticles(paper);
-		
-		papersView.setVisible(false);
-		papersView.clear();
-		
-	}
-	
-}
-/**
- * Listener for add conference paper button
- * @author harrib
- *
- */
-private class AddConferencePaperScholarListener implements ActionListener{
-
-	
-	public void actionPerformed(ActionEvent e) {
-		
-		papersView.addConferenceAuthors();
-		
-	}
-	
-}
-/**
- * Listener for add conference button 
- * @author harrib
- *
- */
-private class AddConferencePaperConferenceListener implements ActionListener{
-
-	
-	public void actionPerformed(ActionEvent e) {
-		
-		papersView.addConferences();
-		System.out.println("CHECK");
-	}
-	
-}
-/**
- * listener for the add conference paper button
- * @author harrib
- *
- */
-private class AddConferencePaperListener implements ActionListener{
-
-	
-	public void actionPerformed(ActionEvent e) {
-		
-		List<Scholar> authors = papersView.getConferenceAuthors();
-		String paperTitle = papersView.textField.getText();
-		String pages = papersView.textField_1.getText();
-		String url = papersView.textField_2.getText();
-		Conference conference = papersView.getConferences().get(0);
-		ConPaper paper = new ConPaper(authors, paperTitle,pages,url,conference);
-		papersView.clear();
-		model.addPaper(paper);
-		for (Scholar author: authors)
-		{
-			author.addToPapers(paper);
-		}
-		conference.getMeetings().get(0).addToConPapers(paper);
-		
-		papersView.setVisible(false);
-		
-	}
-	
-}
-/**
- * Listener for the add journal button
- * @author harrib
- *
- */
-private class AddJournalListener implements ActionListener{
-
-	
-	public void actionPerformed(ActionEvent e) {
-		String organization = journalView.textField.getText();
-		String country = journalView.textField_1.getText();
-		String state = journalView.textField_3.getText();
-		String city = journalView.textField_4.getText();
-		Location newLocation = new Location(country, state, city);
-		String year = journalView.textField_2.getText();
-		String month = journalView.textField_5.getText();
-		List<Scholar> reviewers = journalView.getReviewers();
-		List<Scholar> editors = journalView.getEditors();
-		List<JournalArticle> journals = new ArrayList<JournalArticle>();
-		Issue newIssue = new Issue(month,year,editors,reviewers,journals);
-		ArrayList<Issue> issues = new ArrayList<Issue>();
-		issues.add(newIssue);
-		Volume newVolume = new Volume(issues);
-		ArrayList<Volume> volumes = new ArrayList<Volume>();
-		volumes.add(newVolume);
-		Journal newJournal = new Journal(organization, newLocation,volumes);
-		model.addJournal(newJournal);
-		for (Scholar editor: editors)
-		{
-			editor.addToEfforts(newJournal);
-		}
-		for (Scholar reviewer: reviewers)
-		{
-			reviewer.addToEfforts(newJournal);
+			
+			String paperTitle = papersView.textField_3.getText();
+			String pages = papersView.textField_4.getText();
+			String url = papersView.textField_5.getText();
+			List<Scholar> authors = papersView.getJournalAuthors();
+			Journal journal = papersView.getJournals().get(0);
+			JournalArticle paper = new JournalArticle(authors,paperTitle,pages,url,journal);
+			for (Scholar author: authors)
+			{
+				author.addToPapers(paper);
+			}
+			journal.getVolumes().get(0).getIssues().get(0).addToArticles(paper);
+			model.addPaper(paper);
+			
+			model.removeActionListener(papersView);
+			papersView.dispose();
 		}
 		
-		
-		journalView.setVisible(false);
-		journalView.textField.setText("");
-		journalView.textField_1.setText("");
-		journalView.textField_2.setText("");
-		journalView.textField_3.setText("");
-		journalView.textField_4.setText("");
-		journalView.textField_5.setText("");
-		journalView.clearView();
-		
 	}
+	/**
+	 * Listener for add conference paper button
+	 * @author harrib
+	 *
+	 */
+	private class AddConferencePaperScholarListener implements ActionListener{
 	
-}
-/**
- * Listener for add reviewers button
- * @author harrib
- *
- */
-private class AddJournalReviewersListener implements ActionListener{
-
-	
-	public void actionPerformed(ActionEvent e) {
 		
-		journalView.AddReviewers();
-		
-		
-	}
-	
-}
-/**
- * Listener for add editors button
- * @author harrib
- *
- */
-private class AddJournalEditorsListener implements ActionListener{
-
-	
-	public void actionPerformed(ActionEvent e) {
-		
-		journalView.AddEditors();
-	}
-	
-}
-/**
- * Listener for the add conference button
- * @author harrib
- *
- */
-private class AddConferenceListener implements ActionListener{
-
-	
-	public void actionPerformed(ActionEvent e) {
-		
-		String organization = conferenceView.textField.getText();
-		String country = conferenceView.textField_1.getText();
-		String state = conferenceView.textField_3.getText();
-		String city = conferenceView.textField_4.getText();
-		Location newLocation = new Location(country, state, city);
-		String year = conferenceView.textField_2.getText();
-		String month = conferenceView.textField_5.getText();
-		List<Scholar> members = conferenceView.getReviewers();
-		List<Scholar> chairs = conferenceView.getEditors();
-		List<ConPaper> conPapers = new ArrayList<ConPaper>();
-		Meeting newMeeting = new Meeting(year,month,newLocation,chairs,members,conPapers);
-		ArrayList<Meeting> meetings = new ArrayList<Meeting>();
-		meetings.add(newMeeting);
-		Conference newCon = new Conference(organization, meetings);
-		
-		model.addConference(newCon);
-		for (Scholar member: members)
-		{
-			member.addToEfforts(newCon);
-		}
-		for (Scholar chair: chairs)
-		{
-			chair.addToEfforts(newCon);
+		public void actionPerformed(ActionEvent e) {
+			
+			papersView.addConferenceAuthors();
+			
 		}
 		
-		conferenceView.setVisible(false);
-		conferenceView.textField.setText("");
-		conferenceView.textField_1.setText("");
-		conferenceView.textField_2.setText("");
-		conferenceView.textField_3.setText("");
-		conferenceView.textField_4.setText("");
-		conferenceView.textField_5.setText("");
-		conferenceView.clearView();
-		
-		
 	}
+	/**
+	 * Listener for add conference button 
+	 * @author harrib
+	 *
+	 */
+	private class AddConferencePaperConferenceListener implements ActionListener{
 	
-}
-/**
- * Listener for the add conference chairs button
- * @author harrib
- *
- */
-private class AddConferenceChairsListener implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			papersView.addConferences();
 
-	
-	public void actionPerformed(ActionEvent e) {
+		}
 		
-		conferenceView.AddEditors();
 	}
+	/**
+	 * listener for the add conference paper button
+	 * @author harrib
+	 *
+	 */
+	private class AddConferencePaperListener implements ActionListener{
 	
-}
-/**
- * listener for the add conference members listener
- * @author harrib
- *
- */
-private class AddConferenceMembersListener implements ActionListener{
-
-	
-	public void actionPerformed(ActionEvent e) {
 		
-		conferenceView.AddReviewers();
+		public void actionPerformed(ActionEvent e) {
+			
+			List<Scholar> authors = papersView.getConferenceAuthors();
+			String paperTitle = papersView.textField.getText();
+			String pages = papersView.textField_1.getText();
+			String url = papersView.textField_2.getText();
+			Conference conference = papersView.getConferences().get(0);
+			ConPaper paper = new ConPaper(authors, paperTitle,pages,url,conference);
+			for (Scholar author: authors)
+			{
+				author.addToPapers(paper);
+			}
+			conference.getMeetings().get(0).addToConPapers(paper);
+			model.addPaper(paper);
+			
+			model.removeActionListener(papersView);
+			papersView.dispose();
+			
+		}
+		
 	}
+	/**
+	 * Listener for the add journal button
+	 * @author harrib
+	 *
+	 */
+	private class AddJournalListener implements ActionListener{
 	
-}
-/**
- * Allows the driver to set the model for the controller	
- * @param model
- */
-public void setModel(ScholarshipModel model)
-	{
-		this.model = model;
+		
+		public void actionPerformed(ActionEvent e) {
+			String organization = journalView.textField.getText();
+			String country = journalView.textField_1.getText();
+			String state = journalView.textField_3.getText();
+			String city = journalView.textField_4.getText();
+			Location newLocation = new Location(country, state, city);
+			String year = journalView.textField_2.getText();
+			String month = journalView.textField_5.getText();
+			List<Scholar> reviewers = journalView.getReviewers();
+			List<Scholar> editors = journalView.getEditors();
+			List<JournalArticle> journals = new ArrayList<JournalArticle>();
+			Issue newIssue = new Issue(month,year,editors,reviewers,journals);
+			ArrayList<Issue> issues = new ArrayList<Issue>();
+			issues.add(newIssue);
+			Volume newVolume = new Volume(issues);
+			ArrayList<Volume> volumes = new ArrayList<Volume>();
+			volumes.add(newVolume);
+			Journal newJournal = new Journal(organization, newLocation,volumes);
+			model.addJournal(newJournal);
+			for (Scholar editor: editors)
+			{
+				editor.addToEfforts(newJournal);
+			}
+			for (Scholar reviewer: reviewers)
+			{
+				reviewer.addToEfforts(newJournal);
+			}
+			
+			
+			model.removeActionListener(journalView);
+			journalView.dispose();
+			
+		}
+		
 	}
-/**
- * Registers all the actionListeners for all the views	
- * @param view
- */
-public void setView(ScholarshipView view)
+	/**
+	 * Listener for add reviewers button
+	 * @author harrib
+	 *
+	 */
+	private class AddJournalReviewersListener implements ActionListener{
+	
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			journalView.AddReviewers();
+			
+			
+		}
+		
+	}
+	/**
+	 * Listener for add editors button
+	 * @author harrib
+	 *
+	 */
+	private class AddJournalEditorsListener implements ActionListener{
+	
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			journalView.AddEditors();
+		}
+		
+	}
+	/**
+	 * Listener for the add conference button
+	 * @author harrib
+	 *
+	 */
+	private class AddConferenceListener implements ActionListener{
+	
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			String organization = conferenceView.textField.getText();
+			String country = conferenceView.textField_1.getText();
+			String state = conferenceView.textField_3.getText();
+			String city = conferenceView.textField_4.getText();
+			Location newLocation = new Location(country, state, city);
+			String year = conferenceView.textField_2.getText();
+			String month = conferenceView.textField_5.getText();
+			List<Scholar> members = conferenceView.getReviewers();
+			List<Scholar> chairs = conferenceView.getEditors();
+			List<ConPaper> conPapers = new ArrayList<ConPaper>();
+			Meeting newMeeting = new Meeting(year,month,newLocation,chairs,members,conPapers);
+			ArrayList<Meeting> meetings = new ArrayList<Meeting>();
+			meetings.add(newMeeting);
+			Conference newCon = new Conference(organization, meetings);
+			
+			model.addConference(newCon);
+			for (Scholar member: members)
+			{
+				member.addToEfforts(newCon);
+			}
+			for (Scholar chair: chairs)
+			{
+				chair.addToEfforts(newCon);
+			}	
+			model.removeActionListener(conferenceView);
+			conferenceView.dispose();
+		}
+		
+	}
+	/**
+	 * Listener for the add conference chairs button
+	 * @author harrib
+	 *
+	 */
+	private class AddConferenceChairsListener implements ActionListener{
+	
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			conferenceView.AddEditors();
+		}
+		
+	}
+	/**
+	 * listener for the add conference members listener
+	 * @author harrib
+	 *
+	 */
+	private class AddConferenceMembersListener implements ActionListener{
+	
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			conferenceView.AddReviewers();
+		}
+		
+	}
+	/**
+	 * Allows the driver to set the model for the controller	
+	 * @param model
+	 */
+	public void setModel(ScholarshipModel model)
+		{
+			this.model = model;
+		}
+	/**
+	 * Registers all the actionListeners for all the views	
+	 * @param view
+	 */
+	public void setView(ScholarshipView view)
 	{
 		this.view = view;
 		this.view.getAddScholarButton().addActionListener(new AddScholarListener());
@@ -623,35 +644,12 @@ public void setView(ScholarshipView view)
 		this.view.getDeleteAllSerialsButton().addActionListener(new DeleteAllSerialsListener());
 		this.view.getAddPaperButton().addActionListener(new AddPaperListener());
 		this.view.getDeletePapersButton().addActionListener(new DeletePaperListener());
-		this.view.getDelteAllPapersButton().addActionListener(new DeleteAllPapersListener());
-		
-		scholarView.getOkButton().addActionListener(new AddScholarDialogListener());
-		
-		journalView.getOKButton().addActionListener(new AddJournalListener());
-		journalView.getAddEditorsButton().addActionListener(new AddJournalEditorsListener());
-		journalView.getAddReviewersButton().addActionListener(new AddJournalReviewersListener());
-		
-		conferenceView.getOKButton().addActionListener(new AddConferenceListener());
-		conferenceView.getAddEditorsButton().addActionListener(new AddConferenceChairsListener());
-		conferenceView.getAddReviewersButton().addActionListener(new AddConferenceMembersListener());
-		
-		papersView.getAddJournalButton().addActionListener(new AddJournalArticleJournalListener());
-		papersView.getAddJournalArticleAuthorsButton().addActionListener(new AddJournalArticleScholarListener());
-		papersView.getAddJournalArticleButton().addActionListener(new AddJournalArticleListener());
-		
-		papersView.getAddConferenceButton().addActionListener(new AddConferencePaperConferenceListener());
-		papersView.getAddConPaperAuthorsButton().addActionListener(new AddConferencePaperScholarListener());
-		papersView.getAddConPaperButton().addActionListener(new AddConferencePaperListener());
-		
+		this.view.getDelteAllPapersButton().addActionListener(new DeleteAllPapersListener());		
 		this.view.getTypeOfPub().addActionListener(new TypeOfPublicationListener());
 		this.view.getPubPerYear().addActionListener(new PublicationsPerYearListener());
 		this.view.getConPerYear().addActionListener(new ConferencePapersPerYearListener());
 		this.view.getJournPerYear().addActionListener(new JournalArticlesPerYearListener());
 		this.view.getCoAuthors().addActionListener(new CoAuthorsListener());
-		graphListView.addGraphListOKButton().addActionListener(new GraphListOkListener());
-		
-		
-		
 	}
 	
 	

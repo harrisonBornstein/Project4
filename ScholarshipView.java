@@ -385,17 +385,21 @@ public ScholarshipView(){
 		{
 			populateSerialJList();
 			populatePaperJList();
+			populateScholarJList();
 			
 		}
 		else if(e.getActionCommand().equals("Conference Added") || e.getActionCommand().equals("Conference Removed"))
 		{
 			populateSerialJList();
 			populatePaperJList();
+			populateScholarJList();
 			
 		}
 		else if(e.getActionCommand().equals("Paper Added") || e.getActionCommand().equals("Paper Removed"))
 		{
+			populateSerialJList();
 			populatePaperJList();
+			populateScholarJList();
 			
 		}
 		

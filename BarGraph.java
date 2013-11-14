@@ -27,6 +27,24 @@ private double[] values;
     values = v;
     title = t;
   }
+  
+  /**
+   * 
+   * @return int[] with width modifier at [0] and height modifier at [1]
+   */
+  public int[] getSizeOfWindow()
+  {
+	  double max = 0;
+	  for (int i = 0; i < values.length; i++)
+	  {
+		  if (max < values[i])
+		  {
+			  max = values[i];
+		  }
+	  }
+	  int[] lengths = {values.length, (int) max};
+	  return lengths;
+  }
   /**
    * Paints the graph
    */

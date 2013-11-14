@@ -22,7 +22,7 @@ public class GraphListView extends JDialog implements ActionListener {
 	JButton okButton = new JButton("OK");
 	JButton cancelButton = new JButton("Cancel");
 	DefaultListModel<String> scholarListModel = new DefaultListModel<String>();
-	List<Scholar> scholarList = new ArrayList();
+	List<Scholar> scholarList = new ArrayList<Scholar>();
 	private JScrollPane scrollPane = new JScrollPane();
 	JList list = new JList(scholarListModel);
 	
@@ -66,19 +66,19 @@ public class GraphListView extends JDialog implements ActionListener {
 	 */
 	public void populateGraphList()
 	{
-	scholarListModel.clear();
-	scholarList.clear();
-	if (model.getScholars() != null)
-		{
-			
-			for (int i = 0; i < model.getScholars().size(); i++)
+		scholarListModel.clear();
+		scholarList.clear();
+		if (model.getScholars() != null)
 			{
 				
-				scholarList.add(model.getScholars().get(i));
-				scholarListModel.addElement((model.getScholars().get(i).getFullName()));
-				
+				for (int i = 0; i < model.getScholars().size(); i++)
+				{
+					
+					scholarList.add(model.getScholars().get(i));
+					scholarListModel.addElement((model.getScholars().get(i).getFullName()));
+					
+				}
 			}
-		}
 	}
 	/**
 	 * getter
@@ -108,8 +108,8 @@ public class GraphListView extends JDialog implements ActionListener {
 	/**
 	 * 
 	 */
-	public void actionPerformed(ActionEvent e) {
-		
+	public void actionPerformed(ActionEvent e) 
+	{
 		
 	}
 	/**
@@ -126,4 +126,5 @@ public class GraphListView extends JDialog implements ActionListener {
 			setVisible(true);
 		}
 	}
+	
 }

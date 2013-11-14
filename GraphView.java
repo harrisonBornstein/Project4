@@ -4,32 +4,43 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 
 public class GraphView extends JFrame implements ActionListener {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2732951555205179751L;
 	private Scholar scholar;
+	private String type;
+	private ScholarshipModel model;
+	private BarGraph paperTypes;
+	private int index;
+	
 	/**
 	 * Creates a graph view 
 	 * @param scholar author specified
 	 * @param type Type of graph
 	 */
-	public GraphView(Scholar scholar, String type)
+	public GraphView(int index, String type)
 	{
-		
+		this.index = index;
+		this.type = type;
+	}
+
+	private void getData()
+	{
 		if (type.equals("Type of Publication")) 
 		{
 			double[] data = { countTypes(scholar)[0], countTypes(scholar)[1] };
 			String[] names = { "Conference Papers", "Journals" };
-			BarGraph paperTypes = new BarGraph(data, names,
+			paperTypes = new BarGraph(data, names,
 					"Types of Papers by " + scholar.getFullName());
 			paperTypes.setVisible(true);
-			JFrame f = new JFrame();
-			f.setSize(500, 300);
-			f.getContentPane().add(paperTypes);
-			f.setVisible(true);
+			
 		}
-		
 		else if (type.equals("Publications per Year"))
 		{
 			ArrayList<int[]> years = countYears(scholar); //get data from author
@@ -71,15 +82,8 @@ public class GraphView extends JFrame implements ActionListener {
 				stringYears[i] = "" +(i +years.get(0)[0]); // add the corresponding year to the string array
 			}
 			
-			BarGraph paperTypes = new BarGraph(pubsInYear, stringYears, "Papers per Year by " + scholar.getFullName());
+			paperTypes = new BarGraph(pubsInYear, stringYears, "Papers per Year by " + scholar.getFullName());
 			paperTypes.setVisible(true);
-	
-			JFrame f = new JFrame();
-			f.setSize(1200, 500);
-			
-
-			f.getContentPane().add(paperTypes);
-			f.setVisible(true);
 		}
 		else if (type.equals("Conference Papers per Year"))
 		{
@@ -123,15 +127,8 @@ public class GraphView extends JFrame implements ActionListener {
 			}
 			
 			
-			BarGraph paperTypes = new BarGraph(pubsInYear, stringYears, "Conference Papers per Year by " + scholar.getFullName());
+			paperTypes = new BarGraph(pubsInYear, stringYears, "Conference Papers per Year by " + scholar.getFullName());
 			paperTypes.setVisible(true);
-	
-			JFrame f = new JFrame();
-			f.setSize(1200, 500);
-			
-
-			f.getContentPane().add(paperTypes);
-			f.setVisible(true);
 		}
 		else if (type.equals("Journal Articles per Year"))
 		{
@@ -174,20 +171,9 @@ public class GraphView extends JFrame implements ActionListener {
 				stringYears[i] = "" +(i +years.get(0)[0]); // add the corresponding year to the string array
 			}
 			
-			for(int i =0; pubsInYear.length > i;++i)
-			{
-				System.out.println(pubsInYear[i]);
-				System.out.println("String Years " + stringYears[i]);
-			}
-			BarGraph paperTypes = new BarGraph(pubsInYear, stringYears, "Journals per Year by " + scholar.getFullName());
-			paperTypes.setVisible(true);
-	
-			JFrame f = new JFrame();
-			f.setSize(1200, 500);
 			
-
-			f.getContentPane().add(paperTypes);
-			f.setVisible(true);	
+			paperTypes = new BarGraph(pubsInYear, stringYears, "Journals per Year by " + scholar.getFullName());
+			paperTypes.setVisible(true);
 		}
 		else
 		{
@@ -197,22 +183,36 @@ public class GraphView extends JFrame implements ActionListener {
 			{
 				numberOfCoAuthors[i] = "" + i;
 			}
-			BarGraph paperTypes = new BarGraph(data, numberOfCoAuthors, "Co-Authors Per Publication for " + scholar.getFullName());
+			paperTypes = new BarGraph(data, numberOfCoAuthors, "Co-Authors Per Publication for " + scholar.getFullName());
 			paperTypes.setVisible(true);
-	
-			JFrame f = new JFrame();
-			f.setSize(1200, 500);
-			
-
-			f.getContentPane().add(paperTypes);
-			f.setVisible(true);	
 		}
 	}
-
+	
+	public void setModel(ScholarshipModel model)
+	{
+		this.model = model;
+		if (model != null)
+		{
+			model.addActionListener(this);
+			this.scholar = model.getScholars().get(index);
+			getData();
+			setSize(paperTypes.getSizeOfWindow()[0] * 100 + 200, 500);
+			getContentPane().add(paperTypes);
+			setVisible(true);
+		}	
+	}
+	
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void actionPerformed(ActionEvent arg0) 
+	{
+		if (!model.getScholars().contains(scholar))
+		{
+			model.removeActionListener(this);
+			this.dispose();
+		}
+		getContentPane().remove(paperTypes);
+		getData();
+		getContentPane().add(paperTypes);
 	}
 	
 	/**
@@ -268,12 +268,13 @@ public class GraphView extends JFrame implements ActionListener {
 			else
 			{
 				JournalArticle journal = (JournalArticle) paper;
-						date = journal.getJournal().getVolumes().get(0).getIssues().get(0).getYear();
+				date = journal.getJournal().getVolumes().get(0).getIssues().get(0).getYear();
 			}
-			System.out.println(date);
-			String[] yearAndType = {paper.getDate(), paper.getType()};
+			String[] yearAndType = {date, paper.getType()};
 			years.add(yearAndType); //add year as a string
 		}
+		
+		
 		
 		while (years.size() != 0)
 		{
@@ -316,19 +317,18 @@ public class GraphView extends JFrame implements ActionListener {
 		int max =0;
 		for(int i =0; i < author.getPapers().size(); i++)
 		{
-			int coAuthors = author.getPapers().get(i).getAuthors().size() -1;
+			int coAuthors = author.getPapers().get(i).getAuthors().size()-1;
 			if(coAuthors > max)
 					{
 						max = coAuthors;
 					}
 		}
-		double[] data = new double[max +1];
+		double[] data = new double[max + 1];
 		for (int i =0; i < author.getPapers().size(); i++)
 		{
-			int coAuthors = author.getPapers().get(i).getAuthors().size() -1;
+			int coAuthors = author.getPapers().get(i).getAuthors().size()-1;
 			data[coAuthors]++;
 		}
 		return data;
 	}
-
 }
