@@ -47,6 +47,12 @@ public class ScholarshipView extends JFrame implements ActionListener {
 	private final JScrollPane scrollPane = new JScrollPane();
 	private final JScrollPane scrollPane_1 = new JScrollPane();
 	private JScrollPane scrollPane_2 = new JScrollPane();
+	private final JMenu mnPlot = new JMenu("Plot");
+	private final JMenuItem mntmTypeOfPublication = new JMenuItem("Type of Publication");
+	private final JMenuItem mntmPublicationsPerYear = new JMenuItem("Publications per Year");
+	private final JMenuItem mntmConferencePapersPer = new JMenuItem("Conference Papers per Year");
+	private final JMenuItem mntmJournalArticlesPer = new JMenuItem("Journal Articles per Year");
+	private final JMenuItem mntmCoauthorsPerPublication = new JMenuItem("Co-Authors per Publication");
 	
 public ScholarshipView(){
 	
@@ -128,6 +134,18 @@ public ScholarshipView(){
 		
 		JMenuItem mntmExportBinaryScholarship = new JMenuItem("Export Binary Scholarship");
 		mnTest.add(mntmExportBinaryScholarship);
+		
+		menuBar.add(mnPlot);
+		
+		mnPlot.add(mntmTypeOfPublication);
+		
+		mnPlot.add(mntmPublicationsPerYear);
+		
+		mnPlot.add(mntmConferencePapersPer);
+		
+		mnPlot.add(mntmJournalArticlesPer);
+		
+		mnPlot.add(mntmCoauthorsPerPublication);
 }
 	private void populatePaperJList()
 	{
