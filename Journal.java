@@ -8,6 +8,9 @@ public class Journal extends Effort{
 	private List<Volume> volumes;
 	private String type;
 	
+	/**
+	 * null constructor
+	 */
 	public Journal()
 	{
 		this.organization = null;
@@ -15,6 +18,12 @@ public class Journal extends Effort{
 		this.volumes = null;
 	}
 	
+	/**
+	 * Constructor
+	 * @param organization
+	 * @param location
+	 * @param volumes
+	 */
 	public Journal(String organization, Location location, List<Volume> volumes)
 	{
 		this.organization = organization;
@@ -23,37 +32,63 @@ public class Journal extends Effort{
 		this.type = "Journal";
 	}
 	
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public String getOrganization()
 	{
 		return organization;
 	}
 	
+	/**
+	 * setter
+	 */
 	public void setOrganization(String organization)
 	{
 		this.organization = organization;
 	}
 	
+	/**
+	 * getter
+	 * @return
+	 */
 	public Location getLocation()
 	{
 		return location;
 	}
 	
+	/**
+	 * setter
+	 * @param location
+	 */
 	public void setLocation(Location location)
 	{
 		this.location = location;
 	}
 	
+	/**
+	 * setter
+	 * @param volumes
+	 */
 	public void setVolumes(List<Volume> volumes)
 	{
 		this.volumes = volumes;
 	}
 	
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Volume> getVolumes()
 	{
 		return volumes;
 	}
 	
+	/**
+	 * adds param volumes to list of volumes
+	 * @param volume
+	 */
 	public void addToVolmes(Volume volume)
 	{
 		this.volumes.add(volume);

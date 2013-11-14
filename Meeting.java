@@ -28,7 +28,6 @@ public class Meeting {
 		this.chairs = chairs;
 		this.members = members;
 		this.conPapers = conPapers;
-		
 	}
 	
 	public void setMonth(String month)

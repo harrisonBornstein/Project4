@@ -40,22 +40,36 @@ public class ConPaper extends Paper{
 		this.url = url;
 	}
 	
-	
+	/**
+	 * setter
+	 * @param con
+	 */
 	public void setCon(Conference con)
 	{
 		this.conference = con;
 	}
 	
+	/**
+	 * getter
+	 * @return
+	 */
 	public Conference getCon()
 	{
 		return conference;
 	}
 	
+	/**
+	 *setter 
+	 * @param type
+	 */
 	public void setType(String type)
 	{
 		this.type = type;
 	}
 	
+	/**
+	 * getter
+	 */
 	public String getType()
 	{
 		return type;
