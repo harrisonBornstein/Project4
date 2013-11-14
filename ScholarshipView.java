@@ -55,7 +55,9 @@ public class ScholarshipView extends JFrame implements ActionListener {
 	private final JMenuItem mntmConferencePapersPer = new JMenuItem("Conference Papers per Year");
 	private final JMenuItem mntmJournalArticlesPer = new JMenuItem("Journal Articles per Year");
 	private final JMenuItem mntmCoauthorsPerPublication = new JMenuItem("Co-Authors per Publication");
-	
+/**
+ * Creates the view	
+ */
 public ScholarshipView(){
 	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -149,6 +151,9 @@ public ScholarshipView(){
 		
 		mnPlot.add(mntmCoauthorsPerPublication);
 }
+	/**
+	 * Fills the JList in the paper tab
+	 */
 	private void populatePaperJList()
 	{
 		paperListModel.clear();
@@ -162,6 +167,9 @@ public ScholarshipView(){
 			}
 		}
 	}
+	/**
+	 * Fills the jList in the scholar tab
+	 */
 	private void populateScholarJList()
 	{
 		scholarListModel.clear();
@@ -170,7 +178,9 @@ public ScholarshipView(){
 				scholarListModel.addElement((model.getScholars().get(i).getFullName()));
 			}
 	}
-	
+	/**
+	 * fills the JList in the serial tab
+	 */
 	private void populateSerialJList()
 	{
 		serialListModel.clear();
@@ -199,85 +209,137 @@ public ScholarshipView(){
 			}
 		}
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddScholarButton()
 	{
 		return jbtAddScholar;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getDeleteScholarsButton()
 	{
 		return btnDeleteScholars;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getDeleteAllScholarsButton()
 	{
 		return btnDeleteAllScholars;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddSerialButton()
 	{
 		return button;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getDeleteSerialsButton()
 	{
 		return button_1;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getDeleteAllSerialsButton()
 	{
 		return button_2;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddPaperButton()
 	{
 		return button_3;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getDeletePapersButton(){
 		return button_4;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getDelteAllPapersButton()
 	{
 		return button_5;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JMenuItem getTypeOfPub()
 	{
 		return mntmTypeOfPublication;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JMenuItem getPubPerYear()
 	{
 		return mntmPublicationsPerYear;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JMenuItem getConPerYear()
 	{
 		return mntmConferencePapersPer;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JMenuItem getJournPerYear()
 	{
 		return mntmJournalArticlesPer;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JMenuItem getCoAuthors()
 	{
 		return mntmCoauthorsPerPublication;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JMenuItem getImport()
 	{
 		return mntmImportBinaryScholarship;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JMenuItem getExport()
 	{
 		return mntmExportBinaryScholarship;
 	}
+	/**
+	 * Makes the view as an actionListener on the model
+	 * @param newModel
+	 */
 	public void setModel(ScholarshipModel newModel)
 	{
 		this.model = newModel;
@@ -287,7 +349,9 @@ public ScholarshipView(){
 			setVisible(true);
 		}
 	}
-	
+	/**
+	 * Updates the view if the model changes
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Scholar Added") || e.getActionCommand().equals("Scholar Removed")) {
 			populateScholarJList();
@@ -314,16 +378,26 @@ public ScholarshipView(){
 		}
 		
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JList<String> getScholarList()
 	{
 		return scholarList;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Effort> getEfforts()
 	{
 		return viewEfforts;
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Paper> getPapers()
 	{
 		return publications;

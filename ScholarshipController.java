@@ -251,7 +251,11 @@ public class ScholarshipController {
 		}
 		
 	}
-	
+	/**
+	 * Listener for the delete paper button
+	 * @author harrib
+	 *
+	 */
 	private class DeletePaperListener implements ActionListener{
 
 		
@@ -276,7 +280,11 @@ public class ScholarshipController {
 		}
 		
 	}
-	
+	/**
+	 * listener for the delete all papers button
+	 * @author harrib
+	 *
+	 */
 	private class DeleteAllPapersListener implements ActionListener{
 
 		
@@ -294,7 +302,11 @@ public class ScholarshipController {
 		}
 		
 	}
-	
+	/**
+	 * Listener for the add scholar button
+	 * @author harrib
+	 *
+	 */
 	private class AddScholarDialogListener implements ActionListener{
 
 		
@@ -314,7 +326,11 @@ public class ScholarshipController {
 		}
 		
 	}
-	
+	/**
+	 * Listener for add journal article button
+	 * @author harrib
+	 *
+	 */
 	private class AddJournalArticleJournalListener implements ActionListener{
 
 		
@@ -324,7 +340,11 @@ public class ScholarshipController {
 		}
 		
 	}
-	
+	/**
+	 * Listener for the add journal article scholar
+	 * @author harrib
+	 *
+	 */
 private class AddJournalArticleScholarListener implements ActionListener{
 
 		
@@ -334,7 +354,11 @@ private class AddJournalArticleScholarListener implements ActionListener{
 		}
 		
 	}
-
+	/**
+	 * Listener for add journal article button
+	 * @author harrib
+	 *
+	 */
 private class AddJournalArticleListener implements ActionListener{
 
 	
@@ -360,7 +384,11 @@ private class AddJournalArticleListener implements ActionListener{
 	}
 	
 }
-
+/**
+ * Listener for add conference paper button
+ * @author harrib
+ *
+ */
 private class AddConferencePaperScholarListener implements ActionListener{
 
 	
@@ -371,6 +399,11 @@ private class AddConferencePaperScholarListener implements ActionListener{
 	}
 	
 }
+/**
+ * Listener for add conference button 
+ * @author harrib
+ *
+ */
 private class AddConferencePaperConferenceListener implements ActionListener{
 
 	
@@ -381,7 +414,11 @@ private class AddConferencePaperConferenceListener implements ActionListener{
 	}
 	
 }
-
+/**
+ * listener for the add conference paper button
+ * @author harrib
+ *
+ */
 private class AddConferencePaperListener implements ActionListener{
 
 	
@@ -406,7 +443,11 @@ private class AddConferencePaperListener implements ActionListener{
 	}
 	
 }
-
+/**
+ * Listener for the add journal button
+ * @author harrib
+ *
+ */
 private class AddJournalListener implements ActionListener{
 
 	
@@ -451,7 +492,11 @@ private class AddJournalListener implements ActionListener{
 	}
 	
 }
-
+/**
+ * Listener for add reviewers button
+ * @author harrib
+ *
+ */
 private class AddJournalReviewersListener implements ActionListener{
 
 	
@@ -463,7 +508,11 @@ private class AddJournalReviewersListener implements ActionListener{
 	}
 	
 }
-
+/**
+ * Listener for add editors button
+ * @author harrib
+ *
+ */
 private class AddJournalEditorsListener implements ActionListener{
 
 	
@@ -473,7 +522,11 @@ private class AddJournalEditorsListener implements ActionListener{
 	}
 	
 }
-
+/**
+ * Listener for the add conference button
+ * @author harrib
+ *
+ */
 private class AddConferenceListener implements ActionListener{
 
 	
@@ -517,7 +570,11 @@ private class AddConferenceListener implements ActionListener{
 	}
 	
 }
-
+/**
+ * Listener for the add conference chairs button
+ * @author harrib
+ *
+ */
 private class AddConferenceChairsListener implements ActionListener{
 
 	
@@ -527,7 +584,11 @@ private class AddConferenceChairsListener implements ActionListener{
 	}
 	
 }
-
+/**
+ * listener for the add conference members listener
+ * @author harrib
+ *
+ */
 private class AddConferenceMembersListener implements ActionListener{
 
 	
@@ -537,12 +598,18 @@ private class AddConferenceMembersListener implements ActionListener{
 	}
 	
 }
-	
+/**
+ * Allows the driver to set the model for the controller	
+ * @param model
+ */
 public void setModel(ScholarshipModel model)
 	{
 		this.model = model;
 	}
-	
+/**
+ * Registers all the actionListeners for all the views	
+ * @param view
+ */
 public void setView(ScholarshipView view)
 	{
 		this.view = view;
