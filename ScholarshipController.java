@@ -124,6 +124,13 @@ public class ScholarshipController {
 		}
 		
 	}
+	private class AddScholarCancelListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			scholarView.dispose();
+		}
+	}
 	/**
 	 * Listener for the AddScholar button
 	 * @author harrib
@@ -135,6 +142,7 @@ public class ScholarshipController {
 		{
 			scholarView = new AddScholarView();
 			scholarView.getOkButton().addActionListener(new AddScholarDialogListener());
+			scholarView.getCancelButton().addActionListener(new AddScholarCancelListener());
 			scholarView.setVisible(true);
 		}
 		
@@ -177,6 +185,28 @@ public class ScholarshipController {
 		
 	}
 	/**
+	 * Listener for the journal view cancel button
+	 * @author harrib
+	 *
+	 */
+	private class AddJournalCancelListener implements ActionListener{
+		public void actionPerformed(ActionEvent e)
+		{
+			journalView.dispose();
+		}
+	}
+	/**
+	 * Listener for the conference view cancel button
+	 * @author harrib
+	 *
+	 */
+	private class AddConferenceCancelListener implements ActionListener{
+		public void actionPerformed(ActionEvent e)
+		{
+			conferenceView.dispose();
+		}
+	}
+	/**
 	 * Listener for the add serial button
 	 * @author harrib
 	 *
@@ -197,6 +227,7 @@ public class ScholarshipController {
 				journalView.getOKButton().addActionListener(new AddJournalListener());
 				journalView.getAddEditorsButton().addActionListener(new AddJournalEditorsListener());
 				journalView.getAddReviewersButton().addActionListener(new AddJournalReviewersListener());
+				journalView.getCancelButton().addActionListener(new AddJournalCancelListener());
 			}	
 			else if(response == 2)
 			{
@@ -208,6 +239,7 @@ public class ScholarshipController {
 				conferenceView.getOKButton().addActionListener(new AddConferenceListener());
 				conferenceView.getAddEditorsButton().addActionListener(new AddConferenceChairsListener());
 				conferenceView.getAddReviewersButton().addActionListener(new AddConferenceMembersListener());
+				conferenceView.getCancelButton().addActionListener(new AddConferenceCancelListener());
 			}
 			
 				
@@ -270,6 +302,20 @@ public class ScholarshipController {
 		}
 	}
 	/**
+	 * Listener for the cancel buttons
+	 * @author harrib
+	 *
+	 */
+	private class AddPaperCancelListener implements ActionListener {
+		
+	
+
+		public void actionPerformed(ActionEvent e) 
+		{	
+			papersView.dispose();
+		}
+	}
+	/**
 	 * Listener for add Paper button
 	 * @author harrib
 	 *
@@ -288,6 +334,8 @@ public class ScholarshipController {
 			papersView.getAddConferenceButton().addActionListener(new AddConferencePaperConferenceListener());
 			papersView.getAddConPaperAuthorsButton().addActionListener(new AddConferencePaperScholarListener());
 			papersView.getAddConPaperButton().addActionListener(new AddConferencePaperListener());
+			papersView.getJournalCancelButton().addActionListener(new AddPaperCancelListener());
+			papersView.getConferenceCancelButton().addActionListener(new AddPaperCancelListener());
 			
 			papersView.populateAuthorsJList();
 			papersView.populateSerialsJlist();

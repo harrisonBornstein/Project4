@@ -31,7 +31,7 @@ public class AddJournalView extends JDialog implements ActionListener {
 	private JButton btnAddReviewers = new JButton("Add Reviewers");
 	private DefaultListModel<String> reviewerListModel = new DefaultListModel<String>();
 	private DefaultListModel<String> reviewerListModelAdded = new DefaultListModel<String>();
-	
+	private JButton cancelButton = new JButton("Cancel");
 	private ArrayList<Scholar> reviewerListScholars = new ArrayList<Scholar>();
 	private ArrayList<Scholar> reviewerSelectedList = new ArrayList<Scholar>();
 	private ArrayList<Scholar> editorListScholars = new ArrayList<Scholar>();
@@ -189,11 +189,19 @@ public class AddJournalView extends JDialog implements ActionListener {
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+	/**
+	 * getter
+	 * @return
+	 */
+	public JButton getCancelButton()
+	{
+		return cancelButton;
 	}
 	/**
 	 * getter

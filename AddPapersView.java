@@ -35,6 +35,8 @@ public class AddPapersView extends JFrame implements ActionListener {
 	private JButton btnAddConference = new JButton("Add Conference");
 	private JButton btnAddAuthors = new JButton("Add Authors");
 	private JButton btnAddPaper = new JButton("Add Paper");
+	private JButton btnCancel = new JButton("Cancel");
+	private JButton btnCancel_1 = new JButton("Cancel");
 	
 	private JScrollPane scrollPane_1 = new JScrollPane();
 	private JScrollPane scrollPane_5 = new JScrollPane();
@@ -70,7 +72,22 @@ public class AddPapersView extends JFrame implements ActionListener {
 	JList conferenceList = new JList(conferenceAuthorListModel);
 	JList journalSerialList = new JList(journalSerialListModel);
 	JList conferenceSerialList = new JList(conferenceSerialListModel);
-	
+	/**
+	 * 
+	 * @return
+	 */
+	public JButton getConferenceCancelButton()
+	{
+		return btnCancel_1;
+	}
+	/**
+	 * getter
+	 * @return
+	 */
+	public JButton getJournalCancelButton()
+	{
+		return btnCancel;
+	}
 	/**
 	 * getter
 	 * @return
@@ -206,10 +223,15 @@ public class AddPapersView extends JFrame implements ActionListener {
 		
 		btnAddAuthors_1.setBounds(29, 457, 117, 29);
 		panel.add(btnAddAuthors_1);
+		btnAddButton.setEnabled(false);
 		
 		
-		btnAddButton.setBounds(432, 491, 117, 29);
+		btnAddButton.setBounds(333, 491, 117, 29);
 		panel.add(btnAddButton);
+		
+		
+		btnCancel.setBounds(464, 491, 117, 29);
+		panel.add(btnCancel);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Conference", null, panel_1, null);
@@ -283,10 +305,15 @@ public class AddPapersView extends JFrame implements ActionListener {
 		
 		btnAddAuthors.setBounds(22, 451, 162, 29);
 		panel_1.add(btnAddAuthors);
+		btnAddPaper.setEnabled(false);
 		
 		
-		btnAddPaper.setBounds(366, 507, 155, 29);
+		btnAddPaper.setBounds(290, 501, 155, 29);
 		panel_1.add(btnAddPaper);
+		
+	
+		btnCancel_1.setBounds(464, 501, 117, 29);
+		panel_1.add(btnCancel_1);
 	}
 	/**
 	 * Clears the textfield and lists 
@@ -389,14 +416,17 @@ public class AddPapersView extends JFrame implements ActionListener {
 		viewJournals.clear();
 		if (!model.getConferences().isEmpty())
 		{
+			getAddConPaperButton().setEnabled(true);
 			for (int i = 0; i < model.getConferences().size(); i++)
 			{
 		
-					viewConferences.add(model.getConferences().get(i));			
+					viewConferences.add(model.getConferences().get(i));	
+					
 			}
 		}
 		if(!model.getJournals().isEmpty())
 		{
+			getAddJournalArticleButton().setEnabled(true);
 			for(int i =0; i< model.getJournals().size();++i)
 			{
 					viewJournals.add(model.getJournals().get(i));
@@ -485,5 +515,4 @@ public class AddPapersView extends JFrame implements ActionListener {
 	{
 		
 	}
-
 }

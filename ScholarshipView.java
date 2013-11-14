@@ -153,6 +153,13 @@ public ScholarshipView(){
 		
 		button.setEnabled(false);
 		button_3.setEnabled(false);
+		btnDeleteScholars.setEnabled(false);
+		btnDeleteAllScholars.setEnabled(false);
+		button_1.setEnabled(false);
+		button_2.setEnabled(false);
+		button_4.setEnabled(false);
+		button_5.setEnabled(false);
+		
 }
 	/**
 	 * Fills the JList in the paper tab
@@ -168,6 +175,16 @@ public ScholarshipView(){
 				paperListModel.addElement((model.getPapers().get(i).getPaperTitle()));
 				publications.add(model.getPapers().get(i));
 			}
+		}
+		if (model.getPapers().size() > 0)
+		{
+			button_4.setEnabled(true);
+			button_5.setEnabled(true);
+		}
+		else
+		{
+			button_4.setEnabled(false);
+			button_5.setEnabled(false);
 		}
 		
 	}
@@ -185,11 +202,15 @@ public ScholarshipView(){
 		if (model.getScholars().size() > 0)
 		{
 			button.setEnabled(true);
+			btnDeleteScholars.setEnabled(true);
+			btnDeleteAllScholars.setEnabled(true);
 		}
 		else
 		{
 			button.setEnabled(false);
 			button_3.setEnabled(false);
+			btnDeleteScholars.setEnabled(false);
+			btnDeleteAllScholars.setEnabled(false);
 		}
 	}
 	/**
@@ -225,10 +246,14 @@ public ScholarshipView(){
 		if (viewEfforts.size() > 0)
 		{
 			button_3.setEnabled(true);
+			button_1.setEnabled(true);
+			button_2.setEnabled(true);
 		}
 		else
 		{
 			button_3.setEnabled(false);
+			button_1.setEnabled(false);
+			button_2.setEnabled(false);
 		}
 	}
 	/**

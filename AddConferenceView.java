@@ -29,6 +29,7 @@ public class AddConferenceView extends JDialog implements ActionListener {
 	private JButton btnAddEditors = new JButton("Add Chairs");
 	private JButton okButton = new JButton("OK");
 	private JButton btnAddReviewers = new JButton("Add Members");
+	private JButton cancelButton = new JButton("Cancel");
 	private DefaultListModel<String> reviewerListModel = new DefaultListModel<String>();
 	private DefaultListModel<String> reviewerListModelAdded = new DefaultListModel<String>();
 	
@@ -182,7 +183,7 @@ public class AddConferenceView extends JDialog implements ActionListener {
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
@@ -211,6 +212,14 @@ public class AddConferenceView extends JDialog implements ActionListener {
 	public JButton getOKButton()
 	{
 		return okButton;
+	}
+	/**
+	 * getter
+	 * @return
+	 */
+	public JButton getCancelButton()
+	{
+		return cancelButton;
 	}
 	/**
 	 * Fills the reviewer JList
