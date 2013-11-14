@@ -58,7 +58,7 @@ public class AddJournalView extends JDialog implements ActionListener {
 	 * Creates the dialog.
 	 */
 	public AddJournalView() {
-		setBounds(100, 100, 719, 848);
+		setBounds(100, 100, 712, 684);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -132,14 +132,14 @@ public class AddJournalView extends JDialog implements ActionListener {
 		contentPanel.add(lblEditors);
 		
 		
-		scrollPane.setBounds(57, 264, 273, 198);
+		scrollPane.setBounds(57, 264, 273, 100);
 		contentPanel.add(scrollPane);
 		
 		
 		scrollPane.setViewportView(editorList);
 		
 		
-		btnAddEditors.setBounds(61, 469, 117, 29);
+		btnAddEditors.setBounds(57, 375, 117, 29);
 		contentPanel.add(btnAddEditors);
 		
 		JLabel lblEditorsAdded = new JLabel("Editors Added:");
@@ -147,7 +147,7 @@ public class AddJournalView extends JDialog implements ActionListener {
 		contentPanel.add(lblEditorsAdded);
 		
 		
-		scrollPane_1.setBounds(421, 264, 273, 198);
+		scrollPane_1.setBounds(421, 264, 273, 100);
 		contentPanel.add(scrollPane_1);
 		
 
@@ -155,28 +155,28 @@ public class AddJournalView extends JDialog implements ActionListener {
 		
 		
 		JLabel label = new JLabel("Reviewers:");
-		label.setBounds(6, 501, 73, 16);
+		label.setBounds(10, 415, 73, 16);
 		contentPanel.add(label);
 		
 		JLabel label_1 = new JLabel("Reviewers Added:");
-		label_1.setBounds(346, 501, 131, 16);
+		label_1.setBounds(346, 415, 131, 16);
 		contentPanel.add(label_1);
 		
 		
-		scrollPane_2.setBounds(57, 527, 273, 198);
+		scrollPane_2.setBounds(57, 442, 273, 100);
 		contentPanel.add(scrollPane_2);
 		
 		
 		scrollPane_2.setViewportView(reviewerList);
 		
 		
-		scrollPane_3.setBounds(421, 529, 273, 198);
+		scrollPane_3.setBounds(421, 442, 273, 100);
 		contentPanel.add(scrollPane_3);
 		
 		
 		
 		
-		btnAddReviewers.setBounds(61, 737, 117, 29);
+		btnAddReviewers.setBounds(57, 553, 117, 29);
 		contentPanel.add(btnAddReviewers);
 		{
 			JPanel buttonPane = new JPanel();

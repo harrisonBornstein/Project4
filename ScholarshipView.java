@@ -150,6 +150,9 @@ public ScholarshipView(){
 		mnPlot.add(mntmJournalArticlesPer);
 		
 		mnPlot.add(mntmCoauthorsPerPublication);
+		
+		button.setEnabled(false);
+		button_3.setEnabled(false);
 }
 	/**
 	 * Fills the JList in the paper tab
@@ -166,6 +169,7 @@ public ScholarshipView(){
 				publications.add(model.getPapers().get(i));
 			}
 		}
+		
 	}
 	/**
 	 * Fills the jList in the scholar tab
@@ -174,9 +178,19 @@ public ScholarshipView(){
 	{
 		scholarListModel.clear();
 		if (model.getScholars() != null)
-			for (int i = 0; i < model.getScholars().size(); i++) {
+			for (int i = 0; i < model.getScholars().size(); i++) 
+			{
 				scholarListModel.addElement((model.getScholars().get(i).getFullName()));
 			}
+		if (model.getScholars().size() > 0)
+		{
+			button.setEnabled(true);
+		}
+		else
+		{
+			button.setEnabled(false);
+			button_3.setEnabled(false);
+		}
 	}
 	/**
 	 * fills the JList in the serial tab
@@ -203,10 +217,18 @@ public ScholarshipView(){
 		}
 		if(!viewEfforts.isEmpty())
 		{
-			for(int i=0; i< viewEfforts.size();++i)
+			for(int i=0; i< viewEfforts.size(); ++i)
 			{
 				serialListModel.addElement(viewEfforts.get(i).getOrganization());
 			}
+		}
+		if (viewEfforts.size() > 0)
+		{
+			button_3.setEnabled(true);
+		}
+		else
+		{
+			button_3.setEnabled(false);
 		}
 	}
 	/**

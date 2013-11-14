@@ -197,11 +197,13 @@ public class ScholarshipController {
 			Effort effort = view.getEfforts().get(index);
 			if (effort.getType().equals("Journal"))
 			{
-				model.removeJournal(effort);
+				Journal journal = (Journal) effort;
+				model.removeJournal(journal);
 			}
 			else
 			{
-				model.removeConference(effort);
+				Conference con = (Conference) effort;
+				model.removeConference(con);
 			}
 		}
 		

@@ -5,7 +5,7 @@ public class Conference extends Effort {
 	
 	private String organization;
 	private List<Meeting> meetings;
-	private String type;
+	private String type = "Conference";
 	
 	public Conference()
 	{

@@ -73,30 +73,19 @@ public class ScholarshipModel {
 	public void removePaper(Paper outPaper)
 	{
 		publications.remove(outPaper);
-		
-		// remove Paper from scholars
-		ArrayList<Scholar> outScholars = new ArrayList<Scholar>(); //make list to hold outScholars
-		
+				
 		for (Scholar scholar: scholars)
 		{
 			if (scholar.getPapers().contains(outPaper))
 			{
 				scholar.getPapers().remove(outPaper);
-				if (scholar.getPapers().size() == 0)
-				{
-					outScholars.add(scholar);
-				}
 			}
 		}
 		
-		//remove Empty Scholars
-		for (Scholar scholar: outScholars)
-		{
-			scholars.remove(scholar);
-		}
+		
 		
 		//remove Paper from conferences
-		ArrayList<Conference> outCon = new ArrayList<Conference>(); //conferences to remove
+		//ArrayList<Conference> outCon = new ArrayList<Conference>(); //conferences to remove
 		
 		for (Conference conference: conferences)
 		{
@@ -105,23 +94,23 @@ public class ScholarshipModel {
 				if (meeting.getConPapers().contains(outPaper))
 				{
 					meeting.getConPapers().remove(outPaper);
-					if (meeting.getConPapers().size() == 0)
-					{
-						//if meeting meeting has no more papers, add the conference to the list
-						outCon.add(conference);
-					}
+//					if (meeting.getConPapers().size() == 0)
+//					{
+//					//if meeting meeting has no more papers, add the conference to the list
+//						outCon.add(conference);
+//					}
 				}
 			}
 		}
 		
 		//remove empty Cons
-		for (Conference conference: outCon)
-		{
-			conferences.remove(conference);
-		}
+		//for (Conference conference: outCon)
+		//{
+		//	conferences.remove(conference);
+		//}
 		
 		//remove Paper from journals
-		ArrayList<Journal> outJournals = new ArrayList<Journal>();
+		//ArrayList<Journal> outJournals = new ArrayList<Journal>();
 		for (Journal journal: journals)
 		{
 			for (Volume volume: journal.getVolumes())
@@ -131,21 +120,21 @@ public class ScholarshipModel {
 					if (issue.getArticles().contains(outPaper))
 					{
 						issue.getArticles().remove(outPaper);
-						if (issue.getArticles().size() == 0)
-						{
+						//if (issue.getArticles().size() == 0)
+						//{
 							//if issue is now empty, add journal to outJournals
-							outJournals.add(journal);
-						}
+						//	outJournals.add(journal);
+						//}
 					}
 				}
 			}
 		}
 		
 		//remove empty Journals
-		for (Journal journal: outJournals)
-		{
-			conferences.remove(journal);
-		}
+		//for (Journal journal: outJournals)
+		//{
+		//	conferences.remove(journal);
+		//}
 		
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Paper Removed"));
 	}
@@ -243,7 +232,7 @@ public class ScholarshipModel {
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Scholar Removed"));
 	}
 	
-	public void removeConference(Effort outCon)
+	public void removeConference(Conference outCon)
 	{
 		conferences.remove(outCon);
 		
@@ -254,20 +243,42 @@ public class ScholarshipModel {
 				scholar.getEfforts().remove(outCon);
 			}
 		}
+		
+		ArrayList<ConPaper> outPapers = new ArrayList<ConPaper>();
+		for (ConPaper paper: outCon.getMeetings().get(0).getConPapers())
+		{
+			outPapers.add(paper);
+		}
+		for(ConPaper paper: outPapers)
+		{
+			publications.remove(paper);
+		}
+		
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Conference Removed"));
 	}
 	
-	public void removeJournal(Effort effort)
+	public void removeJournal(Journal outJournal)
 	{
-		journals.remove(effort);
+		journals.remove(outJournal);
 		
 		for(Scholar scholar : scholars)
 		{
-			if (scholar.getEfforts().contains(effort))
+			if (scholar.getEfforts().contains(outJournal))
 			{
-				scholar.getEfforts().remove(effort);
+				scholar.getEfforts().remove(outJournal);
 			}
 		}
+		
+		ArrayList<JournalArticle> outPapers = new ArrayList<JournalArticle>();
+		for (JournalArticle paper: outJournal.getVolumes().get(0).getIssues().get(0).getArticles())
+		{
+			outPapers.add(paper);
+		}
+		for(JournalArticle paper: outPapers)
+		{
+			publications.remove(paper);
+		}
+		
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Journal Removed"));
 	}
 	

@@ -6,7 +6,7 @@ public class Journal extends Effort{
 	private String organization;
 	private Location location;
 	private List<Volume> volumes;
-	private String type;
+	private String type = "Journal";
 	
 	/**
 	 * null constructor
@@ -93,5 +93,26 @@ public class Journal extends Effort{
 	{
 		this.volumes.add(volume);
 	}
+	
+	public String getType()
+	{
+		return type;
+	}
+	
+	/**
+	 * setter
+	 * @param newType
+	 */
+	public void setType(String newType)
+	{
+		this.type = newType;
+	}
+	
+	/**
+	 * getter
+	 * @return
+	 */
+	
+
 	
 }

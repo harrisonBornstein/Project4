@@ -10,6 +10,7 @@ public abstract class Paper
 	private String pages;
 	private String url;
 	private String date;
+	private String type;
 	
 	/**
 	 * 
@@ -103,7 +104,7 @@ public abstract class Paper
 	
 	public String getType()
 	{
-		return null;
+		return type;
 	}
 }
 	

@@ -124,7 +124,7 @@ public class AddPapersView extends JFrame implements ActionListener {
 	 */
 	public AddPapersView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 590, 809);
+		setBounds(100, 100, 580, 624);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -146,7 +146,7 @@ public class AddPapersView extends JFrame implements ActionListener {
 		panel.add(label_1);
 		
 		JLabel label_2 = new JLabel("Authors:");
-		label_2.setBounds(6, 405, 61, 16);
+		label_2.setBounds(6, 319, 61, 16);
 		panel.add(label_2);
 		
 		JLabel label_3 = new JLabel("Journal:");
@@ -158,7 +158,7 @@ public class AddPapersView extends JFrame implements ActionListener {
 		panel.add(label_4);
 		
 		JScrollPane scrollPane_4 = new JScrollPane();
-		scrollPane_4.setBounds(29, 168, 246, 188);
+		scrollPane_4.setBounds(29, 168, 246, 100);
 		panel.add(scrollPane_4);
 		scrollPane_4.setViewportView(journalSerialList);
 		
@@ -168,20 +168,20 @@ public class AddPapersView extends JFrame implements ActionListener {
 		panel.add(label_5);
 		
 		
-		scrollPane_5.setBounds(290, 168, 255, 188);
+		scrollPane_5.setBounds(290, 168, 255, 100);
 		panel.add(scrollPane_5);
 		
 		JScrollPane scrollPane_6 = new JScrollPane();
-		scrollPane_6.setBounds(29, 433, 246, 188);
+		scrollPane_6.setBounds(29, 346, 246, 100);
 		panel.add(scrollPane_6);
 		scrollPane_6.setViewportView(journalList);
 		
 		JLabel label_6 = new JLabel("Authors Added:");
-		label_6.setBounds(280, 405, 110, 16);
+		label_6.setBounds(280, 319, 110, 16);
 		panel.add(label_6);
 		
 		
-		scrollPane_7.setBounds(299, 433, 246, 188);
+		scrollPane_7.setBounds(290, 346, 246, 100);
 		panel.add(scrollPane_7);
 		
 		textField_3 = new JTextField();
@@ -200,15 +200,15 @@ public class AddPapersView extends JFrame implements ActionListener {
 		panel.add(textField_5);
 		
 		
-		btnAddJournal.setBounds(25, 368, 117, 29);
+		btnAddJournal.setBounds(29, 279, 117, 29);
 		panel.add(btnAddJournal);
 		
 		
-		btnAddAuthors_1.setBounds(25, 633, 117, 29);
+		btnAddAuthors_1.setBounds(29, 457, 117, 29);
 		panel.add(btnAddAuthors_1);
 		
 		
-		btnAddButton.setBounds(428, 696, 117, 29);
+		btnAddButton.setBounds(432, 491, 117, 29);
 		panel.add(btnAddButton);
 		
 		JPanel panel_1 = new JPanel();
