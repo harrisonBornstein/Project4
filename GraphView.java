@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 
 public class GraphView extends JFrame implements ActionListener {
@@ -30,6 +29,9 @@ public class GraphView extends JFrame implements ActionListener {
 		this.type = type;
 	}
 
+	/**
+	 * sets paperTypes equal to a BarGraph displaying the type of graph in the String type with data from Scholar
+	 */
 	private void getData()
 	{
 		if (type.equals("Type of Publication")) 
@@ -188,6 +190,10 @@ public class GraphView extends JFrame implements ActionListener {
 		}
 	}
 	
+	/**
+	 * sets the model for the view
+	 * @param model
+	 */
 	public void setModel(ScholarshipModel model)
 	{
 		this.model = model;
@@ -203,6 +209,9 @@ public class GraphView extends JFrame implements ActionListener {
 	
 	}
 	
+	/**
+	 * updates graph if model is changed
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
@@ -222,10 +231,7 @@ public class GraphView extends JFrame implements ActionListener {
 		getData();
 		setSize(paperTypes.getSizeOfWindow()[0] * 100 + 200, 500);
 		getContentPane().add(paperTypes);
-		
-		
-		
-		
+			
 	}
 	
 	/**
