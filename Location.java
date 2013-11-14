@@ -49,17 +49,26 @@ public class Location {
 	{
 		this.state = state;
 	}
-	
+	/**
+	 * setter
+	 * @return
+	 */
 	public String getState()
 	{
 		return state;
 	}
-	
+	/**
+	 * setter
+	 * @param country
+	 */
 	public void setCountry(String country)
 	{
 		this.country = country;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public String getCountry()
 	{
 		return country;
