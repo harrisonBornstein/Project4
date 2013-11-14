@@ -1,12 +1,13 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.swing.JFrame;
 
 
-public class GraphView extends JFrame implements ActionListener {
+public class GraphView extends JFrame implements ActionListener, Serializable {
 	
 	/**
 	 * 

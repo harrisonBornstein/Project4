@@ -1,16 +1,30 @@
 
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 
 
 
-public class ScholarshipController {
+public class ScholarshipController implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4141519858294432244L;
+
 	private ScholarshipModel model;
 	private ScholarshipView view;
 	private AddScholarView scholarView;
@@ -20,9 +34,73 @@ public class ScholarshipController {
 	private GraphListView graphListView;
 	private GraphView graphView;
 	private String graph;
+	/**
+	 * Listener for JMenu Item Export. Exports the model as a binary file.
+	 * @author harrib
+	 *
+	 */
+	private class ExportBinaryListener implements ActionListener{ 
 
+		public void actionPerformed(ActionEvent e)
+		{
+			try {
+				String fileName = JOptionPane.showInputDialog ("Please input a name for the file"); 
+				FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+				objectOutputStream.writeObject(model);
+				objectOutputStream.close();
+			} catch (HeadlessException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
 	
-	
+	/**
+	 * Listener for JMenu Item Import. Imports the model as a binary file.
+	 * @author harrib
+	 *
+	 */
+	private class ImportBinaryListener implements ActionListener{ 
+
+		public void actionPerformed(ActionEvent e)
+		{
+			String fileName ="";
+			ScholarshipModel model = new ScholarshipModel();
+			 JFileChooser fileChooser = new JFileChooser();
+			 if (fileChooser.showOpenDialog(null)
+				        == JFileChooser.APPROVE_OPTION) 
+			 {
+				      // Get the selected file
+				      java.io.File file = fileChooser.getSelectedFile();
+				     fileName = file.getName();
+			 }
+			 
+			try {
+				FileInputStream fileInputStream = new FileInputStream(fileName);
+					ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+					model = (ScholarshipModel) objectInputStream.readObject();
+					objectInputStream.close();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+				view.setModel(model);
+				setModel(model);
+		}
+	}
 	/**
 	 * Listener for the button press for the JmenuItem
 	 * @author harrib
@@ -106,7 +184,7 @@ public class ScholarshipController {
 		}
 	}
 	/**
-	 * Listener for the butten press for the OK button in graphList
+	 * Listener for the button press for the OK button in graphList
 	 * @author harrib
 	 *
 	 */
@@ -124,6 +202,11 @@ public class ScholarshipController {
 		}
 		
 	}
+	/**
+	 * Listener for the scholar cancel button
+	 * @author harrib
+	 *
+	 */
 	private class AddScholarCancelListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
@@ -698,6 +781,8 @@ public class ScholarshipController {
 		this.view.getConPerYear().addActionListener(new ConferencePapersPerYearListener());
 		this.view.getJournPerYear().addActionListener(new JournalArticlesPerYearListener());
 		this.view.getCoAuthors().addActionListener(new CoAuthorsListener());
+		this.view.getExportBinary().addActionListener(new ExportBinaryListener());
+		this.view.getImportBinary().addActionListener(new ImportBinaryListener());
 	}
 	
 	

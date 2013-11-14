@@ -1,9 +1,14 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Scholar {
+public class Scholar implements Serializable  {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6635761444987179515L;
 	private String fullName;
 	private String secondaryName;
 	private String primaryName;

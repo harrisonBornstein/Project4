@@ -14,11 +14,14 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
 
 /*This class is almost a direct copy of JournalView*/
 public class AddConferenceView extends JDialog implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6315367597231432214L;
 	private final JPanel contentPanel = new JPanel();
 	protected JTextField textField;
 	protected JTextField textField_1;
@@ -43,8 +46,8 @@ public class AddConferenceView extends JDialog implements ActionListener {
 	
 	private ScholarshipModel model;
 	private JScrollPane scrollPane = new JScrollPane();
-	JList reviewerList = new JList(reviewerListModel);
-	JList editorList = new JList(editorListModel);
+	JList<String> reviewerList = new JList<String>(reviewerListModel);
+	JList<String> editorList = new JList<String>(editorListModel);
 	JScrollPane scrollPane_2 = new JScrollPane();
 	JScrollPane scrollPane_1 = new JScrollPane();
 	JScrollPane scrollPane_3 = new JScrollPane();
@@ -270,7 +273,7 @@ public class AddConferenceView extends JDialog implements ActionListener {
 		editorSelectedList.add(editorListScholars.get(editorList.getSelectedIndex()));
 		editorListModelAdded.addElement(editorList.getSelectedValue().toString());
 		//reviewerListModel.remove(reviewerList.getSelectedIndex());
-		JList list = new JList(editorListModelAdded);
+		JList<String> list = new JList<String>(editorListModelAdded);
 		scrollPane_1.setViewportView(list);
 		
 		
@@ -283,7 +286,7 @@ public class AddConferenceView extends JDialog implements ActionListener {
 		reviewerSelectedList.add(reviewerListScholars.get(reviewerList.getSelectedIndex()));
 		reviewerListModelAdded.addElement(reviewerList.getSelectedValue().toString());
 		//reviewerListModel.remove(reviewerList.getSelectedIndex());
-		JList list_2 = new JList(reviewerListModelAdded);
+		JList<String> list_2 = new JList<String>(reviewerListModelAdded);
 		scrollPane_3.setViewportView(list_2);
 	
 	}

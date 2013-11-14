@@ -11,6 +11,10 @@ import javax.swing.JTextField;
 
 public class AddScholarView extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8608164024690993690L;
 	private final JPanel contentPanel = new JPanel();
 	public JTextField textField;
 	public JTextField textField_1;

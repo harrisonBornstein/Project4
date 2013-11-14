@@ -1,15 +1,17 @@
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class ConPaper extends Paper{
+public class ConPaper extends Paper {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5574002419754801253L;
 	private Conference conference;
 	private final String type = "Conference Paper";
 	private List<Scholar> authors;
 	private String paperTitle;
 	private String serialTitle;
-	private String pages;
 	private String url;
 	private String date;
 	
@@ -33,7 +35,6 @@ public class ConPaper extends Paper{
 	public ConPaper(List<Scholar> authors, String paperTitle, String pages, String url, Conference conference)
 	{
 		this.paperTitle = paperTitle;
-		this.pages = pages;
 		this.authors = authors;
 		this.conference = conference;
 		this.url = url;

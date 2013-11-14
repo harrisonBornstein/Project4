@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -14,7 +15,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 
 
-public class GraphListView extends JDialog implements ActionListener {
+public class GraphListView extends JDialog implements ActionListener, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4816967461188840480L;
 
 	private final JPanel contentPanel = new JPanel();
 
@@ -24,7 +30,7 @@ public class GraphListView extends JDialog implements ActionListener {
 	DefaultListModel<String> scholarListModel = new DefaultListModel<String>();
 	List<Scholar> scholarList = new ArrayList<Scholar>();
 	private JScrollPane scrollPane = new JScrollPane();
-	JList list = new JList(scholarListModel);
+	JList<String> list = new JList<String>(scholarListModel);
 	
 
 	/**

@@ -1,8 +1,14 @@
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Issue {
+public class Issue  implements Serializable {
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7031818417832521950L;
 	private String month;
 	private String year;
 	private List<Scholar> editors;

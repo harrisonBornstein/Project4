@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -19,6 +18,10 @@ import javax.swing.JButton;
 
 public class AddPapersView extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6817080158063501623L;
 	private JPanel contentPane;
 	 JTextField textField;
 	 JTextField textField_1;
@@ -68,10 +71,10 @@ public class AddPapersView extends JFrame implements ActionListener {
 	private List<Conference> viewConferences = new ArrayList<Conference>();
 	private List<Journal> viewJournals = new ArrayList<Journal>();
 	
-	JList journalList = new JList(journalAuthorListModel);
-	JList conferenceList = new JList(conferenceAuthorListModel);
-	JList journalSerialList = new JList(journalSerialListModel);
-	JList conferenceSerialList = new JList(conferenceSerialListModel);
+	JList<String> journalList = new JList<String>(journalAuthorListModel);
+	JList<String> conferenceList = new JList<String>(conferenceAuthorListModel);
+	JList<String> journalSerialList = new JList<String>(journalSerialListModel);
+	JList<String> conferenceSerialList = new JList<String>(conferenceSerialListModel);
 	/**
 	 * 
 	 * @return
@@ -459,7 +462,7 @@ public class AddPapersView extends JFrame implements ActionListener {
 		journalSerialListModelAdded.addElement(journalSerialList.getSelectedValue().toString());
 		
 		
-		JList list = new JList(journalSerialListModelAdded);
+		JList<String> list = new JList<String>(journalSerialListModelAdded);
 	
 		
 		scrollPane_5.setViewportView(list);
@@ -473,7 +476,7 @@ public class AddPapersView extends JFrame implements ActionListener {
 		conferenceSelectedListSerial.add(viewConferences.get(conferenceSerialList.getSelectedIndex()));
 		conferenceSerialListModelAdded.addElement(conferenceSerialList.getSelectedValue().toString());
 		
-		JList list = new JList(conferenceSerialListModelAdded);
+		JList<String> list = new JList<String>(conferenceSerialListModelAdded);
 		scrollPane_1.setViewportView(list);
 		System.out.println("check2");
 	}
@@ -487,7 +490,7 @@ public class AddPapersView extends JFrame implements ActionListener {
 		
 		
 		//reviewerListModel.remove(reviewerList.getSelectedIndex());
-		JList list = new JList(journalAuthorListModelAdded);
+		JList<String> list = new JList<String>(journalAuthorListModelAdded);
 	
 		
 		scrollPane_7.setViewportView(list);
@@ -502,7 +505,7 @@ public class AddPapersView extends JFrame implements ActionListener {
 		
 		
 		//reviewerListModel.remove(reviewerList.getSelectedIndex());
-		JList list = new JList(conferenceAuthorListModelAdded);
+		JList<String> list = new JList<String>(conferenceAuthorListModelAdded);
 	
 		
 		scrollPane_3.setViewportView(list);

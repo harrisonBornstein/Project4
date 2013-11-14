@@ -1,14 +1,12 @@
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -19,8 +17,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 
 
-public class ScholarshipView extends JFrame implements ActionListener {
+public class ScholarshipView extends JFrame implements ActionListener, Serializable {
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3514779765110433379L;
 	private JPanel contentPane;
 	private ScholarshipModel model;
 	private JButton jbtAddScholar = new JButton("Add Scholar");
@@ -42,9 +45,9 @@ public class ScholarshipView extends JFrame implements ActionListener {
 	private List<Effort> viewEfforts = new ArrayList<Effort>();
 	private List<Paper> publications = new ArrayList<Paper>();
 	
-	JList paperList = new JList(paperListModel);
-	JList scholarList = new JList(scholarListModel);
-	JList serialList = new JList(serialListModel);
+	JList<String> paperList = new JList<String>(paperListModel);
+	JList<String> scholarList = new JList<String>(scholarListModel);
+	JList<String> serialList = new JList<String>(serialListModel);
 	
 	private final JScrollPane scrollPane = new JScrollPane();
 	private final JScrollPane scrollPane_1 = new JScrollPane();
@@ -160,6 +163,22 @@ public ScholarshipView(){
 		button_4.setEnabled(false);
 		button_5.setEnabled(false);
 		
+}
+/**
+ * getter
+ * @return
+ */
+public JMenuItem getExportBinary()
+{
+	return mntmExportBinaryScholarship;
+}
+/**
+ * getter
+ * @return
+ */
+public JMenuItem getImportBinary()
+{
+	return mntmImportBinaryScholarship;
 }
 	/**
 	 * Fills the JList in the paper tab

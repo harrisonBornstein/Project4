@@ -1,8 +1,13 @@
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Conference extends Effort {
+public class Conference extends Effort implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1585069694423801688L;
 	private String organization;
 	private List<Meeting> meetings;
 	private String type = "Conference";

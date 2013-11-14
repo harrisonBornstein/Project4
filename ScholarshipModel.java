@@ -1,12 +1,16 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
-public class ScholarshipModel {
+public class ScholarshipModel implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4387041456221952094L;
 	private List<Paper> publications;
 	private List<Scholar> scholars;
 	private List<Conference> conferences;
@@ -291,6 +295,7 @@ public class ScholarshipModel {
 		actionListenerList.add(listener);
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void processEvent(ActionEvent e)
 	{
 		ArrayList<ActionListener> list;

@@ -1,6 +1,12 @@
+import java.io.Serializable;
 
-public class Location {
+
+public class Location  implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1455718539615193608L;
 	private String city;
 	private String state;
 	private String country;

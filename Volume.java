@@ -1,8 +1,13 @@
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Volume {
+public class Volume implements Serializable  {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1040783056988651593L;
 	private List<Issue> issues;
 	
 	/**

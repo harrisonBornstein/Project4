@@ -1,6 +1,13 @@
+import java.io.Serializable;
 
-public abstract class Effort {
+
+public abstract class Effort implements Serializable  {
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2454844493358322483L;
 	private String organization;
 	private String type = "";
 

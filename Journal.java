@@ -3,6 +3,10 @@ import java.util.List;
 
 public class Journal extends Effort{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1468500688922576837L;
 	private String organization;
 	private Location location;
 	private List<Volume> volumes;
