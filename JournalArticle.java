@@ -5,7 +5,7 @@ import java.util.List;
 public class JournalArticle extends Paper {
 
 	private Journal journal;
-	private String type;
+	private final String type = "Journal Article";
 	private List<Scholar> authors;
 	private String paperTitle;
 	private String serialTitle;
@@ -19,7 +19,7 @@ public class JournalArticle extends Paper {
 	public JournalArticle()
 	{
 		this.journal = null;
-		this.type = null;
+		
 	}
 	
 	/**
@@ -31,13 +31,13 @@ public class JournalArticle extends Paper {
 	 * @param journal
 	 * @param type
 	 */
-	public JournalArticle(List<Scholar> authors, String paperTitle, String pages, String url, Journal journal, String type)
+	public JournalArticle(List<Scholar> authors, String paperTitle, String pages, String url, Journal journal)
 	{
 		this.paperTitle = paperTitle;
 		this.pages = pages;
 		this.authors = authors;
 		this.journal = journal;
-		this.type = type;
+	
 		this.url = url;
 	}
 	
@@ -151,17 +151,9 @@ public class JournalArticle extends Paper {
 	
 	public String getType()
 	{
-		return null;
+		return type;
 	}
 	
-	/**
-	 * setter
-	 * @param type
-	 */
-	public void setType(String type)
-	{
-		this.type = type;
-	}
 	
 	
 

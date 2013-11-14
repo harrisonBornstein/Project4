@@ -20,7 +20,7 @@ public class AddScholarView extends JDialog {
 	
 
 	/**
-	 * Create the dialog.
+	 * Creates the dialog.
 	 */
 	public AddScholarView() {
 		setBounds(100, 100, 358, 334);
@@ -86,6 +86,10 @@ public class AddScholarView extends JDialog {
 			}
 		}
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getOkButton()
 	{
 		return okButton;

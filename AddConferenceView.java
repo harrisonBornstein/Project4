@@ -16,7 +16,7 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 
-
+/*This class is almost a direct copy of JournalView*/
 public class AddConferenceView extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
@@ -55,7 +55,7 @@ public class AddConferenceView extends JDialog implements ActionListener {
 	
 
 	/**
-	 * Create the dialog.
+	 * Creates the dialog.
 	 */
 	public AddConferenceView() {
 		setBounds(100, 100, 719, 848);
@@ -188,21 +188,33 @@ public class AddConferenceView extends JDialog implements ActionListener {
 			}
 		}
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddEditorsButton()
 	{
 		return btnAddEditors;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddReviewersButton()
 	{
 		return btnAddReviewers;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getOKButton()
 	{
 		return okButton;
 	}
+	/**
+	 * Fills the reviewer JList
+	 */
 	public void populateReviewerJList()
 	{
 		reviewerListModel.clear();
@@ -221,12 +233,17 @@ public class AddConferenceView extends JDialog implements ActionListener {
 			}
 		}	
 	}
-	
+	/**
+	 * 
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 			
 		}	
-	
+	/**
+	 * Makes the conferenceView an ActionListener
+	 * @param newModel
+	 */
 	public void setModel(ScholarshipModel newModel)
 	{
 		this.model = newModel;
@@ -236,7 +253,9 @@ public class AddConferenceView extends JDialog implements ActionListener {
 			setVisible(true);
 		}
 	}
-	
+	/**
+	 * Moves the selected editor to the other JList
+	 */
 	public void AddEditors()
 	{
 		editorSelectedList.add(editorListScholars.get(editorList.getSelectedIndex()));
@@ -247,7 +266,9 @@ public class AddConferenceView extends JDialog implements ActionListener {
 		
 		
 	}
-	
+	/**
+	 * Moves the selected reviewer to the other JList
+	 */
 	public void AddReviewers()
 	{
 		reviewerSelectedList.add(reviewerListScholars.get(reviewerList.getSelectedIndex()));
@@ -257,16 +278,25 @@ public class AddConferenceView extends JDialog implements ActionListener {
 		scrollPane_3.setViewportView(list_2);
 	
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Scholar> getReviewers()
 	{
 		return reviewerSelectedList;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Scholar> getEditors()
 	{
 		return editorSelectedList;
 	}
-	
+	/**
+	 * Clears the jLists
+	 */
 	public void clearView()
 	{
 		reviewerSelectedList.clear();

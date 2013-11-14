@@ -9,7 +9,9 @@ public class Meeting {
 	private List<Scholar> chairs;
 	private List<Scholar> members;
 	private List<ConPaper> conPapers;
-	
+	/**
+	 * 
+	 */
 	public Meeting()
 	{
 		this.month = null;

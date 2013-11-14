@@ -5,7 +5,7 @@ import java.util.List;
 public class ConPaper extends Paper{
 	
 	private Conference conference;
-	private String type;
+	private final String type = "Conference Paper";
 	private List<Scholar> authors;
 	private String paperTitle;
 	private String serialTitle;
@@ -21,7 +21,7 @@ public class ConPaper extends Paper{
 	{
 		this.authors = null;
 		this.conference = null;
-		this.type = null;
+
 	}
 	
 	/**
@@ -30,13 +30,12 @@ public class ConPaper extends Paper{
 	 * @param con
 	 * @param type
 	 */
-	public ConPaper(List<Scholar> authors, String paperTitle, String pages, String url, Conference conference, String type)
+	public ConPaper(List<Scholar> authors, String paperTitle, String pages, String url, Conference conference)
 	{
 		this.paperTitle = paperTitle;
 		this.pages = pages;
 		this.authors = authors;
 		this.conference = conference;
-		this.type = type;
 		this.url = url;
 	}
 	
@@ -58,14 +57,6 @@ public class ConPaper extends Paper{
 		return conference;
 	}
 	
-	/**
-	 *setter 
-	 * @param type
-	 */
-	public void setType(String type)
-	{
-		this.type = type;
-	}
 	
 	/**
 	 * getter

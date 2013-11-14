@@ -9,7 +9,11 @@ import javax.swing.JFrame;
 public class GraphView extends JFrame implements ActionListener {
 	
 	private Scholar scholar;
-	
+	/**
+	 * Creates a graph view 
+	 * @param scholar author specified
+	 * @param type Type of graph
+	 */
 	public GraphView(Scholar scholar, String type)
 	{
 		
@@ -254,7 +258,20 @@ public class GraphView extends JFrame implements ActionListener {
 		
 		for (Paper paper: author.getPapers())
 		{
-			String[] yearAndType = {paper.getDate().split(" ")[1], paper.getType()};
+			String type = paper.getType();
+			String date;
+			if(type.equals("Conference Paper"))
+			{
+				ConPaper conPaper = (ConPaper) paper;
+				date = conPaper.getCon().getMeetings().get(0).getYear();
+			}
+			else
+			{
+				JournalArticle journal = (JournalArticle) paper;
+						date = journal.getJournal().getVolumes().get(0).getIssues().get(0).getYear();
+			}
+			System.out.println(date);
+			String[] yearAndType = {paper.getDate(), paper.getType()};
 			years.add(yearAndType); //add year as a string
 		}
 		

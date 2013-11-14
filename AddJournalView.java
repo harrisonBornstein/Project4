@@ -55,7 +55,7 @@ public class AddJournalView extends JDialog implements ActionListener {
 	
 
 	/**
-	 * Create the dialog.
+	 * Creates the dialog.
 	 */
 	public AddJournalView() {
 		setBounds(100, 100, 719, 848);
@@ -195,21 +195,33 @@ public class AddJournalView extends JDialog implements ActionListener {
 			}
 		}
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddEditorsButton()
 	{
 		return btnAddEditors;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddReviewersButton()
 	{
 		return btnAddReviewers;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getOKButton()
 	{
 		return okButton;
 	}
+	/**
+	 * getter
+	 */
 	public void populateReviewerJList()
 	{
 		reviewerListModel.clear();
@@ -228,12 +240,17 @@ public class AddJournalView extends JDialog implements ActionListener {
 			}
 		}	
 	}
-	
+	/**
+	 * 
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 			
 		}	
-	
+	/**
+	 * Makes the journal View an actionListener on the model
+	 * @param newModel
+	 */
 	public void setModel(ScholarshipModel newModel)
 	{
 		this.model = newModel;
@@ -243,7 +260,9 @@ public class AddJournalView extends JDialog implements ActionListener {
 			setVisible(true);
 		}
 	}
-	
+	/**
+	 * Moves the selected editor to the correct JList
+	 */
 	public void AddEditors()
 	{
 		editorSelectedList.add(editorListScholars.get(editorList.getSelectedIndex()));
@@ -254,7 +273,9 @@ public class AddJournalView extends JDialog implements ActionListener {
 		
 		
 	}
-	
+	/**
+	 * Moves the selected reviewer to the correct JList
+	 */
 	public void AddReviewers()
 	{
 		reviewerSelectedList.add(reviewerListScholars.get(reviewerList.getSelectedIndex()));
@@ -264,17 +285,26 @@ public class AddJournalView extends JDialog implements ActionListener {
 		scrollPane_3.setViewportView(list_2);
 	
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Scholar> getReviewers()
 	{
 		return reviewerSelectedList;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Scholar> getEditors()
 	{
 		return editorSelectedList;
 	}
 	
-	
+	/**
+	 * clears the lists
+	 */
 	public void clearView()
 	{
 		reviewerSelectedList.clear();

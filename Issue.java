@@ -146,6 +146,11 @@ public class Issue {
 		this.articles = articles;
 	}
 	
+	public void addToArticles(JournalArticle article)
+	{
+		this.articles.add(article);
+	}
+	
 	
 
 }

@@ -32,6 +32,8 @@ public class ScholarshipView extends JFrame implements ActionListener {
 	private JButton button_3 = new JButton("Add Paper");
 	private JButton button_4 = new JButton("Delete Paper(s)");
 	private JButton button_5 = new JButton("Delete All Papers");
+	private JMenuItem mntmImportBinaryScholarship = new JMenuItem("Import Binary Scholarship");
+	private JMenuItem mntmExportBinaryScholarship = new JMenuItem("Export Binary Scholarship");
 	
 	
 	private DefaultListModel<String> scholarListModel = new DefaultListModel<String>();
@@ -129,10 +131,10 @@ public ScholarshipView(){
 		JMenu mnTest = new JMenu("File");
 		menuBar.add(mnTest);
 		
-		JMenuItem mntmImportBinaryScholarship = new JMenuItem("Import Binary Scholarship");
+		
 		mnTest.add(mntmImportBinaryScholarship);
 		
-		JMenuItem mntmExportBinaryScholarship = new JMenuItem("Export Binary Scholarship");
+	
 		mnTest.add(mntmExportBinaryScholarship);
 		
 		menuBar.add(mnPlot);
@@ -242,7 +244,40 @@ public ScholarshipView(){
 		return button_5;
 	}
 	
+	public JMenuItem getTypeOfPub()
+	{
+		return mntmTypeOfPublication;
+	}
 	
+	public JMenuItem getPubPerYear()
+	{
+		return mntmPublicationsPerYear;
+	}
+	
+	public JMenuItem getConPerYear()
+	{
+		return mntmConferencePapersPer;
+	}
+	
+	public JMenuItem getJournPerYear()
+	{
+		return mntmJournalArticlesPer;
+	}
+	
+	public JMenuItem getCoAuthors()
+	{
+		return mntmCoauthorsPerPublication;
+	}
+	
+	public JMenuItem getImport()
+	{
+		return mntmImportBinaryScholarship;
+	}
+	
+	public JMenuItem getExport()
+	{
+		return mntmExportBinaryScholarship;
+	}
 	public void setModel(ScholarshipModel newModel)
 	{
 		this.model = newModel;

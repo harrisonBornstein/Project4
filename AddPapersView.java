@@ -71,38 +71,56 @@ public class AddPapersView extends JFrame implements ActionListener {
 	JList journalSerialList = new JList(journalSerialListModel);
 	JList conferenceSerialList = new JList(conferenceSerialListModel);
 	
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddJournalButton()
 	{
 		return btnAddJournal;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddJournalArticleAuthorsButton()
 	{
 		return btnAddAuthors_1;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddJournalArticleButton()
 	{
 		return btnAddButton;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddConferenceButton()
 	{
 		return btnAddConference;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddConPaperAuthorsButton()
 	{
 		return btnAddAuthors;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getAddConPaperButton()
 	{
 		return btnAddPaper;
 	}
 	/**
-	 * Create the frame.
+	 * Creates the frame.
 	 */
 	public AddPapersView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -270,47 +288,63 @@ public class AddPapersView extends JFrame implements ActionListener {
 		btnAddPaper.setBounds(390, 696, 155, 29);
 		panel_1.add(btnAddPaper);
 	}
+	/**
+	 * Clears the textfield and lists 
+	 */
 	public void clear()
 	{
 		 textField.setText("");
-		  textField_1.setText("");
+		 textField_1.setText("");
 		 textField_2.setText("");
 		 textField_3.setText("");
 		  textField_4.setText("");
 		  textField_5.setText("");
 			journalAuthorListModel.clear();
-			journalListScholar.clear();
-			conferenceListScholar.clear();
 			conferenceAuthorListModel.clear();
 			journalSerialListModel.clear();
 			conferenceSerialListModel.clear();
-			viewConferences.clear();
-			viewJournals.clear();
 			conferenceSelectedListScholar.clear();
 			journalSelectedListScholar.clear();
 			conferenceSelectedListSerial.clear();
 			journalSelectedListSerial.clear();
+			
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Scholar> getJournalAuthors()
 	{
 		return journalSelectedListScholar;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Journal> getJournals()
 	{
 		return journalSelectedListSerial;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Scholar> getConferenceAuthors()
 	{
 		return conferenceSelectedListScholar;
 	}
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Conference> getConferences()
 	{
 		return conferenceSelectedListSerial;
 	}
-	
+	/**
+	 * Makes paper view an action lister on the model
+	 * @param newModel
+	 */
 	public void setModel(ScholarshipModel newModel)
 	{
 		this.model = newModel;
@@ -321,7 +355,9 @@ public class AddPapersView extends JFrame implements ActionListener {
 			setVisible(true);
 		}
 	}
-
+	/**
+	 * Fills the authors JList
+	 */
 	public void populateAuthorsJList()
 	{
 		journalAuthorListModel.clear();
@@ -342,7 +378,9 @@ public class AddPapersView extends JFrame implements ActionListener {
 			}
 		}	
 	}
-	
+	/**
+	 * Fills the serial JList
+	 */
 	public void populateSerialsJlist()
 	{
 		journalSerialListModel.clear();
@@ -382,7 +420,9 @@ public class AddPapersView extends JFrame implements ActionListener {
 			}
 		}
 	}
-	
+	/**
+	 * Adds selected journal to the correct JList
+	 */
 	public void addJournals()
 	{
 		journalSelectedListSerial.add(viewJournals.get(journalSerialList.getSelectedIndex()));
@@ -395,6 +435,9 @@ public class AddPapersView extends JFrame implements ActionListener {
 		scrollPane_5.setViewportView(list);
 		
 	}
+	/**
+	 * Adds the selected conference to the correct JList
+	 */
 	public void addConferences()
 	{
 		conferenceSelectedListSerial.add(viewConferences.get(conferenceSerialList.getSelectedIndex()));
@@ -404,7 +447,9 @@ public class AddPapersView extends JFrame implements ActionListener {
 		scrollPane_1.setViewportView(list);
 		System.out.println("check2");
 	}
-	
+	/**
+	 * Adds the selected Journal Author to the correct JList
+	 */
 	public void addJournalAuthors()
 	{
 		journalSelectedListScholar.add(journalListScholar.get(journalList.getSelectedIndex()));
@@ -417,7 +462,9 @@ public class AddPapersView extends JFrame implements ActionListener {
 		
 		scrollPane_7.setViewportView(list);
 	}
-	
+	/**
+	 * Adds the selected Conference Author to the correct JList
+	 */
 	public void addConferenceAuthors()
 	{
 		conferenceSelectedListScholar.add(conferenceListScholar.get(conferenceList.getSelectedIndex()));
@@ -431,7 +478,9 @@ public class AddPapersView extends JFrame implements ActionListener {
 		scrollPane_3.setViewportView(list);
 	}
 	
-	
+	/**
+	 * 
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 		

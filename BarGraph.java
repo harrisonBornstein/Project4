@@ -16,13 +16,20 @@ private static final long serialVersionUID = -4389067912602888412L;
 private double[] values;
   private String[] names;
   private String title;
- 
+ /**
+  * Construct a bar graph 
+  * @param v information as a double[] each element is a bar
+  * @param n each string corresponds to a title of a bar
+  * @param t title of the graph
+  */
   public BarGraph(double[] v, String[] n, String t) {
     names = n;
     values = v;
     title = t;
   }
- 
+  /**
+   * Paints the graph
+   */
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     if (values == null || values.length == 0)
