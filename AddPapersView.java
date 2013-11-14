@@ -20,13 +20,13 @@ import javax.swing.JButton;
 public class AddPapersView extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private ScholarshipModel model;
+	 JTextField textField;
+	 JTextField textField_1;
+	JTextField textField_2;
+	JTextField textField_3;
+	 JTextField textField_4;
+	 JTextField textField_5;
+	 ScholarshipModel model;
 
 	private JButton btnAddJournal = new JButton("Add Journal");
 	private JButton btnAddAuthors_1 = new JButton("Add Authors");
@@ -270,6 +270,47 @@ public class AddPapersView extends JFrame implements ActionListener {
 		btnAddPaper.setBounds(390, 696, 155, 29);
 		panel_1.add(btnAddPaper);
 	}
+	public void clear()
+	{
+		 textField.setText("");
+		  textField_1.setText("");
+		 textField_2.setText("");
+		 textField_3.setText("");
+		  textField_4.setText("");
+		  textField_5.setText("");
+			journalAuthorListModel.clear();
+			journalListScholar.clear();
+			conferenceListScholar.clear();
+			conferenceAuthorListModel.clear();
+			journalSerialListModel.clear();
+			conferenceSerialListModel.clear();
+			viewConferences.clear();
+			viewJournals.clear();
+			conferenceSelectedListScholar.clear();
+			journalSelectedListScholar.clear();
+			conferenceSelectedListSerial.clear();
+			journalSelectedListSerial.clear();
+	}
+	public List<Scholar> getJournalAuthors()
+	{
+		return journalSelectedListScholar;
+	}
+	
+	public List<Journal> getJournals()
+	{
+		return journalSelectedListSerial;
+	}
+	
+	public List<Scholar> getConferenceAuthors()
+	{
+		return conferenceSelectedListScholar;
+	}
+	
+	public List<Conference> getConferences()
+	{
+		return conferenceSelectedListSerial;
+	}
+	
 	public void setModel(ScholarshipModel newModel)
 	{
 		this.model = newModel;

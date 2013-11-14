@@ -145,6 +145,21 @@ public class ScholarshipController {
 		
 		public void actionPerformed(ActionEvent e) {
 			
+			int index = view.paperList.getSelectedIndex();
+			String type = view.getPapers().get(index).getType();
+			if(type.equals("Journal"))
+			{
+				Paper paper = new JournalArticle();
+				paper = view.getPapers().get(index);
+				model.removePaper(paper);
+			}
+			else
+			{
+				Paper paper = new ConPaper();
+				paper = view.getPapers().get(index);
+				model.removePaper(paper);
+				
+			}
 			
 		}
 		
@@ -155,7 +170,15 @@ public class ScholarshipController {
 		
 		public void actionPerformed(ActionEvent e) {
 			
-			
+			List<Paper> paperList = new ArrayList<Paper>();
+			for (Paper paper: model.getPapers())
+			{
+				paperList.add(paper);
+			}
+			for (Paper paper: paperList)
+			{
+				model.removePaper(paper);
+			}
 		}
 		
 	}
@@ -206,6 +229,17 @@ private class AddJournalArticleListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) 
 	{
 		
+		String paperTitle = papersView.textField_3.getText();
+		String pages = papersView.textField_4.getText();
+		String url = papersView.textField_5.getText();
+		List<Scholar> authors = papersView.getJournalAuthors();
+		Journal journal = papersView.getJournals().get(0);
+		//Journal journal =  new Journal();
+		JournalArticle paper = new JournalArticle(authors,paperTitle,pages,url,journal,"Journal Article");
+		model.addPaper(paper);
+		papersView.setVisible(false);
+		papersView.clear();
+		
 	}
 	
 }
@@ -236,7 +270,15 @@ private class AddConferencePaperListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		
-		
+		List<Scholar> authors = papersView.getConferenceAuthors();
+		String paperTitle = papersView.textField.getText();
+		String pages = papersView.textField_1.getText();
+		String url = papersView.textField_2.getText();
+		Conference conference = papersView.getConferences().get(0);
+		ConPaper paper = new ConPaper(authors, paperTitle,pages,url,conference,"ConPaper");
+		model.addPaper(paper);
+		papersView.setVisible(false);
+		papersView.clear();
 	}
 	
 }
@@ -386,7 +428,7 @@ public void setView(ScholarshipView view)
 		
 		papersView.getAddJournalButton().addActionListener(new AddJournalArticleJournalListener());
 		papersView.getAddJournalArticleAuthorsButton().addActionListener(new AddJournalArticleScholarListener());
-		papersView.getAddJournalButton().addActionListener(new AddJournalArticleListener());
+		papersView.getAddJournalArticleButton().addActionListener(new AddJournalArticleListener());
 		
 		papersView.getAddConferenceButton().addActionListener(new AddConferencePaperConferenceListener());
 		papersView.getAddConPaperAuthorsButton().addActionListener(new AddConferencePaperScholarListener());

@@ -52,6 +52,42 @@ public class Conference extends Effort {
 		this.meetings.add(meeting);
 	}
 
+	/**
+	 * getter
+	 * @return
+	 */
+	public String getType()
+	{
+		return type;
+	}
+	
+	/**
+	 * setter
+	 * @param newType
+	 */
+	public void setType(String newType)
+	{
+		this.type = newType;
+	}
+	
+	/**
+	 * getter
+	 * @return
+	 */
+	public String getOrganization()
+	{
+		return organization;
+	}
+	
+	/**
+	 * setter
+	 * @param org
+	 */
+	public void setOrganization(String org)
+	{
+		this.organization = org;
+	}
+
 
 
 }

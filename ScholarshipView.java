@@ -36,13 +36,17 @@ public class ScholarshipView extends JFrame implements ActionListener {
 	
 	private DefaultListModel<String> scholarListModel = new DefaultListModel<String>();
 	private DefaultListModel<String> serialListModel = new DefaultListModel<String>();
+	private DefaultListModel<String> paperListModel = new DefaultListModel<String>();
 	private List<Effort> viewEfforts = new ArrayList<Effort>();
+	private List<Paper> publications = new ArrayList<Paper>();
 	
+	JList paperList = new JList(paperListModel);
 	JList scholarList = new JList(scholarListModel);
 	JList serialList = new JList(serialListModel);
 	
 	private final JScrollPane scrollPane = new JScrollPane();
 	private final JScrollPane scrollPane_1 = new JScrollPane();
+	private JScrollPane scrollPane_2 = new JScrollPane();
 	
 public ScholarshipView(){
 	
@@ -100,22 +104,17 @@ public ScholarshipView(){
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Papers", null, panel_2, null);
 		panel_2.setLayout(null);
-		
-		JList list_2 = new JList();
-		list_2.setBounds(22, 20, 374, 310);
-		panel_2.add(list_2);
-		
-		
 		button_3.setBounds(6, 344, 117, 29);
 		panel_2.add(button_3);
-		
-		
 		button_4.setBounds(123, 344, 136, 29);
 		panel_2.add(button_4);
-		
-		
 		button_5.setBounds(258, 344, 155, 29);
 		panel_2.add(button_5);
+		
+		
+		scrollPane_2.setBounds(0, 0, 413, 332);
+		panel_2.add(scrollPane_2);
+		scrollPane_2.setViewportView(paperList);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 12, 445, 22);
@@ -130,7 +129,19 @@ public ScholarshipView(){
 		JMenuItem mntmExportBinaryScholarship = new JMenuItem("Export Binary Scholarship");
 		mnTest.add(mntmExportBinaryScholarship);
 }
-	
+	private void populatePaperJList()
+	{
+		paperListModel.clear();
+		publications.clear();
+		if (model.getPapers() != null)
+		{
+			for(int i =0; i<model.getPapers().size();i++)
+			{
+				paperListModel.addElement((model.getPapers().get(i).getPaperTitle()));
+				publications.add(model.getPapers().get(i));
+			}
+		}
+	}
 	private void populateScholarJList()
 	{
 		scholarListModel.clear();
@@ -228,16 +239,24 @@ public ScholarshipView(){
 		if (e.getActionCommand().equals("Scholar Added") || e.getActionCommand().equals("Scholar Removed")) {
 			populateScholarJList();
 			populateSerialJList();
+			populatePaperJList();
 			
 		}
 		else if(e.getActionCommand().equals("Journal Added") || e.getActionCommand().equals("Journal Removed"))
 		{
 			populateSerialJList();
+			populatePaperJList();
 			
 		}
 		else if(e.getActionCommand().equals("Conference Added") || e.getActionCommand().equals("Conference Removed"))
 		{
 			populateSerialJList();
+			populatePaperJList();
+			
+		}
+		else if(e.getActionCommand().equals("Paper Added") || e.getActionCommand().equals("Paper Removed"))
+		{
+			populatePaperJList();
 			
 		}
 		
@@ -251,5 +270,9 @@ public ScholarshipView(){
 	public List<Effort> getEfforts()
 	{
 		return viewEfforts;
+	}
+	public List<Paper> getPapers()
+	{
+		return publications;
 	}
 }

@@ -46,6 +46,11 @@ public class ScholarshipModel {
 		return conferences;
 	}
 	
+	public List<Paper> getPapers()
+	{
+		return publications;
+	}
+	
 	public List<Journal> getJournals()
 	{
 		return journals;
