@@ -13,7 +13,9 @@ public class ScholarshipModel {
 	private List<Journal> journals;
 	private ArrayList<ActionListener> actionListenerList;
 	
-	
+	/**
+	 * Constructor
+	 */
 	public ScholarshipModel()
 	{
 		this.publications = new ArrayList<Paper>();
@@ -23,18 +25,7 @@ public class ScholarshipModel {
 		this.actionListenerList = null;
 	}
 		
-	public Scholar findScholar(Scholar findScholar)
-	{
-		for(int i =0; this.scholars.size() > i;++i)
-		{
-			if(findScholar.getFullName() == this.scholars.get(i).getFullName())
-			{
-				return scholars.get(i);
-			}
-			
-		}
-		return null;
-	}
+
 	
 	public List<Scholar> getScholars()
 	{
