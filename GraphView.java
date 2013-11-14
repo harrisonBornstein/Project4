@@ -200,19 +200,32 @@ public class GraphView extends JFrame implements ActionListener {
 			getContentPane().add(paperTypes);
 			setVisible(true);
 		}	
+	
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0) 
+	public void actionPerformed(ActionEvent e) 
 	{
 		if (!model.getScholars().contains(scholar))
 		{
 			model.removeActionListener(this);
 			this.dispose();
 		}
+		if (e.getActionCommand().equals("Scholar Removed"))
+		{
+			index = model.getScholars().indexOf(scholar);
+		}
+		scholar = model.getScholars().get(index);
 		getContentPane().remove(paperTypes);
+		getContentPane().revalidate();
+		getContentPane().repaint();
 		getData();
+		setSize(paperTypes.getSizeOfWindow()[0] * 100 + 200, 500);
 		getContentPane().add(paperTypes);
+		
+		
+		
+		
 	}
 	
 	/**
