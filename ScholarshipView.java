@@ -227,11 +227,13 @@ public ScholarshipView(){
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Scholar Added") || e.getActionCommand().equals("Scholar Removed")) {
 			populateScholarJList();
+			populateSerialJList();
 			
 		}
 		else if(e.getActionCommand().equals("Journal Added") || e.getActionCommand().equals("Journal Removed"))
 		{
 			populateSerialJList();
+			
 		}
 		else if(e.getActionCommand().equals("Conference Added") || e.getActionCommand().equals("Conference Removed"))
 		{

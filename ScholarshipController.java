@@ -25,11 +25,9 @@ public class ScholarshipController {
 	private class AddScholarListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			
-			
+		
 			scholarView.setVisible(true);
-			
-			
+
 		}
 		
 	}
@@ -137,6 +135,7 @@ public class ScholarshipController {
 			
 			papersView.setModel(model);
 			papersView.populateAuthorsJList();
+			papersView.populateSerialsJlist();
 		}
 		
 	}
@@ -186,7 +185,7 @@ public class ScholarshipController {
 		
 		public void actionPerformed(ActionEvent e) {
 			
-			
+			papersView.addJournals();
 		}
 		
 	}
@@ -196,7 +195,7 @@ private class AddJournalArticleScholarListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e) {
 			
-			
+			papersView.addJournalAuthors();
 		}
 		
 	}
@@ -204,8 +203,8 @@ private class AddJournalArticleScholarListener implements ActionListener{
 private class AddJournalArticleListener implements ActionListener{
 
 	
-	public void actionPerformed(ActionEvent e) {
-		
+	public void actionPerformed(ActionEvent e) 
+	{
 		
 	}
 	
@@ -216,6 +215,7 @@ private class AddConferencePaperScholarListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		
+		papersView.addConferenceAuthors();
 		
 	}
 	
@@ -225,7 +225,8 @@ private class AddConferencePaperConferenceListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		
-		
+		papersView.addConferences();
+		System.out.println("CHECK");
 	}
 	
 }
