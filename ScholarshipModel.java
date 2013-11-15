@@ -11,10 +11,10 @@ public class ScholarshipModel implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4387041456221952094L;
-	private List<Paper> publications;
-	private List<Scholar> scholars;
-	private List<Conference> conferences;
-	private List<Journal> journals;
+	private ArrayList<Paper> publications;
+	private ArrayList<Scholar> scholars;
+	private ArrayList<Conference> conferences;
+	private ArrayList<Journal> journals;
 	private ArrayList<ActionListener> actionListenerList;
 	
 	/**

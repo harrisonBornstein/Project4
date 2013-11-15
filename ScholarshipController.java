@@ -99,6 +99,7 @@ public class ScholarshipController implements Serializable {
 			}
 				view.setModel(model);
 				setModel(model);
+				
 		}
 	}
 	/**

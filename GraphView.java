@@ -221,11 +221,11 @@ public class GraphView extends JFrame implements ActionListener, Serializable {
 			model.removeActionListener(this);
 			this.dispose();
 		}
-		if (e.getActionCommand().equals("Scholar Removed"))
-		{
-			index = model.getScholars().indexOf(scholar);
-		}
-		scholar = model.getScholars().get(index);
+		//if (e.getActionCommand().equals("Scholar Removed"))
+		//{
+		//	index = model.getScholars().indexOf(scholar);
+		//}
+		//scholar = model.getScholars().get(index);
 		getContentPane().remove(paperTypes);
 		getContentPane().revalidate();
 		getContentPane().repaint();

@@ -410,9 +410,14 @@ public JMenuItem getImportBinary()
 	{
 		this.model = newModel;
 		
-		if (model != null) {
+		if (model != null) 
+		{
 			model.addActionListener(this);
 			setVisible(true);
+			populateScholarJList();
+			populateSerialJList();
+			populatePaperJList();
+			
 		}
 	}
 	/**
