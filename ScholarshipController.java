@@ -36,7 +36,6 @@ public class ScholarshipController implements Serializable {
 	private String graph;
 	/**
 	 * Listener for JMenu Item Export. Exports the model as a binary file.
-	 * @author harrib
 	 *
 	 */
 	private class ExportBinaryListener implements ActionListener{ 
@@ -64,7 +63,6 @@ public class ScholarshipController implements Serializable {
 	
 	/**
 	 * Listener for JMenu Item Import. Imports the model as a binary file.
-	 * @author harrib
 	 *
 	 */
 	private class ImportBinaryListener implements ActionListener{ 
@@ -137,7 +135,6 @@ public class ScholarshipController implements Serializable {
 
 	/**
 	 * Listener for the button press for the JmenuItem
-	 * @author harrib
 	 *
 	 */
 	private class ConferencePapersPerYearListener implements ActionListener{
@@ -154,7 +151,6 @@ public class ScholarshipController implements Serializable {
 
 	/**
 	 * Listener for the button press for the JmenuItem
-	 * @author harrib
 	 *
 	 */
 	private class JournalArticlesPerYearListener implements ActionListener{
@@ -170,7 +166,6 @@ public class ScholarshipController implements Serializable {
 
 	/**
 	 * Listener for the button press for the JmenuItem
-	 * @author harrib
 	 *
 	 */
 	private class CoAuthorsListener implements ActionListener
@@ -186,7 +181,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the button press for the OK button in graphList
-	 * @author harrib
 	 *
 	 */
 	private class GraphListOkListener implements ActionListener{
@@ -205,7 +199,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the scholar cancel button
-	 * @author harrib
 	 *
 	 */
 	private class AddScholarCancelListener implements ActionListener
@@ -217,7 +210,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the AddScholar button
-	 * @author harrib
 	 *
 	 */
 	private class AddScholarListener implements ActionListener {
@@ -233,7 +225,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the delete scholar button
-	 * @author harrib
 	 *
 	 */
 	private class DeleteScholarListener implements ActionListener
@@ -248,7 +239,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the deleteAll scholar button
-	 * @author harrib
 	 *
 	 */
 	private class DeleteAllScholarsListener implements ActionListener{
@@ -270,7 +260,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the journal view cancel button
-	 * @author harrib
 	 *
 	 */
 	private class AddJournalCancelListener implements ActionListener{
@@ -281,7 +270,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the conference view cancel button
-	 * @author harrib
 	 *
 	 */
 	private class AddConferenceCancelListener implements ActionListener{
@@ -292,7 +280,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the add serial button
-	 * @author harrib
 	 *
 	 */
 	private class AddSerialListener implements ActionListener {
@@ -333,7 +320,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the delete serial button
-	 * @author harrib
 	 *
 	 */
 	private class DeleteSerialListener implements ActionListener{
@@ -358,7 +344,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the delete all serials button
-	 * @author harrib
 	 *
 	 */
 	private class DeleteAllSerialsListener implements ActionListener
@@ -401,7 +386,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for add Paper button
-	 * @author harrib
 	 *
 	 */
 	private class AddPaperListener implements ActionListener {
@@ -428,7 +412,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the delete paper button
-	 * @author harrib
 	 *
 	 */
 	private class DeletePaperListener implements ActionListener{
@@ -457,7 +440,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * listener for the delete all papers button
-	 * @author harrib
 	 *
 	 */
 	private class DeleteAllPapersListener implements ActionListener{
@@ -479,7 +461,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the add scholar button
-	 * @author harrib
 	 *
 	 */
 	private class AddScholarDialogListener implements ActionListener{
@@ -499,7 +480,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for add journal article button
-	 * @author harrib
 	 *
 	 */
 	private class AddJournalArticleJournalListener implements ActionListener{
@@ -513,7 +493,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the add journal article scholar
-	 * @author harrib
 	 *
 	 */
 	private class AddJournalArticleScholarListener implements ActionListener{
@@ -527,7 +506,6 @@ public class ScholarshipController implements Serializable {
 		}
 	/**
 	 * Listener for add journal article button
-	 * @author harrib
 	 *
 	 */
 	private class AddJournalArticleListener implements ActionListener{
@@ -556,7 +534,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for add conference paper button
-	 * @author harrib
 	 *
 	 */
 	private class AddConferencePaperScholarListener implements ActionListener{
@@ -571,7 +548,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for add conference button 
-	 * @author harrib
 	 *
 	 */
 	private class AddConferencePaperConferenceListener implements ActionListener{
@@ -586,7 +562,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * listener for the add conference paper button
-	 * @author harrib
 	 *
 	 */
 	private class AddConferencePaperListener implements ActionListener{
@@ -615,7 +590,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the add journal button
-	 * @author harrib
 	 *
 	 */
 	private class AddJournalListener implements ActionListener{
@@ -658,7 +632,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for add reviewers button
-	 * @author harrib
 	 *
 	 */
 	private class AddJournalReviewersListener implements ActionListener{
@@ -674,7 +647,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for add editors button
-	 * @author harrib
 	 *
 	 */
 	private class AddJournalEditorsListener implements ActionListener{
@@ -688,7 +660,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the add conference button
-	 * @author harrib
 	 *
 	 */
 	private class AddConferenceListener implements ActionListener{
@@ -727,7 +698,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * Listener for the add conference chairs button
-	 * @author harrib
 	 *
 	 */
 	private class AddConferenceChairsListener implements ActionListener{
@@ -741,7 +711,6 @@ public class ScholarshipController implements Serializable {
 	}
 	/**
 	 * listener for the add conference members listener
-	 * @author harrib
 	 *
 	 */
 	private class AddConferenceMembersListener implements ActionListener{
