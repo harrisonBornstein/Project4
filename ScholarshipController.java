@@ -753,6 +753,16 @@ public class ScholarshipController implements Serializable {
 		}
 		
 	}
+	
+	private class ScholarInfoListener implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e)
+		{
+			int index = view.scholarList.getSelectedIndex();
+			Scholar scholar = model.getScholars().get(index);
+			new ScholarInfoView(scholar);
+		}
+	}
 	/**
 	 * Allows the driver to set the model for the controller	
 	 * @param model
@@ -784,6 +794,7 @@ public class ScholarshipController implements Serializable {
 		this.view.getCoAuthors().addActionListener(new CoAuthorsListener());
 		this.view.getExportBinary().addActionListener(new ExportBinaryListener());
 		this.view.getImportBinary().addActionListener(new ImportBinaryListener());
+		this.view.getInfoButton().addActionListener(new ScholarInfoListener());
 	}
 	
 	

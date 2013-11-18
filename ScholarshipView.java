@@ -35,6 +35,7 @@ public class ScholarshipView extends JFrame implements ActionListener, Serializa
 	private JButton button_3 = new JButton("Add Paper");
 	private JButton button_4 = new JButton("Delete Paper(s)");
 	private JButton button_5 = new JButton("Delete All Papers");
+	private JButton btnGetInfo = new JButton("Get Info");
 	private JMenuItem mntmImportBinaryScholarship = new JMenuItem("Import Binary Scholarship");
 	private JMenuItem mntmExportBinaryScholarship = new JMenuItem("Export Binary Scholarship");
 	
@@ -158,6 +159,10 @@ public ScholarshipView(){
 		button_3.setEnabled(false);
 		btnDeleteScholars.setEnabled(false);
 		btnDeleteAllScholars.setEnabled(false);
+		
+		
+		btnGetInfo.setBounds(6, 384, 117, 29);
+		panel.add(btnGetInfo);
 		button_1.setEnabled(false);
 		button_2.setEnabled(false);
 		button_4.setEnabled(false);
@@ -476,5 +481,10 @@ public JMenuItem getImportBinary()
 	public List<Paper> getPapers()
 	{
 		return publications;
+	}
+	
+	public JButton getInfoButton()
+	{
+		return btnGetInfo;
 	}
 }
