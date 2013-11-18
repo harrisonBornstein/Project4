@@ -2,12 +2,15 @@ import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JTextField;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 
 public class ScholarInfoView extends JDialog{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5440719143996742670L;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
