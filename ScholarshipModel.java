@@ -30,50 +30,86 @@ public class ScholarshipModel implements Serializable {
 	}
 		
 
-	
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Scholar> getScholars()
 	{
 		return scholars;
 	}
 	
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Conference> getConferences()
 	{
 		return conferences;
 	}
 	
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Paper> getPapers()
 	{
 		return publications;
 	}
 	
+	/**
+	 * getter
+	 * @return
+	 */
 	public List<Journal> getJournals()
 	{
 		return journals;
 	}
+	
+	/**
+	 * adds the param to papers
+	 * @param newPaper
+	 */
 	public void addPaper(Paper newPaper)
 	{
 		publications.add(newPaper);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Paper Added"));
 	}
 	
+	/**
+	 * adds the param to scholars
+	 * @param newScholar
+	 */
 	public void addScholar(Scholar newScholar)
 	{
 		scholars.add(newScholar);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Scholar Added"));
 	}
 	
+	/**
+	 * adds the param to conferences
+	 * @param newCon
+	 */
 	public void addConference(Conference newCon)
 	{
 		conferences.add(newCon);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Conference Added"));
 	}
 	
+	/**
+	 * adds the param to journals
+	 * @param newJournal
+	 */
 	public void addJournal(Journal newJournal)
 	{
 		journals.add(newJournal);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Journal Added"));
 	}
 	
+	/**
+	 * removes the paper from papers and cleans out any empty objects
+	 * @param outPaper
+	 */
 	public void removePaper(Paper outPaper)
 	{
 		publications.remove(outPaper);
@@ -143,6 +179,10 @@ public class ScholarshipModel implements Serializable {
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Paper Removed"));
 	}
 	
+	/**
+	 * removes the scholar from scholars and cleans out any empty objects
+	 * @param outScholar
+	 */
 	public void removeScholar(Scholar outScholar)
 	{
 		scholars.remove(outScholar);
@@ -236,6 +276,10 @@ public class ScholarshipModel implements Serializable {
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Scholar Removed"));
 	}
 	
+	/**
+	 * removes outCon from conferences and cleans out any empty objects
+	 * @param outCon
+	 */
 	public void removeConference(Conference outCon)
 	{
 		conferences.remove(outCon);
@@ -261,6 +305,10 @@ public class ScholarshipModel implements Serializable {
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Conference Removed"));
 	}
 	
+	/**
+	 * removes outJournal from journals and cleans out any empty objects
+	 * @param outJournal
+	 */
 	public void removeJournal(Journal outJournal)
 	{
 		journals.remove(outJournal);
@@ -286,6 +334,10 @@ public class ScholarshipModel implements Serializable {
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Journal Removed"));
 	}
 	
+	/**
+	 * adds listener as a listner to the model
+	 * @param listener
+	 */
 	public synchronized void addActionListener(ActionListener listener)
 	{
 		if (actionListenerList == null) 
@@ -295,6 +347,10 @@ public class ScholarshipModel implements Serializable {
 		actionListenerList.add(listener);
 	}
 	
+	/**
+	 * tells listeners of events
+	 * @param e
+	 */
 	@SuppressWarnings("unchecked")
 	private void processEvent(ActionEvent e)
 	{
@@ -314,6 +370,10 @@ public class ScholarshipModel implements Serializable {
 		}
 	}
 	
+	/**
+	 * removes param from the list of action listeners
+	 * @param listener
+	 */
 	public void removeActionListener(ActionListener listener)
 	{
 		if (actionListenerList != null && actionListenerList.contains(listener))

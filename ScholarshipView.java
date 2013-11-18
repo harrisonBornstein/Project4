@@ -36,6 +36,8 @@ public class ScholarshipView extends JFrame implements ActionListener, Serializa
 	private JButton button_4 = new JButton("Delete Paper(s)");
 	private JButton button_5 = new JButton("Delete All Papers");
 	private JButton btnGetInfo = new JButton("Get Info");
+	private JButton btnGetInfoSerial = new JButton("Get Info");
+	private JButton btnGetInfoPaper = new JButton("Get Info");
 	private JMenuItem mntmImportBinaryScholarship = new JMenuItem("Import Binary Scholarship");
 	private JMenuItem mntmExportBinaryScholarship = new JMenuItem("Export Binary Scholarship");
 	
@@ -59,6 +61,7 @@ public class ScholarshipView extends JFrame implements ActionListener, Serializa
 	private final JMenuItem mntmConferencePapersPer = new JMenuItem("Conference Papers per Year");
 	private final JMenuItem mntmJournalArticlesPer = new JMenuItem("Journal Articles per Year");
 	private final JMenuItem mntmCoauthorsPerPublication = new JMenuItem("Co-Authors per Publication");
+	
 /**
  * Creates the view	
  */
@@ -163,10 +166,20 @@ public ScholarshipView(){
 		
 		btnGetInfo.setBounds(6, 384, 117, 29);
 		panel.add(btnGetInfo);
+		
+		
+		btnGetInfoSerial.setBounds(6, 384, 117, 29);
+		panel_1.add(btnGetInfoSerial);
+		
+		btnGetInfoPaper.setBounds(6, 384, 117, 29);
+		panel_2.add(btnGetInfoPaper);
+		
 		button_1.setEnabled(false);
 		button_2.setEnabled(false);
 		button_4.setEnabled(false);
 		button_5.setEnabled(false);
+		
+		
 		
 }
 /**
@@ -483,8 +496,30 @@ public JMenuItem getImportBinary()
 		return publications;
 	}
 	
+	/**
+	 * getter
+	 * @return
+	 */
 	public JButton getInfoButton()
 	{
 		return btnGetInfo;
+	}
+	
+	/**
+	 * getter
+	 * @return
+	 */
+	public JButton getSerialInfoButton()
+	{
+		return btnGetInfoSerial;
+	}
+	
+	/**
+	 * getter
+	 * @return
+	 */
+	public JButton getPaperInfoButton()
+	{
+		return btnGetInfoPaper;
 	}
 }

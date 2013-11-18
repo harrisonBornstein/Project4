@@ -14,6 +14,7 @@ public class JournalArticle extends Paper {
 	private String serialTitle;
 	private String url;
 	private String date;
+	private String pages;
 	
 	/**
 	 * null Constructor
@@ -38,7 +39,7 @@ public class JournalArticle extends Paper {
 		this.paperTitle = paperTitle;
 		this.authors = authors;
 		this.journal = journal;
-	
+		this.pages = pages;
 		this.url = url;
 	}
 	
@@ -150,10 +151,24 @@ public class JournalArticle extends Paper {
 		this.url = newUrl;
 	}
 	
+	/**
+	 * getter
+	 */
 	public String getType()
 	{
 		return type;
 	}
+	
+	/**
+	 * getter
+	 * @return
+	 */
+	public String getPages()
+	{
+		return pages;
+	}
+	
+	
 	
 	
 	
